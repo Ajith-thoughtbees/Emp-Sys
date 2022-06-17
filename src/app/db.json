@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "firstname": "Sri ",
+      "lastname": "Hari",
+      "birthday": "2022-06-04",
+      "gender": "m",
+      "education": "graduate",
+      "company": "Rvs",
+      "jobExperience": 1,
+      "salary": 150000,
+      "profile": "523-5230160_clipart-computer-operator-hd-png-download.png",
+      "id": 2
+    },
+    {
+      "firstname": "Ajith",
+      "lastname": "M",
+      "birthday": "2022-06-04",
+      "gender": "m",
+      "education": "post graduate",
+      "company": "Tcs",
+      "jobExperience": 12,
+      "salary": 8000000,
+      "profile": "tiger.jpg",
+      "id": 3
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}
