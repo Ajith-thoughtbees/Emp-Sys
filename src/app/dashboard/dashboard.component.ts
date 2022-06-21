@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild, } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup,Validator, Validators } from '@angular/forms';
 import { ApiService } from '../service/api.service';
 import { Employee } from './employee.model';
 
@@ -37,10 +37,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.employeeForm = this.fb.group({
-      firstname: this.fb.control(''),
-      lastname: this.fb.control(''),
-      birthday: this.fb.control(''),
-      gender: this.fb.control(''),
+      firstname: this.fb.control('',[Validators.required,Validators.minLength(3),Validators.maxLength(8)]),
+      lastname: this.fb.control('',[Validators.required,Validators.minLength(1),Validators.maxLength(2)]),
+      birthday: this.fb.control('',[Validators.required,Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)]),
+      gender: this.fb.control('',[Validators.required,]),
       education: this.fb.control('default'),
       company: this.fb.control(''),
       jobExperience: this.fb.control(''),
@@ -88,14 +88,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   editEmployee(event: any) {
-    this.employees.forEach((val, ind) => {
+    this.employees.forEach((val,index) => {
       if (val.id === event) {
         this.setForm(val);
       }
     });
     this.removeEmployee(event);
     this.addEmployeeButton.nativeElement.click();
-  }
+  };
 
   setForm(emp: Employee) {
     this.FirstName.setValue(emp.firstname);

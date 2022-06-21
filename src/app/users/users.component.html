@@ -1,3 +1,297 @@
 
 
+<div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
+  <!-- Vertical Navbar -->
+  <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="navbarVertical">
+      <div class="container-fluid">
+          <!-- Toggler --> <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <!-- Brand -->  <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3">
+            <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-2 logo fs-2 mt-0" href="#"> Admin </a>
+          </div>
 
+          <div class="collapse navbar-collapse" id="sidebarCollapse">
+              <!-- Navigation -->
+              <ul class="navbar-nav">
+                <li class="nav-item"> <a class="nav-link" href="#" routerLink="/dashboard"> <i class="bi bi-house"></i> Dashboard </a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#" routerLink="/payroll" > <i class="bi bi-bar-chart"></i> Payroll </a> </li>
+
+                <li class="nav-item"> <a class="nav-link" href="#" routerLink="/attendance" > <i class="bi bi-stopwatch-fill"></i> Attendance </a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#" routerLink="/users" > <i class="bi bi-people"></i> Users </a> </li>
+            </ul> <!-- Divider -->
+              <hr class="navbar-divider my-5 opacity-20">
+
+
+
+          </div>
+      </div>
+  </nav> <!-- Main content -->
+  <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+      <!-- Header -->
+      <header class="bg-surface-primary border-bottom pt-6">
+          <div class="container-fluid">
+              <div class="mb-npx">
+                  <div class="row align-items-center">
+                      <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                          <!-- Title -->
+                          <h1 class="h2 mb-0 ls-tight text-success">Employee management system</h1>
+                      </div> <!-- Actions -->
+                      <div class="col-sm-6 col-12 text-sm-end">
+                          <div class="mx-n1"> <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1"> <span class=" pe-2"> <i class="bi bi-person-square"></i> </span> <span> Account</span> </a> <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1" [routerLink]="['/login']" > <span class=" pe-2"><i class="bi bi-box-arrow-left"></i> </span> <span>Logout</span> </a> </div>
+                      </div>
+                  </div> <!-- Nav -->
+                  <ul class="nav nav-tabs mt-4 overflow-x border-0">
+                      <li class="nav-item "> <a href="#" class="nav-link active">All Employees Details</a> </li>
+                  </ul>
+              </div>
+          </div>
+      </header> <!-- Main -->
+      <main class="py-6 bg-surface-secondary">
+          <div class="container-fluid">
+              <!-- Card stats -->
+
+              <div class="card shadow border-0 mb-5">
+                  <div class="card-header">
+                    <div class="toolbar">
+                      <div class="add-employee">
+                        <button class="btn btn-outline-success btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Employee</button>
+                      </div>
+                      <div class="search-employee">
+                        <input type="search" class="form-control" placeholder="Search Employees">
+                      </div>
+                  </div>
+                </div>
+             </div>
+                   <!-- Area to display the Employee -->
+                   <table class="table">
+                    <thead>
+                      <tr>
+
+                        <th scope="col">
+                          Image
+                        </th>
+                        <th scope="col">
+                        Employee Name
+                        </th>
+                        <th scope="col">
+                   Birthdate
+                         </th>
+                        <th scope="col">
+                     Gender
+                        </th>
+                        <th scope="col">
+                    Education
+                        </th>
+                        <th scope="col">
+                      Company
+                        </th>
+                        <th scope="col">
+                       Experience
+                        </th>
+                        <th scope="col">
+                        Salary
+                        </th>
+                        <th scope="col">
+                          Actions
+                          </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
+                        <td>Fider pipe</td>
+                        <td>720px</td>
+                        <td>960px</td>
+                        <td>1140px</td>
+                        <td>1320px</td>
+                        <td>1140px</td>
+                        <td>1320px</td>
+                        <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
+                        <button class="btn"><i class="bi bi-trash text-danger"></i></button>
+                      </tr>
+                      <tr>
+
+                        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
+                        <td>James bond</td>
+                        <td>720px</td>
+                        <td>960px</td>
+                        <td>1140px</td>
+                        <td>1320px</td>
+                        <td>1140px</td>
+                        <td>1320px</td>
+                        <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
+                        <button class="btn"><i class="bi bi-trash text-danger"></i></button>
+                      </tr>
+                      <tr>
+                        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
+                        <td class="text-muted">Louis valley</td>
+                        <td>720px</td>
+                        <td>960px</td>
+                        <td>1140px</td>
+                        <td>1320px</td>
+                        <td>1140px</td>
+                        <td>1320px</td>
+                        <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
+                        <button class="btn"><i class="bi bi-trash text-danger"></i></button>
+                      </tr>
+                      <tr>
+
+                        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
+                        <td class="text-muted">Paul string</td>
+                        <td class="text-muted">100%</td>
+                        <td>960px</td>
+                        <td>1140px</td>
+                        <td>1320px</td>
+                        <td>1140px</td>
+                        <td>1320px</td>
+                        <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
+                        <button class="btn"><i class="bi bi-trash text-danger"></i></button>
+                      </tr>
+                      <tr>
+                        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
+                        <td class="text-muted">Natasha</td>
+                        <td class="text-muted">100%</td>
+                        <td class="text-muted">100%</td>
+                        <td>1140px</td>
+                        <td>1320px</td>
+                        <td>1140px</td>
+                        <td>1320px</td>
+                        <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
+                        <button class="btn"><i class="bi bi-trash text-danger"></i></button>
+                      </tr>
+                      <tr>
+                        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
+                        <td class="text-muted">Cameron</td>
+                        <td class="text-muted">100%</td>
+                        <td class="text-muted">100%</td>
+                        <td class="text-muted">100%</td>
+                        <td>1320px</td>
+                        <td>1140px</td>
+                        <td>1320px</td>
+                        <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
+                        <button class="btn"><i class="bi bi-trash text-danger"></i></button>
+                      </tr>
+                      <tr>
+
+                        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
+                        <td class="text-muted">James Walker</td>
+                        <td class="text-muted">100%</td>
+                        <td class="text-muted">100%</td>
+                        <td class="text-muted">100%</td>
+                        <td class="text-muted">100%</td>
+                        <td>1140px</td>
+                        <td>1320px</td>
+                        <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
+                        <button class="btn"><i class="bi bi-trash text-danger"></i></button>
+                      </tr>
+                    </tbody>
+                  </table>
+
+          </div>
+      </main>
+  </div>
+</div>
+
+<!-- modal  -->
+<div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title text-primary fw-bold fs-5" id="exampleModalLabel">Enter Employee Information</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    </div>
+    <div class="modal-body">
+
+      <form >
+
+        <!-- FIRST AND LAST NAME -->
+        <div class="row">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="First Name" formControlName="firstname">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Last Name" formControlName="lastname">
+          </div>
+        </div>
+
+        <!-- PERSONAL INFORMATION -->
+        <div class="row mt-5">
+          <div class="col form-heading">
+            <h6 class="text-secondary  fs-5">Personal Information</h6>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label for="datepicker" class="form-label">Birthdate</label>
+            <input type="date" class="form-control" id="datepicker" formControlName="birthday">
+          </div>
+          <div class="col">
+            <div class="row">
+              <h6 class="text-dark fs-6">Gender</h6>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gender" id="male" value="m"
+                    formControlName="gender">
+                  <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gender" id="female" value="f"
+                    formControlName="gender">
+                  <label class="form-check-label" for="female">Female</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col">
+            <select class="form-select" formControlName="education">
+              <option value="default" selected>Select your Education</option>
+              <!-- <option *ngFor="let option of educationOptions; let i = index;" value="{{i}}">
+                {{option | titlecase}}
+              </option> -->
+            </select>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col">
+            <label for="profile" class="form-label">Profile Image</label>
+            <input type="file" class="form-control" id="profile" #fileInput>
+          </div>
+        </div>
+
+        <!-- JOB INFORMATION -->
+        <div class="row mt-5">
+          <div class="col form-heading">
+            <h6 class="text-secondary  fs-5">Job Information</h6>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Company Name" formControlName="company">
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col">
+            <input type="number" class="form-control" placeholder="Job Experience (yrs)"
+              formControlName="jobExperience">
+          </div>
+          <div class="col">
+            <input type="number" class="form-control" placeholder="Salary (LPA)" formControlName="salary">
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Insert</button>
+    </div>
+  </div>
+  </div>
+  </div>

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -9,25 +10,41 @@ import { ApiService } from '../service/api.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private formBuilder: FormBuilder, private route: Router) { }
+
+  constructor(private formBuilder: FormBuilder, private route: Router, private http: HttpClient) { }
 
 
-  registerForm: any = FormGroup;
+  loginForm: any = FormGroup;
   submitted = false;
 
-  get f() { return this.registerForm.controls; }
+  get f() { return this.loginForm.controls; }
 
-  onSubmit() {
+  signIn() {
 
     this.submitted = true;
 
-    if (this.registerForm.invalid) {
+    if (this.loginForm.invalid) {
       return;
     }
 
     if (this.submitted) {
-      alert("Great!!");
+      // alert("Great!!");
     }
+    this.http.get<any>("http://localhost:3000/register")
+    .subscribe(res=>{
+      const user = res.find((a:any)=>{
+        return a.username === this.loginForm.value.username && a.password === this.loginForm.value.password
+      });
+      if(user){
+        // alert('Login Succesful');
+        this.loginForm.reset()
+      this.route.navigate(["dashboard"])
+      }else{
+        alert("user not found")
+      }
+    },err=>{
+      alert("Something went wrong")
+    })
 
   }
 
@@ -41,8 +58,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.registerForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+    this.loginForm = this.formBuilder.group({
+      username: ['',[Validators.required,Validators.minLength(6),Validators.maxLength(20)]],
       password: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(8)]],
     });
 

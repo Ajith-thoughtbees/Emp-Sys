@@ -72,10 +72,10 @@
             Employee Name
             </th>
             <th scope="col">
-            Salary
+           Date
              </th>
             <th scope="col">
-           Date
+          Charges
             </th>
             <th scope="col">
             Tax
@@ -99,7 +99,9 @@
             <td>960px</td>
             <td>1140px</td>
             <td>1320px</td>
-            <button type="button" class="btn btn-outline-primary btn-xs">Primary</button>
+            <td class="text-muted">100%</td>
+            <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
+            <button class="btn"><i class="bi bi-trash text-danger"></i></button>
           </tr>
           <tr>
 
@@ -109,7 +111,9 @@
             <td>960px</td>
             <td>1140px</td>
             <td>1320px</td>
-            <button type="button" class="btn btn-outline-primary btn-xs">Primary</button>
+            <td class="text-muted">100%</td>
+            <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
+            <button class="btn"><i class="bi bi-trash text-danger"></i></button>
           </tr>
           <tr>
             <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
@@ -118,7 +122,9 @@
             <td>960px</td>
             <td>1140px</td>
             <td>1320px</td>
-             <button type="button" class="btn btn-outline-danger btn-xs">Primary</button>
+            <td class="text-muted">100%</td>
+            <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
+            <button class="btn"><i class="bi bi-trash text-danger"></i></button>
           </tr>
           <tr>
 
@@ -128,7 +134,9 @@
             <td>960px</td>
             <td>1140px</td>
             <td>1320px</td>
-            <button type="button" class="btn btn-outline-primary btn-xs">Primary</button>
+            <td class="text-muted">100%</td>
+            <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
+            <button class="btn"><i class="bi bi-trash text-danger"></i></button>
           </tr>
           <tr>
             <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
@@ -137,7 +145,9 @@
             <td class="text-muted">100%</td>
             <td>1140px</td>
             <td>1320px</td>
-            <button type="button" class="btn btn-outline-danger btn-xs">Primary</button>
+            <td class="text-muted">100%</td>
+            <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
+            <button class="btn"><i class="bi bi-trash text-danger"></i></button>
           </tr>
           <tr>
             <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
@@ -145,8 +155,10 @@
             <td class="text-muted">100%</td>
             <td class="text-muted">100%</td>
             <td class="text-muted">100%</td>
-            <td>1320px</td>
-            <button type="button" class="btn btn-outline-primary btn-xs">Primary</button>
+            <td class="text-muted">100%</td>
+            <td class="text-muted">100%</td>
+            <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
+            <button class="btn"><i class="bi bi-trash text-danger"></i></button>
           </tr>
           <tr>
 
@@ -156,7 +168,9 @@
             <td class="text-muted">100%</td>
             <td class="text-muted">100%</td>
             <td class="text-muted">100%</td>
-            <button type="button" class="btn btn-outline-primary btn-xs">Primary</button>
+            <td class="text-muted">100%</td>
+            <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
+            <button class="btn"><i class="bi bi-trash text-danger"></i></button>
           </tr>
         </tbody>
       </table>
@@ -174,7 +188,7 @@
           </div>
           <div class="modal-body">
 
-            <form >
+            <form [formGroup]="payrollForm">
 
 
 
@@ -191,6 +205,15 @@
                   <label for="datepicker" class="form-label">Date</label>
                   <input type="date" class="form-control" id="datepicker" placeholder="Date" formControlName="date">
                 </div>
+
+
+        <div class="row mt-3">
+          <div class="col">
+            <label for="profile" class="form-label">Profile Image</label>
+            <input type="file" class="form-control" id="profile" #fileInput>
+          </div>
+        </div>
+
 
               </div>
               <div class="row mt-3">

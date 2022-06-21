@@ -1,31 +1,32 @@
 {
   "posts": [
     {
-      "firstname": "Sri ",
-      "lastname": "Hari",
-      "birthday": "2022-06-04",
-      "gender": "m",
-      "education": "graduate",
-      "company": "Rvs",
-      "jobExperience": 1,
-      "salary": 150000,
-      "profile": "523-5230160_clipart-computer-operator-hd-png-download.png",
-      "id": 2
-    },
-    {
       "firstname": "Ajith",
       "lastname": "M",
-      "birthday": "2022-06-04",
+      "birthday": "2022-06-03",
       "gender": "m",
       "education": "post graduate",
-      "company": "Tcs",
+      "company": "Tazi",
       "jobExperience": 12,
-      "salary": 8000000,
+      "salary": 1221212,
       "profile": "tiger.jpg",
-      "id": 3
+      "id": 1
     }
   ],
-  "comments": [],
+  "register": [
+    {
+      "username": "ajithm",
+      "email": "admin@12",
+      "password": "123",
+      "id": 1
+    },
+    {
+      "username": "hariprasad",
+      "email": "ajith@12",
+      "password": "123",
+      "id": 2
+    }
+  ],
   "profile": {
     "name": "typicode"
   }
