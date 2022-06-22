@@ -50,8 +50,7 @@
               <div class="card shadow border-0 mb-5">
                   <div class="card-header">
                     <div class="toolbar">
-                      <button class="btn btn-outline-success btn-lg" type="button"><i class="bi bi-calendar-date text-success"></i>Add Employee</button>
-                      <button class="btn btn-outline-success btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-circle"></i>Request For Leave</button>
+                       <button class="btn btn-outline-success btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-circle"></i>Request For Leave</button>
                       <div class="search-employee">
                         <input type="search" class="form-control" placeholder="Search Employees">
                       </div>
@@ -59,7 +58,7 @@
                 </div>
              </div>
 <!-- table -->
-   <table class="table">
+   <table class="table" >
     <thead>
       <tr>
 
@@ -167,37 +166,35 @@
     </div>
     <div class="modal-body">
 
-      <form >
+      <form [formGroup]="leaveForm" >
 
-
-
-        <div class="row mb-3">
+        <div class="row ">
           <div class="col">
-            <input type="text" class="form-control" placeholder="Leave Type" formControlName="leavetype">
+            <input type="text" class="form-control" placeholder="Employee Name" formControlName="employeeName">
           </div>
 
         </div>
-
-
-        <div class="row mb-3">
+        <div class="row mt-5">
           <div class="col">
-            <input type="text" class="form-control" placeholder="Leave Reason" formControlName="leavereason">
+            <input type="text" class="form-control" placeholder="Leave Name" formControlName="leaveType">
           </div>
-
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Leave Name" formControlName="leaveReason">
+          </div>
         </div>
 
 
         <div class="row mt-3">
           <div class="col">
             <label for="datepicker" class="form-label">Date From</label>
-            <input type="date" class="form-control" id="datepicker" placeholder="Date" formControlName="date">
+            <input type="date" class="form-control" id="datepicker" placeholder="Date" formControlName="dateFrom">
           </div>
         </div>
 
         <div class="row mt-3">
           <div class="col">
             <label for="datepicker" class="form-label">Date To</label>
-            <input type="date" class="form-control" id="datepicker" placeholder="Date" formControlName="date">
+            <input type="date" class="form-control" id="datepicker2" placeholder="Date" formControlName="dateTo">
           </div>
         </div>
 
@@ -207,7 +204,7 @@
 
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Insert</button>
+      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addLeave()">Insert</button>
     </div>
   </div>
   </div>

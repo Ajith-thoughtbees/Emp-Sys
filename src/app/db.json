@@ -1,14 +1,14 @@
 {
   "posts": [
     {
-      "firstname": "Ajith",
-      "lastname": "M",
-      "birthday": "2022-06-03",
+      "firstname": "Surse",
+      "lastname": "an",
+      "birthday": "2022-06-02",
       "gender": "m",
-      "education": "post graduate",
-      "company": "Tazi",
+      "education": "10th pass",
+      "company": "tcs",
       "jobExperience": 12,
-      "salary": 1221212,
+      "salary": 1224534,
       "profile": "tiger.jpg",
       "id": 1
     }
@@ -18,16 +18,18 @@
       "username": "ajithm",
       "email": "admin@12",
       "password": "123",
+      "post": "Admin",
       "id": 1
     },
     {
-      "username": "hariprasad",
-      "email": "ajith@12",
+      "username": "vinodh",
+      "email": "vinodh@12",
       "password": "123",
+      "post": "employees",
       "id": 2
     }
   ],
-  "profile": {
+  "attendance": {
     "name": "typicode"
   }
 }

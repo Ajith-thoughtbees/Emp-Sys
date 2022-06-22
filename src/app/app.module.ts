@@ -12,6 +12,8 @@ import { EmployeeComponent } from './employee/employee.component';
 import { PayrollComponent } from './payroll/payroll.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { UsersComponent } from './users/users.component';
+import { LeaveComponent } from './leave/leave.component';
+import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { UsersComponent } from './users/users.component';
     PayrollComponent,
     AttendanceComponent,
     UsersComponent,
+    LeaveComponent,
+    EmployeeDashboardComponent,
 
   ],
   imports: [

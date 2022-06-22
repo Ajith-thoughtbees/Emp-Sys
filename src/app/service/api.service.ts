@@ -20,6 +20,11 @@ postEmployees(employee : Employee){
 getEmployees(){
   return this.http.get<Employee[]>(this.baseUrl)
 }
+
+editEmployees(data:any,id:number){
+  return this.http.put<any>(this.baseUrl +id,data)
+}
+
 deleteEmployees(id: string){
   return this.http.delete(this.baseUrl + '/' +id)
 }

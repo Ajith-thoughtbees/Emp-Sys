@@ -41,10 +41,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       lastname: this.fb.control('',[Validators.required,Validators.minLength(1),Validators.maxLength(2)]),
       birthday: this.fb.control('',[Validators.required,Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)]),
       gender: this.fb.control('',[Validators.required,]),
-      education: this.fb.control('default'),
-      company: this.fb.control(''),
-      jobExperience: this.fb.control(''),
-      salary: this.fb.control(''),
+      education: this.fb.control('default',[Validators.required]),
+      company: this.fb.control('',[Validators.required]),
+      jobExperience: this.fb.control('',[Validators.required]),
+      salary: this.fb.control('',[Validators.required]),
     });
 
     this.api.getEmployees().subscribe((res) => {
@@ -73,8 +73,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     };
     this.api.postEmployees(employee).subscribe((res) => {
       this.employees.unshift(res);
-      this.clearForm();
+      // this.clearForm();
     });
+
   }
 
   removeEmployee(event: any) {
@@ -90,16 +91,21 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   editEmployee(event: any) {
     this.employees.forEach((val,index) => {
       if (val.id === event) {
-        this.setForm(val);
+        this.api.editEmployees(event,index).subscribe((res)=>{
+
+        });
       }
     });
-    this.removeEmployee(event);
     this.addEmployeeButton.nativeElement.click();
   };
 
-  setForm(emp: Employee) {
-    this.FirstName.setValue(emp.firstname);
-    this.LastName.setValue(emp.lastname);
+  setForm(emp: Employee ) {
+
+
+
+
+    this.employeeForm.controls['firstname'].setValue(emp.firstname);
+    this.employeeForm.controls['lastname'].setValue(emp.lastname);
     this.BirthDay.setValue(emp.birthday);
     this.Gender.setValue(emp.gender);
 
@@ -130,17 +136,17 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }
   }
 
-  clearForm() {
-    this.FirstName.setValue('');
-    this.LastName.setValue('');
-    this.BirthDay.setValue('');
-    this.Gender.setValue('');
-    this.Education.setValue('');
-    this.Company.setValue('');
-    this.JobExperience.setValue('');
-    this.Salary.setValue('');
-    this.fileInput.nativeElement.value = '';
-  }
+  // clearForm() {
+  //   this.FirstName.setValue('');
+  //   this.LastName.setValue('');
+  //   this.BirthDay.setValue('');
+  //   this.Gender.setValue('');
+  //   this.Education.setValue('');
+  //   this.Company.setValue('');
+  //   this.JobExperience.setValue('');
+  //   this.Salary.setValue('');
+  //   this.fileInput.nativeElement.value = '';
+  // }
 
   public get FirstName(): FormControl {
     return this.employeeForm.get('firstname') as FormControl;

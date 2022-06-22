@@ -32,15 +32,24 @@ export class LoginComponent implements OnInit {
     }
     this.http.get<any>("http://localhost:3000/register")
     .subscribe(res=>{
+      const admin = res.find((a:any)=>{
+        return a.username === this.loginForm.value.username && a.password === this.loginForm.value.password && a.post==="Admin"
+      });
       const user = res.find((a:any)=>{
         return a.username === this.loginForm.value.username && a.password === this.loginForm.value.password
       });
-      if(user){
+      if(admin){
         // alert('Login Succesful');
         this.loginForm.reset()
       this.route.navigate(["dashboard"])
       }else{
-        alert("user not found")
+        if(user){
+          this.loginForm.reset()
+      this.route.navigate(["employee-dashboard"])
+        }else{
+           alert("user not found")
+        }
+
       }
     },err=>{
       alert("Something went wrong")

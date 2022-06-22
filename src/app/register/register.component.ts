@@ -43,6 +43,7 @@ export class RegisterComponent implements OnInit {
       username: ['',[Validators.required,Validators.minLength(6),Validators.maxLength(20)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(8)]],
+      post:['employees']
     });
   }
 
