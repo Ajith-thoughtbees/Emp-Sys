@@ -13,11 +13,12 @@ import { attendance } from './attendance.model';
 export class AttendanceComponent implements OnInit {
 
   leaveForm : FormGroup;
-  leave!: attendance[];
+ 
 
 
   constructor(private formBuilder:FormBuilder,private leaves:LeaveServiceService) { this.leaveForm = formBuilder.group({});
-  }
+  
+}
 
   ngOnInit(): void {
     this.leaveForm = this.formBuilder.group({
@@ -58,7 +59,7 @@ export class AttendanceComponent implements OnInit {
   public get DateTo(): FormControl {
     return this.leaveForm.get('dateTo') as FormControl;
   }
-// console
+
 
 
 }
