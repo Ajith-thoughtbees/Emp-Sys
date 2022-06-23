@@ -13,11 +13,13 @@ import { attendance } from './attendance.model';
 export class AttendanceComponent implements OnInit {
 
   leaveForm : FormGroup;
- 
+  absent : attendance[];
+  absenteesToDisplay: attendance[];
 
-
-  constructor(private formBuilder:FormBuilder,private leaves:LeaveServiceService) { this.leaveForm = formBuilder.group({});
-  
+  constructor(private formBuilder:FormBuilder,private leaves:LeaveServiceService) {
+    this.leaveForm = formBuilder.group({});
+  this.absent =[];
+  this.absenteesToDisplay = this.absent;
 }
 
   ngOnInit(): void {
@@ -28,7 +30,12 @@ export class AttendanceComponent implements OnInit {
       dateFrom: this.formBuilder.control('',[Validators.required,Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)]),
       dateTo: this.formBuilder.control('',[Validators.required,Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)]),
     })
-
+ this.leaves.getAttendance().subscribe((res=>{
+  for (let att of res ){
+    this.absent.unshift(att);
+  }
+  this.absenteesToDisplay = this.absent;
+ }))
   }
   addLeave() {
     let leave: attendance = {
@@ -41,7 +48,10 @@ export class AttendanceComponent implements OnInit {
     console.log(this.leaveForm.value)
     this.leaves = Object.assign(this.leaves, this.leaveForm.value)
     localStorage.setItem('leave', JSON.stringify(this.leaveForm.value));
+    this.leaves.postAttendance(leave).subscribe((res) => {
+      this.leaves.unshift(res);
 
+    });
   }
  public get employeeName(): FormControl{
   return this.leaveForm.get('employeeName') as FormControl;

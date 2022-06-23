@@ -63,7 +63,7 @@
       <tr>
 
         <th scope="col">
-          Image
+          ID
         </th>
         <th scope="col">
        Employee
@@ -77,9 +77,9 @@
         <th scope="col">
         To Date
         </th>
-        <th scope="col">
+        <!-- <th scope="col">
           Status
-        </th>
+        </th> -->
         <th scope="col">
           Option
         </th>
@@ -87,16 +87,18 @@
       </tr>
     </thead>
     <tbody>
-      <tr >
-        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-        <td>Fider pipe</td>
-        <td>720px</td>
-        <td>960px</td>
-        <td>1140px</td>
-        <td>1320px</td>
+      <tr *ngFor="let absent of absenteesToDisplay; let fi = index; ">
+
+        <td>{{absent.id}}</td>
+        <td>{{absent.employeeName}}</td>
+        <td>{{absent.leaveType}}</td>
+        <td>{{absent.leaveReason}}</td>
+        <td>{{absent.dateFrom}}</td>
+         <td>{{absent.dateTo}}</td>
+
         <button type="button" class="btn btn-outline-dark btn-sm">View</button>
       </tr>
-      <tr>
+      <!-- <tr>
 
         <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
         <td>James bond</td>
@@ -152,7 +154,7 @@
         <td class="text-muted">100%</td>
         <td class="text-muted">100%</td>
         <button type="button" class="btn btn-outline-dark btn-sm">View</button>
-      </tr>
+      </tr> -->
     </tbody>
   </table>
 <!-- modal -->

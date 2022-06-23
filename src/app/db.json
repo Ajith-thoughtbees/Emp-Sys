@@ -42,6 +42,10 @@
     }
   ],
   "attendance": {
-    "name": "typicode"
+    "employeeName": "ajit",
+    "leaveReason": "dsa",
+    "leaveType": "sdf",
+    "dateFrom": "2022-06-04",
+    "dateTo": "2022-06-06"
   }
 }
