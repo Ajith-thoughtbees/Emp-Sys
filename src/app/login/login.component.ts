@@ -3,15 +3,20 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../service/api.service';
+import { LoginService } from '../service/login.service';
 @Component({
   selector: 'app-login',
-  providers: [ApiService],
+  providers: [LoginService],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private route: Router, private http: HttpClient) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: Router,
+    private http: HttpClient,
+    private login:LoginService) { }
 
 
   loginForm: any = FormGroup;
@@ -30,14 +35,22 @@ export class LoginComponent implements OnInit {
     if (this.submitted) {
       // alert("Great!!");
     }
+
     this.http.get<any>("http://localhost:3000/register")
     .subscribe(res=>{
       const admin = res.find((a:any)=>{
         return a.username === this.loginForm.value.username && a.password === this.loginForm.value.password && a.post==="Admin"
       });
+
       const user = res.find((a:any)=>{
+        let loginUser = a.id
+        console.log(loginUser);
+        localStorage.setItem('empId', JSON.stringify(loginUser))
         return a.username === this.loginForm.value.username && a.password === this.loginForm.value.password
+
       });
+
+
       if(admin){
         // alert('Login Succesful');
         this.loginForm.reset()

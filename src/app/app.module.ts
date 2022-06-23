@@ -11,9 +11,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { EmployeeComponent } from './employee/employee.component';
 import { PayrollComponent } from './payroll/payroll.component';
 import { AttendanceComponent } from './attendance/attendance.component';
-import { UsersComponent } from './users/users.component';
+
 import { LeaveComponent } from './leave/leave.component';
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
+import { EmpPayrollComponent } from './emp-payroll/emp-payroll.component';
 
 
 @NgModule({
@@ -25,9 +26,10 @@ import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashbo
     EmployeeComponent,
     PayrollComponent,
     AttendanceComponent,
-    UsersComponent,
+
     LeaveComponent,
     EmployeeDashboardComponent,
+    EmpPayrollComponent,
 
   ],
   imports: [

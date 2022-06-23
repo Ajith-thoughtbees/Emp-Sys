@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild, } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup,Validator, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../service/api.service';
 import { Employee } from './employee.model';
 
@@ -105,7 +105,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.employeeForm.controls['lastname'].setValue(emp.lastname);
     this.employeeForm.controls['birthday'].setValue(emp.birthday);
     this.Gender.setValue(emp.gender);
-
     let educationIndex = 0;
     this.educationOptions.forEach((val, index) => {
       if (val === emp.education) educationIndex = index;
@@ -120,7 +119,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   searchEmployees(event: any) {
     let filteredEmployees: Employee[] = [];
-
     if (event === '') {
       this.employeesToDisplay = this.employees;
     } else {

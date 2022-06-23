@@ -10,11 +10,11 @@
           <div class="collapse navbar-collapse" id="sidebarCollapse">
               <!-- Navigation -->
               <ul class="navbar-nav">
-                <li class="nav-item"> <a class="nav-link" href="#" routerLink="/dashboard"> <i class="bi bi-house"></i> Dashboard </a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#" routerLink="/payroll" > <i class="bi bi-bar-chart"></i> Payroll </a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#" routerLink="/employee-dashboard"> <i class="bi bi-house"></i> Dashboard </a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#" routerLink="/emp-payroll" > <i class="bi bi-bar-chart"></i> Payroll </a> </li>
 
                 <li class="nav-item"> <a class="nav-link" href="#" routerLink="/attendance" > <i class="bi bi-stopwatch-fill"></i> Attendance </a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#" routerLink="/users" > <i class="bi bi-people"></i> Users </a> </li>
+
             </ul> <!-- Divider -->
               <hr class="navbar-divider my-5 opacity-20">
 
@@ -38,7 +38,7 @@
                       </div>
                   </div> <!-- Nav -->
                   <ul class="nav nav-tabs mt-4 overflow-x border-0">
-                      <li class="nav-item "> <a href="#" class="nav-link active">All Employees Details</a> </li>
+                      <li class="nav-item "> <a href="#" class="nav-link active">Profile Page</a> </li>
                   </ul>
               </div>
           </div>
@@ -47,29 +47,96 @@
           <div class="container-fluid">
               <!-- Card stats -->
 
-              <div class="card shadow border-0 mb-5">
-                  <div class="card-header">
-                    <div class="toolbar">
-                      <div class="add-employee">
-                        <button class="btn btn-outline-success btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Employee</button>
-                      </div>
-                      <div class="search-employee">
-                        <input type="search" class="form-control" placeholder="Search Employees">
-                      </div>
-                  </div>
-                </div>
-             </div>
+
                    <!-- Area to display the Employee -->
                    <div class="employees">
-                    <div class="row mt-5">
 
-  <div class="col text-center">
-    <span class="text-secondary fs-2 fw-bold fst-italic">There are No Employees Added!</span>
-                      </div>
-                      </div>
 
-<div class="row mt-4">
+                      <div class="row mt-4">
                         <div class="col">
+                          <div class="container-fluid g-0 p-2">
+
+                            <div class="row g-0">
+
+                                <div class="col-md-2 d-flex justify-content-center align-items-center ">
+                                  <div class="text-center text-dark fs-6 fst-italic mt-auto" >Profile Image
+                                    <img src="assets/images/{{ID.profile}}" alt="Profile Image" class="profile mb-6">
+                                  </div>
+                                </div>
+
+                                <div class="col ps-2">
+
+                                    <div class="row g-0">
+
+                                        <div class="col-md-10 text-center">
+                                            <span class="name">{{ID.firstname | titlecase}} {{ID.lastname | titlecase}}</span>
+                                        </div>
+
+
+
+                                    </div>
+
+                                    <div class="row g-0 mt-3">
+
+                                        <div class="col-md">
+
+                                            <table class="table table-hover mx-auto">
+                                                <thead class="text-center fs-5 fst-italic text-secondary">
+                                                    <tr>
+                                                        <td colspan="2" class="text-dark fs-6">Personal Details</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="fw-bold">Birthdate :</td>
+                                                        <td>{{ID.birthday}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold">Gender :</td>
+                                                        <td>{{ID.gender == 'm' ? "Male" : "Female"}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold">Education :</td>
+                                                        <td>{{ID.education | titlecase}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+
+                                        <div class="col">
+
+                                            <table class="table table-hover mx-auto">
+                                                <thead class="text-center fs-5 fst-italic text-secondary">
+                                                    <tr>
+                                                        <td colspan="2"  class="text-dark fs-6">Job Details</td>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="fw-bold">Company :</td>
+                                                        <td>{{ID.company | titlecase}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold">Experience :</td>
+                                                        <td>{{ID.jobExperience}} yrs</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="fw-bold">Salary :</td>
+                                                        <td>{{ID.salary}} LPA</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                          </div>
 
 
                         </div>

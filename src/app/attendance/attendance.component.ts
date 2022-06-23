@@ -13,49 +13,45 @@ import { attendance } from './attendance.model';
 export class AttendanceComponent implements OnInit {
 
   leaveForm : FormGroup;
-  absent : attendance[];
+  absent: attendance[];
   absenteesToDisplay: attendance[];
 
-  constructor(private formBuilder:FormBuilder,private leaves:LeaveServiceService) {
-    this.leaveForm = formBuilder.group({});
-  this.absent =[];
-  this.absenteesToDisplay = this.absent;
+
+  constructor(private formBuilder:FormBuilder,private leaveService:LeaveServiceService) {
+     this.leaveForm = formBuilder.group({});
+      this.absent =[];
+    this.absenteesToDisplay = this.absent;
 }
 
   ngOnInit(): void {
     this.leaveForm = this.formBuilder.group({
-      employeeName : this.formBuilder.control('',[Validators.required]),
       leaveType: this.formBuilder.control('',[Validators.required,]),
       leaveReason: this.formBuilder.control('',[Validators.required,]),
       dateFrom: this.formBuilder.control('',[Validators.required,Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)]),
       dateTo: this.formBuilder.control('',[Validators.required,Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)]),
     })
- this.leaves.getAttendance().subscribe((res=>{
-  for (let att of res ){
-    this.absent.unshift(att);
-  }
-  this.absenteesToDisplay = this.absent;
- }))
+    this.leaveService.getAttendance().subscribe((res) => {
+      for (let emp of res) {
+        this.absent.unshift(emp);
+      }
+      this.absenteesToDisplay = this.absent;
+    });
   }
   addLeave() {
     let leave: attendance = {
-      employeeName: (this.employeeName.value || {}),
       leaveReason: (this.LeaveReason.value||{}),
       leaveType: (this.LeaveType.value || {}),
       dateFrom: (this.DateFrom.value || {}),
       dateTo: (this.DateTo.value || {})
     }
-    console.log(this.leaveForm.value)
-    this.leaves = Object.assign(this.leaves, this.leaveForm.value)
-    localStorage.setItem('leave', JSON.stringify(this.leaveForm.value));
-    this.leaves.postAttendance(leave).subscribe((res) => {
-      this.leaves.unshift(res);
+    this.leaveService.postAttendance(leave).subscribe((res) => {
+      this.absent.unshift(res);
 
     });
+
   }
- public get employeeName(): FormControl{
-  return this.leaveForm.get('employeeName') as FormControl;
- }
+  
+
 
   public get LeaveReason(): FormControl {
     return this.leaveForm.get('leaveReason') as FormControl;

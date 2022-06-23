@@ -1,1 +1,250 @@
 
+<!-- Dashboard -->
+<div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
+  <!-- Vertical Navbar -->
+  <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="navbarVertical">
+      <div class="container-fluid">
+          <!-- Toggler --> <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <!-- Brand -->  <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3">
+            <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-2 logo fs-2 mt-0" href="#"> Admin </a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="sidebarCollapse">
+              <!-- Navigation -->
+              <ul class="navbar-nav">
+                <li class="nav-item"> <a class="nav-link" href="#" routerLink="/dashboard"> <i class="bi bi-house"></i> Dashboard </a> </li>
+                <li class="nav-item"> <a class="nav-link" href="#" routerLink="/payroll" > <i class="bi bi-bar-chart"></i> Payroll </a> </li>
+
+                <li class="nav-item"> <a class="nav-link" href="#" routerLink="/leave" > <i class="bi bi-stopwatch-fill"></i> Leave </a> </li>
+
+            </ul> <!-- Divider -->
+              <hr class="navbar-divider my-5 opacity-20">
+
+
+
+          </div>
+      </div>
+  </nav> <!-- Main content -->
+  <div class="h-screen flex-grow-1 overflow-y-lg-auto">
+      <!-- Header -->
+      <header class="bg-surface-primary border-bottom pt-6">
+          <div class="container-fluid">
+              <div class="mb-npx">
+                  <div class="row align-items-center">
+                      <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                          <!-- Title -->
+                          <h1 class="h2 mb-0 ls-tight text-success">Employee management system</h1>
+                      </div> <!-- Actions -->
+                      <div class="col-sm-6 col-12 text-sm-end">
+                          <div class="mx-n1"> <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1"> <span class=" pe-2"> <i class="bi bi-person-square"></i> </span> <span> Account</span> </a> <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1" [routerLink]="['/login']" > <span class=" pe-2"><i class="bi bi-box-arrow-left"></i> </span> <span>Logout</span> </a> </div>
+                      </div>
+                  </div> <!-- Nav -->
+                  <ul class="nav nav-tabs mt-4 overflow-x border-0">
+                      <li class="nav-item "> <a href="#" class="nav-link active">Today Attendance</a> </li>
+                  </ul>
+              </div>
+          </div>
+      </header> <!-- Main -->
+      <main class="py-6 bg-surface-secondary">
+          <div class="container-fluid">
+              <!-- Card stats -->
+
+              <div class="card shadow border-0 mb-5">
+                  <div class="card-header">
+                    <div class="toolbar">
+                       <button class="btn btn-outline-success btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-circle"></i>Request For Leave</button>
+                      <div class="search-employee">
+                        <input type="search" class="form-control" placeholder="Search Employees">
+                      </div>
+                  </div>
+                </div>
+             </div>
+<!-- table -->
+   <table class="table" >
+    <thead>
+      <tr>
+
+        <th scope="col">
+          ID
+        </th>
+        <th scope="col">
+       Leave Reason
+        </th>
+        <th scope="col">
+       Leave Type
+         </th>
+        <th scope="col">
+        From Date
+        </th>
+        <th scope="col">
+        To Date
+        </th>
+        <!-- <th scope="col">
+          Status
+        </th> -->
+        <th scope="col">
+          Option
+        </th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let absent of absenteesToDisplay; let fi = index; ">
+
+        <td>{{absent.id}}</td>
+        <td>{{absent.leaveType}}</td>
+        <td>{{absent.leaveReason}}</td>
+        <td>{{absent.dateFrom}}</td>
+         <td>{{absent.dateTo}}</td>
+          <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1"><i class="bi bi-pencil-square text-primary"></i></button>
+            <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="bi bi-trash text-danger"></i></button>
+
+      </tr>
+      <!-- <tr>
+
+        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
+        <td>James bond</td>
+        <td>720px</td>
+        <td>960px</td>
+        <td>1140px</td>
+        <td>1320px</td>
+        <button type="button" class="btn btn-outline-dark btn-sm">View</button>
+      </tr>
+      <tr>
+        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
+        <td class="text-muted">Louis valley</td>
+        <td>720px</td>
+        <td>960px</td>
+        <td>1140px</td>
+        <td>1320px</td>
+        <button type="button" class="btn btn-outline-dark btn-sm">View</button>
+      </tr>
+      <tr>
+
+        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
+        <td class="text-muted">Paul string</td>
+        <td class="text-muted">100%</td>
+        <td>960px</td>
+        <td>1140px</td>
+        <td>1320px</td>
+        <button type="button" class="btn btn-outline-dark btn-sm">View</button>
+      </tr>
+      <tr>
+        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
+        <td class="text-muted">Natasha</td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td>1140px</td>
+        <td>1320px</td>
+        <button type="button" class="btn btn-outline-dark btn-sm">View</button>
+      </tr>
+      <tr>
+        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
+        <td class="text-muted">Cameron</td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td>1320px</td>
+        <button type="button" class="btn btn-outline-dark btn-sm">View</button>
+      </tr>
+      <tr>
+
+        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
+        <td class="text-muted">James Walker</td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <td class="text-muted">100%</td>
+        <button type="button" class="btn btn-outline-dark btn-sm">View</button>
+      </tr> -->
+    </tbody>
+  </table>
+<!-- modal -->
+
+<div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title text-primary fw-bold fs-5" id="exampleModalLabel">Request For Leave</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    </div>
+    <div class="modal-body">
+
+      <form  >
+
+        <div class="row mt-5">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Leave Reason" formControlName="leaveType">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Leave Type" formControlName="leaveReason">
+          </div>
+        </div>
+
+
+        <div class="row mt-3">
+          <div class="col">
+            <label for="datepicker" class="form-label">Date From</label>
+            <input type="date" class="form-control" id="datepicker" placeholder="Date" formControlName="dateFrom">
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col">
+            <label for="datepicker" class="form-label">Date To</label>
+            <input type="date" class="form-control" id="datepicker2" placeholder="Date" formControlName="dateTo">
+          </div>
+        </div>
+
+
+
+      </form>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Insert</button>
+    </div>
+  </div>
+  </div>
+  </div>
+
+
+  <!-- Accepted -->
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary fw-bold fs-5" id="exampleModalLabel">Accepted Form</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-floating">
+          <textarea class="form-control w-50 p-3" placeholder="Comment" id="floatingTextarea"></textarea>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Accepted</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Denied -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary fw-bold fs-5" id="exampleModalLabel">Denied Form</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <textarea class="form-control w-50 p-3" placeholder="Comment" id="floatingTextarea"></textarea>
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-primary">Denied</button>
+      </div>
+    </div>
+  </div>
+</div>

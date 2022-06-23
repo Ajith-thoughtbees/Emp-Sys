@@ -41,11 +41,27 @@
       "id": 2
     }
   ],
-  "attendance": {
-    "employeeName": "ajit",
-    "leaveReason": "dsa",
-    "leaveType": "sdf",
-    "dateFrom": "2022-06-04",
-    "dateTo": "2022-06-06"
-  }
+  "attendance": [
+    {
+      "id": 1,
+      "leaveReason": "weqfdsa",
+      "leaveType": "qwefdsa",
+      "dateFrom": "2022-06-23",
+      "dateTo": "2022-06-24"
+    },
+    {
+      "leaveReason": "weqfdsa",
+      "leaveType": "qwefdsa",
+      "dateFrom": "2022-06-23",
+      "dateTo": "2022-06-24",
+      "id": 2
+    },
+    {
+      "leaveReason": "dsaf",
+      "leaveType": "dsaf",
+      "dateFrom": "2022-06-24",
+      "dateTo": "2022-06-24",
+      "id": 3
+    }
+  ]
 }

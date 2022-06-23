@@ -7,15 +7,13 @@ import { attendance } from '../attendance/attendance.model';
   providedIn: 'root'
 })
 export class LeaveServiceService {
-  unshift(att: attendance) {
-    throw new Error('Method not implemented.');
-  }
+  
 
    baseUrl= 'http://localhost:3000/attendance';
   constructor(private http:HttpClient) { }
 
-  postAttendance(employee : attendance){
-    return this.http.post<attendance>(this.baseUrl, employee)
+  postAttendance(absent : attendance){
+    return this.http.post<attendance>(this.baseUrl, absent)
   }
 
   getAttendance(){

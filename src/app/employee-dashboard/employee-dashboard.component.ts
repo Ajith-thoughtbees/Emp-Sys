@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../service/api.service';
+
 
 @Component({
   selector: 'app-employee-dashboard',
@@ -7,9 +9,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeDashboardComponent implements OnInit {
 
-  constructor() { }
+  ID: any;
+  arr=[];
+  constructor(private api:ApiService,) { }
 
   ngOnInit(): void {
+    this.fun()
   }
+  fun(){
 
+    this.api.getEmployees()
+
+    .subscribe({
+
+      next:(res)=>{
+
+        const user = localStorage.getItem('empId');
+
+        console.log(user);
+        this.ID = res.find((a:any)=>{
+
+          if(a.id == user){
+
+             return a
+
+          }
+
+
+        });
+console.log(this.ID);
+
+
+
+
+      }})
+  }
 }
