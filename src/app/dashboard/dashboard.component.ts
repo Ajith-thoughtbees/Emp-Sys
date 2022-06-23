@@ -96,15 +96,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         });
       }
     });
+
     this.addEmployeeButton.nativeElement.click();
   };
 
   setForm(emp: Employee ) {
-
-
-
-
-    this.employeeForm.controls['firstname'].setValue(emp.firstname);
+  this.employeeForm.controls['firstname'].setValue(emp.firstname);
     this.employeeForm.controls['lastname'].setValue(emp.lastname);
     this.BirthDay.setValue(emp.birthday);
     this.Gender.setValue(emp.gender);
