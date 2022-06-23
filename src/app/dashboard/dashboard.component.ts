@@ -73,7 +73,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     };
     this.api.postEmployees(employee).subscribe((res) => {
       this.employees.unshift(res);
-      // this.clearForm();
+      this.clearForm();
     });
 
   }
@@ -96,25 +96,25 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         });
       }
     });
-
     this.addEmployeeButton.nativeElement.click();
   };
 
   setForm(emp: Employee ) {
-  this.employeeForm.controls['firstname'].setValue(emp.firstname);
+
+    this.employeeForm.controls['firstname'].setValue(emp.firstname);
     this.employeeForm.controls['lastname'].setValue(emp.lastname);
-    this.BirthDay.setValue(emp.birthday);
+    this.employeeForm.controls['birthday'].setValue(emp.birthday);
     this.Gender.setValue(emp.gender);
 
     let educationIndex = 0;
     this.educationOptions.forEach((val, index) => {
       if (val === emp.education) educationIndex = index;
     });
-    this.Education.setValue(educationIndex);
+    this.employeeForm.controls['education'].setValue(emp.education);
 
-    this.Company.setValue(emp.company);
-    this.JobExperience.setValue(emp.jobExperience);
-    this.Salary.setValue(emp.salary);
+    this.employeeForm.controls['company'].setValue(emp.company);
+    this.employeeForm.controls['jobExperience'].setValue(emp.jobExperience);
+    this.employeeForm.controls['salary'].setValue(emp.salary);
     this.fileInput.nativeElement.value = '';
   }
 
@@ -133,17 +133,17 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }
   }
 
-  // clearForm() {
-  //   this.FirstName.setValue('');
-  //   this.LastName.setValue('');
-  //   this.BirthDay.setValue('');
-  //   this.Gender.setValue('');
-  //   this.Education.setValue('');
-  //   this.Company.setValue('');
-  //   this.JobExperience.setValue('');
-  //   this.Salary.setValue('');
-  //   this.fileInput.nativeElement.value = '';
-  // }
+  clearForm() {
+    this.FirstName.setValue('');
+    this.LastName.setValue('');
+    this.BirthDay.setValue('');
+    this.Gender.setValue('');
+    this.Education.setValue('');
+    this.Company.setValue('');
+    this.JobExperience.setValue('');
+    this.Salary.setValue('');
+    this.fileInput.nativeElement.value = '';
+  }
 
   public get FirstName(): FormControl {
     return this.employeeForm.get('firstname') as FormControl;
