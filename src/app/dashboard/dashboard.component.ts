@@ -99,21 +99,21 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.addEmployeeButton.nativeElement.click();
   };
 
-  setForm(emp: Employee ) {
+  setForm(event:any ) {
 
-    this.employeeForm.controls['firstname'].setValue(emp.firstname);
-    this.employeeForm.controls['lastname'].setValue(emp.lastname);
-    this.employeeForm.controls['birthday'].setValue(emp.birthday);
-    this.Gender.setValue(emp.gender);
+    this.employeeForm.controls['firstname'].setValue(event.firstname);
+    this.employeeForm.controls['lastname'].setValue(event.lastname);
+    this.employeeForm.controls['birthday'].setValue(event.birthday);
+    this.Gender.setValue(event.gender);
     let educationIndex = 0;
     this.educationOptions.forEach((val, index) => {
-      if (val === emp.education) educationIndex = index;
+      if (val === event.education) educationIndex = index;
     });
-    this.employeeForm.controls['education'].setValue(emp.education);
+    this.employeeForm.controls['education'].setValue(event.education);
 
-    this.employeeForm.controls['company'].setValue(emp.company);
-    this.employeeForm.controls['jobExperience'].setValue(emp.jobExperience);
-    this.employeeForm.controls['salary'].setValue(emp.salary);
+    this.employeeForm.controls['company'].setValue(event.company);
+    this.employeeForm.controls['jobExperience'].setValue(event.jobExperience);
+    this.employeeForm.controls['salary'].setValue(event.salary);
     this.fileInput.nativeElement.value = '';
   }
 

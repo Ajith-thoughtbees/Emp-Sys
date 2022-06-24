@@ -50,7 +50,7 @@
               <div class="card shadow border-0 mb-5">
                   <div class="card-header">
                     <div class="toolbar">
-                       <button class="btn btn-outline-success btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-circle"></i>Request For Leave</button>
+                       <button class="btn btn-outline-success btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-circle me-3"></i>Request For Leave</button>
                       <div class="search-employee">
                         <input type="search" class="form-control" placeholder="Search Employees">
                       </div>
@@ -80,7 +80,9 @@
         <th scope="col">
         Status
         </th>
-
+        <th scope="col">
+          View
+          </th>
       </tr>
     </thead>
     <tbody>
@@ -92,67 +94,14 @@
 
         <td>{{absent.dateFrom}}</td>
          <td>{{absent.dateTo}}</td>
-         <span class="badge rounded-pill text-bg-success">Accepted</span>
-         <span class="badge rounded-pill text-bg-danger">Declined</span>
+        <td >
+         <span class="badge rounded-pill text-bg-success"*ngIf="Accepted" >Accepted</span>
+         <span class="badge rounded-pill text-bg-danger" *ngIf="Declined">Declined</span>
+        </td>
+        <td>   <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1">View</button></td>
+      </tr>
 
-      </tr>
-      <!-- <tr>
 
-        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-        <td>James bond</td>
-        <td>720px</td>
-        <td>960px</td>
-        <td>1140px</td>
-        <td>1320px</td>
-        <button type="button" class="btn btn-outline-dark btn-sm">View</button>
-      </tr>
-      <tr>
-        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-        <td class="text-muted">Louis valley</td>
-        <td>720px</td>
-        <td>960px</td>
-        <td>1140px</td>
-        <td>1320px</td>
-        <button type="button" class="btn btn-outline-dark btn-sm">View</button>
-      </tr>
-      <tr>
-
-        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-        <td class="text-muted">Paul string</td>
-        <td class="text-muted">100%</td>
-        <td>960px</td>
-        <td>1140px</td>
-        <td>1320px</td>
-        <button type="button" class="btn btn-outline-dark btn-sm">View</button>
-      </tr>
-      <tr>
-        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-        <td class="text-muted">Natasha</td>
-        <td class="text-muted">100%</td>
-        <td class="text-muted">100%</td>
-        <td>1140px</td>
-        <td>1320px</td>
-        <button type="button" class="btn btn-outline-dark btn-sm">View</button>
-      </tr>
-      <tr>
-        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-        <td class="text-muted">Cameron</td>
-        <td class="text-muted">100%</td>
-        <td class="text-muted">100%</td>
-        <td class="text-muted">100%</td>
-        <td>1320px</td>
-        <button type="button" class="btn btn-outline-dark btn-sm">View</button>
-      </tr>
-      <tr>
-
-        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-        <td class="text-muted">James Walker</td>
-        <td class="text-muted">100%</td>
-        <td class="text-muted">100%</td>
-        <td class="text-muted">100%</td>
-        <td class="text-muted">100%</td>
-        <button type="button" class="btn btn-outline-dark btn-sm">View</button>
-      </tr> -->
     </tbody>
   </table>
 <!-- modal -->
@@ -203,3 +152,47 @@
   </div>
   </div>
   </div>
+
+
+  <!-- View Modal -->
+  <div class="modal fade" id="exampleModal1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+    <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-primary fw-bold fs-5" id="exampleModalLabel">Comment</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+
+        <form >
+
+
+
+          <div class="card mb-4">
+            <div class="card-body">
+              <p>Type your note, and hit enter to add it</p>
+
+              <div class="d-flex justify-content-between">
+                <div class="d-flex flex-row align-items-center">
+
+                  <p class="small mb-0 ms-2">Martha</p>
+                </div>
+                <div class="d-flex flex-row align-items-center">
+                  <p class="small text-muted mb-0">Upvote?</p>
+                  <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+                  <p class="small text-muted mb-0">3</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Ok</button>
+      </div>
+    </div>
+    </div>
+    </div>

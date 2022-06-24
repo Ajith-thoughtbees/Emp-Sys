@@ -14,7 +14,7 @@
                   <li class="nav-item"> <a class="nav-link" href="#" routerLink="/payroll" > <i class="bi bi-bar-chart"></i> Payroll </a> </li>
 
                   <li class="nav-item"> <a class="nav-link" href="#" routerLink="/leave" > <i class="bi bi-stopwatch-fill"></i> Leave</a> </li>
-       
+
               </ul> <!-- Divider -->
                 <hr class="navbar-divider my-5 opacity-20">
 
@@ -72,7 +72,7 @@
                           <div class="col">
 
       <app-employee [employee]="employee" (onRemoveEmployee)="removeEmployee($event)"
-      (onEditEmployee)="editEmployee($event)  "></app-employee>
+      (onEditEmployee)="setForm($event)  "></app-employee>
                           </div>
                         </div>
                      </div>

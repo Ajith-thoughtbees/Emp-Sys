@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup,Validator, Validators } from '@angular/forms';
+import { empty } from 'rxjs';
 import { ApiService } from '../service/api.service';
 import { LeaveServiceService } from '../service/leave-service.service';
 import { attendance } from './attendance.model';
@@ -11,7 +12,8 @@ import { attendance } from './attendance.model';
   styleUrls: ['./attendance.component.css']
 })
 export class AttendanceComponent implements OnInit {
-
+   Accepted!:Boolean;
+   Declined!:Boolean;
   leaveForm : FormGroup;
   absent: attendance[];
   absenteesToDisplay: attendance[];
@@ -29,12 +31,13 @@ export class AttendanceComponent implements OnInit {
       leaveReason: this.formBuilder.control('',[Validators.required,]),
       dateFrom: this.formBuilder.control('',[Validators.required,Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)]),
       dateTo: this.formBuilder.control('',[Validators.required,Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)]),
+      comment: this.formBuilder.control('')
     })
     this.leaveService.getAttendance().subscribe((res) => {
       for (let emp of res) {
-        this.absent.unshift(emp);
+        this.absent.push(emp);
       }
-      this.absenteesToDisplay = this.absent;
+
     });
   }
   addLeave() {
@@ -42,7 +45,9 @@ export class AttendanceComponent implements OnInit {
       leaveReason: (this.LeaveReason.value||{}),
       leaveType: (this.LeaveType.value || {}),
       dateFrom: (this.DateFrom.value || {}),
-      dateTo: (this.DateTo.value || {})
+      dateTo: (this.DateTo.value || {}),
+      comment: ("")
+
     }
     this.leaveService.postAttendance(leave).subscribe((res) => {
       this.absent.unshift(res);
@@ -50,7 +55,7 @@ export class AttendanceComponent implements OnInit {
     });
 
   }
-  
+
 
 
   public get LeaveReason(): FormControl {

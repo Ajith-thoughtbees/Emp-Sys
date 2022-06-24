@@ -51,7 +51,7 @@
               <div class="card shadow border-0 mb-5">
                   <div class="card-header">
                     <div class="toolbar">
-                       <button class="btn btn-outline-success btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-circle"></i>Request For Leave</button>
+                       <button class="btn btn-outline-success btn-lg" type="button"> Leave Declaration</button>
                       <div class="search-employee">
                         <input type="search" class="form-control" placeholder="Search Employees">
                       </div>
@@ -88,127 +88,21 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let absent of absenteesToDisplay; let fi = index; ">
+      <tr *ngFor="let arr of absent; ">
 
-        <td>{{absent.id}}</td>
-        <td>{{absent.leaveType}}</td>
-        <td>{{absent.leaveReason}}</td>
-        <td>{{absent.dateFrom}}</td>
-         <td>{{absent.dateTo}}</td>
-          <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1"><i class="bi bi-pencil-square text-primary"></i></button>
-            <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="bi bi-trash text-danger"></i></button>
-
+        <td>{{arr.id}}</td>
+        <td>{{arr.leaveType}}</td>
+        <td>{{arr.leaveReason}}</td>
+        <td>{{arr.dateFrom}}</td>
+         <td>{{arr.dateTo}}</td>
+         <div>
+          <button class="btn"  data-bs-toggle="modal" data-bs-target="#exampleModal1" (click)="leave(arr.id)" ><i class="bi bi-pencil-square text-primary"></i></button>
+          <button class="btn"  data-bs-toggle="modal" data-bs-target="#exampleModal2"><i class="bi bi-file-minus-fill text-danger"></i></button>
+        </div>
       </tr>
-      <!-- <tr>
-
-        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-        <td>James bond</td>
-        <td>720px</td>
-        <td>960px</td>
-        <td>1140px</td>
-        <td>1320px</td>
-        <button type="button" class="btn btn-outline-dark btn-sm">View</button>
-      </tr>
-      <tr>
-        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-        <td class="text-muted">Louis valley</td>
-        <td>720px</td>
-        <td>960px</td>
-        <td>1140px</td>
-        <td>1320px</td>
-        <button type="button" class="btn btn-outline-dark btn-sm">View</button>
-      </tr>
-      <tr>
-
-        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-        <td class="text-muted">Paul string</td>
-        <td class="text-muted">100%</td>
-        <td>960px</td>
-        <td>1140px</td>
-        <td>1320px</td>
-        <button type="button" class="btn btn-outline-dark btn-sm">View</button>
-      </tr>
-      <tr>
-        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-        <td class="text-muted">Natasha</td>
-        <td class="text-muted">100%</td>
-        <td class="text-muted">100%</td>
-        <td>1140px</td>
-        <td>1320px</td>
-        <button type="button" class="btn btn-outline-dark btn-sm">View</button>
-      </tr>
-      <tr>
-        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-        <td class="text-muted">Cameron</td>
-        <td class="text-muted">100%</td>
-        <td class="text-muted">100%</td>
-        <td class="text-muted">100%</td>
-        <td>1320px</td>
-        <button type="button" class="btn btn-outline-dark btn-sm">View</button>
-      </tr>
-      <tr>
-
-        <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-        <td class="text-muted">James Walker</td>
-        <td class="text-muted">100%</td>
-        <td class="text-muted">100%</td>
-        <td class="text-muted">100%</td>
-        <td class="text-muted">100%</td>
-        <button type="button" class="btn btn-outline-dark btn-sm">View</button>
-      </tr> -->
     </tbody>
   </table>
-<!-- modal -->
-
-<div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
-  <div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title text-primary fw-bold fs-5" id="exampleModalLabel">Request For Leave</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-    </div>
-    <div class="modal-body">
-
-      <form  >
-
-        <div class="row mt-5">
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Leave Reason" formControlName="leaveType">
-          </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Leave Type" formControlName="leaveReason">
-          </div>
-        </div>
-
-
-        <div class="row mt-3">
-          <div class="col">
-            <label for="datepicker" class="form-label">Date From</label>
-            <input type="date" class="form-control" id="datepicker" placeholder="Date" formControlName="dateFrom">
-          </div>
-        </div>
-
-        <div class="row mt-3">
-          <div class="col">
-            <label for="datepicker" class="form-label">Date To</label>
-            <input type="date" class="form-control" id="datepicker2" placeholder="Date" formControlName="dateTo">
-          </div>
-        </div>
-
-
-
-      </form>
-
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Insert</button>
-    </div>
-  </div>
-  </div>
-  </div>
-
-
-  <!-- Accepted -->
+        <!-- Accepted -->
 
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -217,14 +111,15 @@
         <h5 class="modal-title text-primary fw-bold fs-5" id="exampleModalLabel">Accepted Form</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <form  [formGroup]="leaveForm"></form>
       <div class="modal-body">
         <div class="form-floating">
-          <textarea class="form-control w-50 p-3" placeholder="Comment" id="floatingTextarea"></textarea>
+          <textarea class="form-control w-50 p-3" placeholder="Comment" id="floatingTextarea" formControlName="comment"></textarea>
 
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Accepted</button>
+        <button type="button" class="btn btn-primary" (click)="acceptedLeave()">Accepted</button>
       </div>
     </div>
   </div>
@@ -235,7 +130,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-primary fw-bold fs-5" id="exampleModalLabel">Denied Form</h5>
+        <h5 class="modal-title text-primary fw-bold fs-5" id="exampleModalLabel">Declined Form</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -243,8 +138,15 @@
       </div>
       <div class="modal-footer">
 
-        <button type="button" class="btn btn-primary">Denied</button>
+        <button type="button" class="btn btn-primary">Declined</button>
       </div>
     </div>
   </div>
 </div>
+
+
+
+
+
+
+

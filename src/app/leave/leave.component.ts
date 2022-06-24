@@ -9,59 +9,55 @@ import { attendance } from '../attendance/attendance.model';
   styleUrls: ['./leave.component.css']
 })
 export class LeaveComponent implements OnInit {
-  leaveForm : FormGroup;
-  absent: attendance[];
-  absenteesToDisplay: attendance[];
+  leaveForm !: FormGroup;
+  absent :any =[];
+  days:any =[];
+  comment : string = "";
+  empId : any;
 
 
   constructor(private formBuilder:FormBuilder,private leaveService:LeaveServiceService) {
-     this.leaveForm = formBuilder.group({});
       this.absent =[];
-    this.absenteesToDisplay = this.absent;
+
 }
 
   ngOnInit(): void {
     this.leaveForm = this.formBuilder.group({
-      leaveType: this.formBuilder.control('',[Validators.required,]),
-      leaveReason: this.formBuilder.control('',[Validators.required,]),
-      dateFrom: this.formBuilder.control('',[Validators.required,Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)]),
-      dateTo: this.formBuilder.control('',[Validators.required,Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)]),
-    })
+
+      comment: this.formBuilder.control('',[Validators.required,]),
+
+    }),
+
     this.leaveService.getAttendance().subscribe((res) => {
-      for (let emp of res) {
-        this.absent.unshift(emp);
-      }
-      this.absenteesToDisplay = this.absent;
-    });
-  }
-  addLeave() {
-    let leave: attendance = {
-      leaveReason: (this.LeaveReason.value||{}),
-      leaveType: (this.LeaveType.value || {}),
-      dateFrom: (this.DateFrom.value || {}),
-      dateTo: (this.DateTo.value || {})
-    }
-    this.leaveService.postAttendance(leave).subscribe((res) => {
-      this.absent.unshift(res);
+     this.absent = res
 
     });
 
   }
+  emp(){
+    this.leaveService.getAttendance().subscribe((res) => {
+      let search = (obj: { id:any }) => obj.id === this.empId
+
+      let check =this.absent.findIndex(search);
+
+      console.log(check);
+      this.days =res[check]
+      console.log(this.days);
+  })}
+  acceptedLeave() {
+    this.emp()
+ this.leaveService.updateAttendance(this.days,this.empId).subscribe((res)=>{
+
+  console.log(res);
+ })
 
 
 
-  public get LeaveReason(): FormControl {
-    return this.leaveForm.get('leaveReason') as FormControl;
-  }
-  public get LeaveType(): FormControl {
-    return this.leaveForm.get('leaveType') as FormControl;
-  }
-  public get DateFrom(): FormControl {
-    return this.leaveForm.get('dateFrom') as FormControl;
-  }
-  public get DateTo(): FormControl {
-    return this.leaveForm.get('dateTo') as FormControl;
-  }
+ }
+
+leave(id:any){
+ this.empId =id
+}
 
 
 

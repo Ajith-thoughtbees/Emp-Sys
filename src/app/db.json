@@ -13,15 +13,15 @@
       "id": 1
     },
     {
-      "firstname": "Ajith",
-      "lastname": "M",
-      "birthday": "2022-06-04",
+      "firstname": "Vinodh",
+      "lastname": "Kumar",
+      "birthday": "2022-06-25",
       "gender": "m",
       "education": "post graduate",
-      "company": "Thoughtbees",
+      "company": "Tcs",
       "jobExperience": 12,
-      "salary": 185500,
-      "profile": "tiger.jpg",
+      "salary": 12121212,
+      "profile": "523-5230160_clipart-computer-operator-hd-png-download.png",
       "id": 2
     }
   ],
@@ -43,25 +43,20 @@
   ],
   "attendance": [
     {
-      "id": 1,
-      "leaveReason": "weqfdsa",
-      "leaveType": "qwefdsa",
-      "dateFrom": "2022-06-23",
-      "dateTo": "2022-06-24"
+      "leaveReason": "fds",
+      "leaveType": "fsda",
+      "dateFrom": "2022-06-04",
+      "dateTo": "2022-06-25",
+      "comment": "",
+      "id": 1
     },
     {
-      "leaveReason": "weqfdsa",
-      "leaveType": "qwefdsa",
-      "dateFrom": "2022-06-23",
-      "dateTo": "2022-06-24",
+      "leaveReason": "ds",
+      "leaveType": "dda",
+      "dateFrom": "2022-06-10",
+      "dateTo": "2022-06-11",
+      "comment": "",
       "id": 2
-    },
-    {
-      "leaveReason": "dsaf",
-      "leaveType": "dsaf",
-      "dateFrom": "2022-06-24",
-      "dateTo": "2022-06-24",
-      "id": 3
     }
   ]
 }
