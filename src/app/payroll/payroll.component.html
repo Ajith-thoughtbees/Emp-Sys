@@ -65,9 +65,7 @@
         <thead>
           <tr>
 
-            <th scope="col">
-              Image
-            </th>
+            
             <th scope="col">
             Employee Name
             </th>
@@ -75,13 +73,16 @@
            Date
              </th>
             <th scope="col">
-          Charges
+          Salary
             </th>
             <th scope="col">
-            Tax
+            TDS
             </th>
             <th scope="col">
-            Discount
+            HRA
+            </th>
+            <th scope="col">
+            PF
             </th>
             <th scope="col">
               Total
@@ -92,86 +93,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-            <td>Fider pipe</td>
-            <td>720px</td>
-            <td>960px</td>
-            <td>1140px</td>
-            <td>1320px</td>
-            <td class="text-muted">100%</td>
+          <tr *ngFor="let arr of payrollDisplay ;">
+            <td class="text-uppercase">{{arr.employeeName}}</td>
+            <td>{{arr.date}}</td>
+            <td>{{arr.salary}}</td>
+            <td>{{arr.tds}}</td>
+            <td>{{arr.hra}}</td>
+            <td>{{arr.pf}}</td>
+            <td class="text-muted">{{arr.total}}</td>
             <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
             <button class="btn"><i class="bi bi-trash text-danger"></i></button>
           </tr>
-          <tr>
-
-            <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-            <td>James bond</td>
-            <td>720px</td>
-            <td>960px</td>
-            <td>1140px</td>
-            <td>1320px</td>
-            <td class="text-muted">100%</td>
-            <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
-            <button class="btn"><i class="bi bi-trash text-danger"></i></button>
-          </tr>
-          <tr>
-            <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-            <td class="text-muted">Louis valley</td>
-            <td>720px</td>
-            <td>960px</td>
-            <td>1140px</td>
-            <td>1320px</td>
-            <td class="text-muted">100%</td>
-            <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
-            <button class="btn"><i class="bi bi-trash text-danger"></i></button>
-          </tr>
-          <tr>
-
-            <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-            <td class="text-muted">Paul string</td>
-            <td class="text-muted">100%</td>
-            <td>960px</td>
-            <td>1140px</td>
-            <td>1320px</td>
-            <td class="text-muted">100%</td>
-            <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
-            <button class="btn"><i class="bi bi-trash text-danger"></i></button>
-          </tr>
-          <tr>
-            <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-            <td class="text-muted">Natasha</td>
-            <td class="text-muted">100%</td>
-            <td class="text-muted">100%</td>
-            <td>1140px</td>
-            <td>1320px</td>
-            <td class="text-muted">100%</td>
-            <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
-            <button class="btn"><i class="bi bi-trash text-danger"></i></button>
-          </tr>
-          <tr>
-            <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-            <td class="text-muted">Cameron</td>
-            <td class="text-muted">100%</td>
-            <td class="text-muted">100%</td>
-            <td class="text-muted">100%</td>
-            <td class="text-muted">100%</td>
-            <td class="text-muted">100%</td>
-            <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
-            <button class="btn"><i class="bi bi-trash text-danger"></i></button>
-          </tr>
-          <tr>
-
-            <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3"> </div>
-            <td class="text-muted">James Walker</td>
-            <td class="text-muted">100%</td>
-            <td class="text-muted">100%</td>
-            <td class="text-muted">100%</td>
-            <td class="text-muted">100%</td>
-            <td class="text-muted">100%</td>
-            <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
-            <button class="btn"><i class="bi bi-trash text-danger"></i></button>
-          </tr>
+   
         </tbody>
       </table>
 
@@ -200,39 +133,34 @@
               </div>
 
 
+            
+
+<div class="row mt-3">
+  <div class="col">
+    <label for="datepicker" class="form-label">Date</label>
+  <input type="date" class="form-control" id="datepicker" placeholder="Date" formControlName="date" >
+  
+  </div>
+  <div class="col">
+    <label for="salary" class="form-label">Salary</label>
+    <input type="number" class="form-control" placeholder="Salary" formControlName="salary" >
+  </div>
+</div>
               <div class="row mt-3">
                 <div class="col">
-                  <label for="datepicker" class="form-label">Date</label>
-                  <input type="date" class="form-control" id="datepicker" placeholder="Date" formControlName="date">
+                  <input type="number" class="form-control" placeholder="TDS"
+                    formControlName="tds">
                 </div>
-
-
-        <div class="row mt-3">
-          <div class="col">
-            <label for="profile" class="form-label">Profile Image</label>
-            <input type="file" class="form-control" id="profile" #fileInput>
-          </div>
-        </div>
-
-
+                <div class="col">
+                  <input type="number" class="form-control" placeholder="HRA" formControlName="hra">
+                </div>
               </div>
               <div class="row mt-3">
                 <div class="col">
-                  <input type="number" class="form-control" placeholder="Charges"
-                    formControlName="charges">
+                  <input type="number" class="form-control" placeholder="PF"
+                    formControlName="pf">
                 </div>
-                <div class="col">
-                  <input type="number" class="form-control" placeholder="Tax" formControlName="tax">
-                </div>
-              </div>
-              <div class="row mt-3">
-                <div class="col">
-                  <input type="number" class="form-control" placeholder="Discount"
-                    formControlName="discount">
-                </div>
-                <div class="col">
-                  <input type="number" class="form-control" placeholder="Total" formControlName="total">
-                </div>
+               
               </div>
 
 
@@ -241,7 +169,7 @@
 
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  >Insert</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addSalary()" >Insert</button>
           </div>
         </div>
         </div>

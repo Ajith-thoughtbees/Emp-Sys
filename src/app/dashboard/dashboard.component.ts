@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild, } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import { ApiService } from '../service/api.service';
 import { Employee } from './employee.model';
 
@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
 
   employeeForm: FormGroup;
-
+  submitted = false;
   employees: Employee[];
   employeesToDisplay: Employee[];
   educationOptions = [
@@ -45,16 +45,19 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       company: this.fb.control('',[Validators.required]),
       jobExperience: this.fb.control('',[Validators.required]),
       salary: this.fb.control('',[Validators.required]),
-    });
 
+    });
     this.api.getEmployees().subscribe((res) => {
       for (let emp of res) {
         this.employees.unshift(emp);
       }
       this.employeesToDisplay = this.employees;
-    });
+    });    
   }
-
+  get f(): { [key: string]: AbstractControl } {
+    return this.employeeForm.controls;
+  }
+ 
   ngAfterViewInit(): void {
     //this.buttontemp.nativeElement.click();
   }
