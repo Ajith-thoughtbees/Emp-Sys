@@ -12,6 +12,7 @@ import {payroll }from '../payroll/payroll.model'
 export class EmpPayrollComponent implements OnInit {
   payrollForm: FormGroup;
   allowance :any =[];
+  empId: any=[]
   
   constructor(private payrollServices:PayrollService, private formBuilder: FormBuilder) {
   this.allowance =[]
@@ -31,9 +32,24 @@ export class EmpPayrollComponent implements OnInit {
     this.payrollServices.getData().subscribe((res) => {
       this.allowance = res
     });
+    emp()
+    {
+      this.payrollServices.getData().subscribe((res) => {
+        let search = (obj: { id:any }) => obj.id === this.empId
+  
+        let check =this.allowance.findIndex(search);
+  
+        console.log(check);
+       
+    })}
+ 
  }
 
 
 
  
+}
+
+function emp() {
+  throw new Error('Function not implemented.');
 }

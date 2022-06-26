@@ -54,6 +54,27 @@ payrollDisplay :any =[];
       this.Allowance.unshift(res);
 
     });
+    {
+      let controls:any[]=[];
+      for (let i:number = 0; i < 5; ++i) {
+        controls.push(this.formBuilder.group({
+          v: i
+        }))
+      this.payrollForm = this.formBuilder.group({
+        total: [{value: '', disabled: true}],
+        arr: this.formBuilder.array(controls)
+      });
+        this.payrollForm.get('arr').valueChanges
+        .subscribe((newVal) => {
+          let total:number=0;
+          newVal.forEach(e=>{
+            total=total+parseInt(e.v)});
+  
+          this.payrollForm.get('total').patchValue(total,0)
+  
+        });
+      }
+    }
 
   }
 
