@@ -10,18 +10,30 @@ import {payroll }from '../payroll/payroll.model'
   providers:[PayrollService]
 })
 export class EmpPayrollComponent implements OnInit {
+  payrollForm: FormGroup;
+  allowance :any =[];
   
-
-  
-  constructor(private payrollServices:PayrollService) {
-  
+  constructor(private payrollServices:PayrollService, private formBuilder: FormBuilder) {
+  this.allowance =[]
+  this.payrollForm = formBuilder.group({});
    }
 
   ngOnInit(): void {
-   
-  
-  
+    this.payrollForm = this.formBuilder.group({
+      employeeName: this.formBuilder.control('',[Validators.required,Validators.minLength(3),Validators.maxLength(8)]),
+      date: this.formBuilder.control('',[Validators.required,Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)]),
+      salary: this.formBuilder.control('',[Validators.required,]),
+      tds: this.formBuilder.control('',[Validators.required]),
+      hra: this.formBuilder.control('',[Validators.required]),
+       pf : this.formBuilder.control('',[Validators.required]),
+      total : this.formBuilder.control('',[Validators.required])
+    });
+    this.payrollServices.getData().subscribe((res) => {
+      this.allowance = res
+    });
  }
- 
+
+
+
  
 }
