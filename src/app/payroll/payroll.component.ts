@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,FormControl,Validators } from '@angular/forms';
 import { PayrollService } from '../service/payroll.service';
-import { payroll } from './payroll.model';
-
-
+import { payrollModel } from './payroll.model';
 
 @Component({
   selector: 'app-payroll',
@@ -12,15 +10,27 @@ import { payroll } from './payroll.model';
   providers:[PayrollService]
 })
 export class PayrollComponent implements OnInit {
+payrollModelObj:payrollModel=new payrollModel();
+ payrollForm !: FormGroup;
+  employeeData!:any;
+  showAdd!:boolean;
+  showUpdate!:boolean;
 
-payrollForm: FormGroup;
-payroll!: [];
-Allowance!: payroll[];
-payrollDisplay :any =[];
+  showUpdateTitle!:boolean;
+  showAddTitle!:boolean;
 
-  constructor(  private formBuilder: FormBuilder, private payrollServices:PayrollService) 
-  { this.payrollForm = formBuilder.group({});
-    this.payrollServices }
+  constructor( private formBuilder:FormBuilder,private payrollServices:PayrollService)
+  {
+     }
+     addButtonClickFunction()
+    {
+      this.payrollForm.reset();
+      this.showUpdate=false;
+      this.showAdd=true;
+
+      this.showUpdateTitle=false;
+      this.showAddTitle=true;
+    }
 
   ngOnInit(): void {
     this.payrollForm = this.formBuilder.group({
@@ -29,77 +39,81 @@ payrollDisplay :any =[];
       salary: this.formBuilder.control('',[Validators.required,]),
       tds: this.formBuilder.control('',[Validators.required]),
       hra: this.formBuilder.control('',[Validators.required]),
-       pf : this.formBuilder.control('',[Validators.required]),
-      total : this.formBuilder.control('',[Validators.required])
-    });
-    this.payrollServices.getData().subscribe((res) => {
-      for (let arr of res) {
-        this.payrollDisplay.push(arr);
-      }
+      pf : this.formBuilder.control('',[Validators.required]),
+
 
     });
-    
-  }
-  addSalary() {
-    let leave: payroll = {
-      employeeName: (this.employeeName.value||{}),
-      date: (this.date.value || {}),
-      salary: (this.salary.value || {}),
-      tds: (this.tds.value || {}),
-      hra: (this.hra.value || {}),
-      pf: (this.pf.value || {})
 
-    }
-    this.payrollServices.postData(leave).subscribe((res) => {
-      this.Allowance.unshift(res);
-
-    });
-    {
-      let controls:any[]=[];
-      for (let i:number = 0; i < 5; ++i) {
-        controls.push(this.formBuilder.group({
-          v: i
-        }))
-      this.payrollForm = this.formBuilder.group({
-        total: [{value: '', disabled: true}],
-        arr: this.formBuilder.array(controls)
-      });
-        this.payrollForm.get('arr').valueChanges
-        .subscribe((newVal) => {
-          let total:number=0;
-          newVal.forEach(e=>{
-            total=total+parseInt(e.v)});
-  
-          this.payrollForm.get('total').patchValue(total,0)
-  
-        });
-      }
-    }
-
-  }
-
-  
-  public get employeeName(): FormControl {
-    return this.payrollForm.get('employeeName') as FormControl;
-  }
-  public get date(): FormControl {
-    return this.payrollForm.get('date') as FormControl;
-  }
-  public get salary(): FormControl {
-    return this.payrollForm.get('salary') as FormControl;
-  }
-  public get tds(): FormControl {
-    return this.payrollForm.get('tds') as FormControl;
-  }
-  public get hra(): FormControl {
-    return this.payrollForm.get('hra') as FormControl;
-  }
-  public get pf(): FormControl {
-    return this.payrollForm.get('pf') as FormControl;
-  }
-  public get total(): FormControl {
-    return this.payrollForm.get('total') as FormControl;
-  }
-
+    this.getAllSalary();
 
 }
+postPayroll(){
+  // alert("fucntion call");
+  this.payrollModelObj.id=this.payrollForm.value.id ;
+
+    this.payrollModelObj.employeeName=this.payrollForm.value.employeeName;
+    this.payrollModelObj.date=this.payrollForm.value.date;
+    this.payrollModelObj.salary=this.payrollForm.value.salary;
+    this.payrollModelObj.tds=this.payrollForm.value.tds;
+    this.payrollModelObj.hra=this.payrollForm.value.hra;
+    this.payrollModelObj.pf = this.payrollForm.value.pf;
+
+    let cancel=document.getElementById("cancel");
+    this.payrollServices.postData(this.payrollModelObj).subscribe(a=> {
+
+      console.log(a);
+      alert("Record inserted successfully");
+      cancel?.click();this.payrollForm.reset();
+      this.getAllSalary();
+    })
+   }
+   getAllSalary(){
+    this.payrollServices.getData().subscribe(a=>{
+      this.employeeData=a;
+    })
+
+
+  }
+  deletePayroll(arr:any){
+
+    this.payrollServices.deleteData(arr.id).subscribe(a=>{
+      alert("Record Deleted Succesfully");
+      this.getAllSalary();
+    })
+
+  }
+  updatePayroll(arr:any){
+    this.showUpdate=true;
+    this.showAdd=false;
+
+    this.showUpdateTitle=true;
+    this.showAddTitle=false;
+    this.payrollModelObj.id=arr.id;
+    this.payrollForm.controls['employeeName'].setValue(arr.employeeName);
+    this.payrollForm.controls['date'].setValue(arr.date);
+    this.payrollForm.controls['salary'].setValue(arr.salary);
+    this.payrollForm.controls['tds'].setValue(arr.tds);
+    this.payrollForm.controls['hra'].setValue(arr.hra);
+    this.payrollForm.controls['pf'].setValue(arr.pf);
+  }
+  updatePayrollDetails(){
+
+    this.payrollModelObj.employeeName=this.payrollForm.value.employeeName;
+    this.payrollModelObj.date=this.payrollForm.value.date;
+    this.payrollModelObj.salary=this.payrollForm.value.salary;
+    this.payrollModelObj.tds=this.payrollForm.value.tds;
+    this.payrollModelObj.hra=this.payrollForm.value.hra;
+    this.payrollModelObj.pf=this.payrollForm.value.pf;
+
+    this.payrollServices.updateData(this.payrollModelObj,this.payrollModelObj.id).subscribe(a=>{
+      // alert("Record updated Succesfully");
+
+    let cancel=document.getElementById("cancel");
+
+      cancel?.click();
+      this.payrollForm.reset();
+      this.getAllSalary();
+    })
+  }
+}
+

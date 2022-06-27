@@ -18,6 +18,16 @@ export class LoginComponent implements OnInit {
     private http: HttpClient,
     private login:LoginService) { }
 
+    
+    ngOnInit(): void {
+
+      this.loginForm = this.formBuilder.group({
+        username: ['',[Validators.required,Validators.minLength(6),Validators.maxLength(20)]],
+        password: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(8)]],
+      });
+
+
+    }
 
   loginForm: any = FormGroup;
   submitted = false;
@@ -39,6 +49,8 @@ export class LoginComponent implements OnInit {
     this.http.get<any>("http://localhost:3000/register")
     .subscribe(res=>{
       const admin = res.find((a:any)=>{
+        let loginUser = a.id
+        localStorage.setItem('empId', JSON.stringify(loginUser))
         return a.username === this.loginForm.value.username && a.password === this.loginForm.value.password && a.post==="Admin"
       });
 
@@ -78,14 +90,6 @@ export class LoginComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {
 
-    this.loginForm = this.formBuilder.group({
-      username: ['',[Validators.required,Validators.minLength(6),Validators.maxLength(20)]],
-      password: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(8)]],
-    });
-
-
-  }
 
 }

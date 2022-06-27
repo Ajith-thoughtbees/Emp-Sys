@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service/api.service';
 
@@ -10,34 +11,34 @@ import { ApiService } from '../service/api.service';
 export class EmployeeDashboardComponent implements OnInit {
 
   ID: any;
-  arr=[];
-  constructor(private api:ApiService,) { }
+  arr:any=[];
+  constructor(private api:ApiService,private http:HttpClient) { }
 
   ngOnInit(): void {
     this.fun()
   }
   fun(){
 
-    this.api.getEmployees()
+    this.http.get<any>("http://localhost:3000/register")
 
     .subscribe({
 
       next:(res)=>{
 
-        const user = localStorage.getItem('empId');
+        const user =localStorage.getItem('empId');
 
         console.log(user);
-        this.ID = res.find((a:any)=>{
 
-          if(a.id == user){
+        this.arr = res.find((a:any)=>{
 
-             return a
+          console.log(a);
 
-          }
+          return a.id == user
 
 
         });
-console.log(this.ID);
+
+ console.log(this.arr);
 
 
 

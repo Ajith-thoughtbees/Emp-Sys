@@ -52,8 +52,10 @@
                    <table class="table">
                     <thead>
                       <tr>
-            
-                        
+                        <th scope="col">
+                          ID
+                          </th>
+
                         <th scope="col">
                         Employee Name
                         </th>
@@ -82,17 +84,18 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let arr of allowance ;">
-                        <td >{{arr.employeeName}}</td>
+                        <td>{{arr.id}}</td>
+                        <td class="text-uppercase">{{arr.employeeName}}</td>
                         <td>{{arr.date}}</td>
                         <td>{{arr.salary}}</td>
                         <td>{{arr.tds}}</td>
                         <td>{{arr.hra}}</td>
                         <td>{{arr.pf}}</td>
-                        <td>{{arr.total}}</td>
+                        <td>{{(arr.salary)-(arr.tds+arr.hra+arr.pf)}}</td>
                         <!-- <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
                         <button class="btn"><i class="bi bi-trash text-danger"></i></button> -->
                       </tr>
-               
+
                     </tbody>
                   </table>
           </div>

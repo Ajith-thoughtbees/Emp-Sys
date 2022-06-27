@@ -1,5 +1,5 @@
-export class payroll{
-  id?: number=0;
+export class payrollModel{
+  id: number=0;
   employeeName: string='';
   date : string='';
   salary:number=0;

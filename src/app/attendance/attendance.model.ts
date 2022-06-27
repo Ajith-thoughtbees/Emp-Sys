@@ -5,4 +5,7 @@ export class attendance {
   dateFrom!: string
   dateTo!: string
   comment!: string
+  status!: number
+  approved_by!: number
+  applied_by!: any
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormControl,FormGroup,Validators } from '@angular/forms';
 import { PayrollService } from '../service/payroll.service';
-import {payroll }from '../payroll/payroll.model'
+import { payrollModel } from '../payroll/payroll.model';
+import { ApiService } from '../service/api.service';
 
 @Component({
   selector: 'app-emp-payroll',
@@ -13,7 +14,8 @@ export class EmpPayrollComponent implements OnInit {
   payrollForm: FormGroup;
   allowance :any =[];
   empId: any=[]
-  
+  ID: any;
+
   constructor(private payrollServices:PayrollService, private formBuilder: FormBuilder) {
   this.allowance =[]
   this.payrollForm = formBuilder.group({});
@@ -32,24 +34,51 @@ export class EmpPayrollComponent implements OnInit {
     this.payrollServices.getData().subscribe((res) => {
       this.allowance = res
     });
-    emp()
-    {
+
+
+
       this.payrollServices.getData().subscribe((res) => {
         let search = (obj: { id:any }) => obj.id === this.empId
-  
+
         let check =this.allowance.findIndex(search);
-  
-        console.log(check);
-       
-    })}
- 
+        console.log(res);
+
+       console.log(check);
+
+    })
+this.fun()
  }
+ fun(){
+
+  this.payrollServices.getData()
+
+  .subscribe({
+
+    next:(res)=>{
+
+      const user = localStorage.getItem('empId');
+
+      // console.log(user);
+      this.ID = res.find((a:any)=>{
+
+        if(a.id == user){
+
+           return a
+
+        }
+
+
+      });
+// console.log(this.ID);
 
 
 
- 
+
+    }})
 }
 
-function emp() {
-  throw new Error('Function not implemented.');
+
+
 }
+
+

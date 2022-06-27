@@ -9,21 +9,21 @@ import { attendance } from '../attendance/attendance.model';
 export class LeaveServiceService {
 
 
-   baseUrl= 'http://localhost:3000/attendance';
+
   constructor(private http:HttpClient) { }
 
   postAttendance(absent : attendance){
-    return this.http.post<attendance>(this.baseUrl, absent)
+    return this.http.post<attendance>('http://localhost:3000/attendance', absent)
   }
 
   getAttendance(){
-    return this.http.get<attendance[]>(this.baseUrl, )
+    return this.http.get<attendance[]>('http://localhost:3000/attendance', )
   }
 
   updateAttendance(data:any,id:number){
-    return this.http.put<any>(this.baseUrl+id,data)
+    return this.http.put<any>('http://localhost:3000/attendance/'+id,data)
   }
   deleteAttendance(id: string){
-    return this.http.delete(this.baseUrl + '/' +id)
+    return this.http.delete('http://localhost:3000/attendance/' +id)
   }
 }

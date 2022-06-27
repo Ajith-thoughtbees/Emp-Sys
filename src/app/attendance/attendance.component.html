@@ -115,14 +115,31 @@
     </div>
     <div class="modal-body">
 
-      <form [formGroup]="leaveForm" >
-
+      <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <h6 class="text-dark fs-6">Leave Reason</h6>
+        </div>
         <div class="row mt-5">
           <div class="col">
-            <input type="text" class="form-control" placeholder="Leave Reason" formControlName="leaveType">
+            <input type="text" class="form-control" placeholder="Leave Reason" formControlName="leaveReason"
+            [ngClass]="{ 'is-invalid': submitted && f.leaveReason.errors }"
+             >
+
+
           </div>
-          <div class="col">
-            <input type="text" class="form-control" placeholder="Leave Type" formControlName="leaveReason">
+          <div class="row">
+            <h6 class="text-dark fs-6 mt-3">Leave Type</h6>
+          </div>
+          <div class="row mt-3">
+            <div class="col">
+              <select class="form-select" formControlName="leaveType" >
+                <option value="default" selected> Select your Leave Type </option>
+                <option *ngFor="let option of LeaveTypeOptions; let i = index;" value="{{i}}">
+                  {{option | titlecase}}
+                </option>
+              </select>
+
+            </div>
           </div>
         </div>
 
@@ -155,7 +172,7 @@
 
 
   <!-- View Modal -->
-  <div class="modal fade" id="exampleModal1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+  <!-- <div class="modal fade" id="exampleModal1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
     <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -195,4 +212,4 @@
       </div>
     </div>
     </div>
-    </div>
+    </div> -->

@@ -22,11 +22,11 @@ export class LeaveComponent implements OnInit {
 }
 
   ngOnInit(): void {
-    this.leaveForm = this.formBuilder.group({
+    // this.leaveForm = this.formBuilder.group({
 
-      comment: this.formBuilder.control('',[Validators.required,]),
+    //   comment: this.formBuilder.control('',[Validators.required,]),
 
-    }),
+    // }),
 
     this.leaveService.getAttendance().subscribe((res) => {
      this.absent = res
@@ -44,20 +44,27 @@ export class LeaveComponent implements OnInit {
       this.days =res[check]
       console.log(this.days);
   })}
-  acceptedLeave() {
-    this.emp()
- this.leaveService.updateAttendance(this.days,this.empId).subscribe((res)=>{
+  acceptedLeave(arr:any) {
+    arr.status = 1;
 
-  console.log(res);
+ this.leaveService.updateAttendance(arr,arr.id).subscribe((res)=>{
+ console.log(res);
  })
+  }
+
+  // deleteLeave(id:any){
+  //   this.leaveService.deleteAttendance(this.empId).subscribe((res)=>{
+
+  //     console.log(res);
+  //    })
+  // }
 
 
-
- }
 
 leave(id:any){
  this.empId =id
 }
+
 
 
 

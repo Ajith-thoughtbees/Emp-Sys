@@ -14,7 +14,7 @@
                 <li class="nav-item"> <a class="nav-link" href="#" routerLink="/payroll" > <i class="bi bi-bar-chart"></i> Payroll </a> </li>
 
                 <li class="nav-item"> <a class="nav-link" href="#" routerLink="/leave" > <i class="bi bi-stopwatch-fill"></i> Leave </a> </li>
-              
+
             </ul> <!-- Divider -->
               <hr class="navbar-divider my-5 opacity-20">
 
@@ -51,7 +51,7 @@
                   <div class="card-header">
                     <div class="toolbar">
                       <div class="add-employee">
-                        <button class="btn btn-outline-success btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Payments</button>
+                        <button class="btn btn-outline-success btn-lg"  (click)="addButtonClickFunction()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Payments</button>
                       </div>
                       <div class="search-employee">
                         <input type="search" class="form-control" placeholder="Search Employees">
@@ -64,8 +64,10 @@
       <table class="table">
         <thead>
           <tr>
+            <th scope="col">
+              ID
+              </th>
 
-            
             <th scope="col">
             Employee Name
             </th>
@@ -93,18 +95,19 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let arr of payrollDisplay ;">
+          <tr *ngFor="let arr of employeeData ">
+            <td class="text-uppercase">{{arr.id}}</td>
             <td class="text-uppercase">{{arr.employeeName}}</td>
             <td>{{arr.date}}</td>
             <td>{{arr.salary}}</td>
             <td>{{arr.tds}}</td>
             <td>{{arr.hra}}</td>
             <td>{{arr.pf}}</td>
-            <td class="text-muted">{{arr.total}}</td>
-            <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
-            <button class="btn"><i class="bi bi-trash text-danger"></i></button>
+            <td class="text-muted">{{(arr.salary)-(arr.tds+arr.hra+arr.pf)}}</td>
+            <button class="btn me-2"  (click)="updatePayroll(arr)"  data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="bi bi-pencil-square text-primary"></i></button>
+            <button class="btn me-2"  (click)="deletePayroll(arr)"><i class="bi bi-trash text-danger"></i></button>
           </tr>
-   
+
         </tbody>
       </table>
 
@@ -131,15 +134,11 @@
                 </div>
 
               </div>
-
-
-            
-
-<div class="row mt-3">
+       <div class="row mt-3">
   <div class="col">
     <label for="datepicker" class="form-label">Date</label>
   <input type="date" class="form-control" id="datepicker" placeholder="Date" formControlName="date" >
-  
+
   </div>
   <div class="col" >
     <label for="salary" class="form-label">Salary</label>
@@ -160,7 +159,7 @@
                   <input type="number" class="form-control" placeholder="PF"
                     formControlName="pf">
                 </div>
-               
+
               </div>
 
 
@@ -169,8 +168,13 @@
 
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addSalary()" >Insert</button>
+
+            <button type="button"  id="cancel" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <input type="submit" *ngIf="showAdd"  (click)="postPayroll()"  class="btn btn-primary mx-2" value="Save">
+      <button type="button" *ngIf="showUpdate"  (click)="updatePayrollDetails()"  class="btn btn-primary">Update</button>
           </div>
         </div>
         </div>
         </div>
+
+
