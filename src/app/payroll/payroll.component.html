@@ -131,33 +131,52 @@
               <div class="row">
                 <div class="col">
                   <input type="text" class="form-control" placeholder="Employee Name" formControlName="employeeName">
+                  <div *ngIf="f['employeeName'].touched && f['employeeName'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['employeeName'].errors && f['employeeName'].errors['required']">Employee Name is required.</div>
+                     <div *ngIf="f['employeeName'].errors && f['employeeName'].errors['minlength']">Name should be 3 character.</div> 
                 </div>
+              </div>
 
               </div>
        <div class="row mt-3">
   <div class="col">
     <label for="datepicker" class="form-label">Date</label>
   <input type="date" class="form-control" id="datepicker" placeholder="Date" formControlName="date" >
-
+  <div *ngIf="f['date'].touched && f['date'].invalid" class="alert alert-danger">
+    <div *ngIf="f['date'].errors && f['date'].errors['required']">Date From is required.</div>
+</div>
   </div>
   <div class="col" >
     <label for="salary" class="form-label">Salary</label>
     <input type="number" class="form-control" placeholder="Salary" formControlName="salary" >
+    <div *ngIf="f['salary'].touched && f['salary'].invalid" class="alert alert-danger">
+      <div *ngIf="f['salary'].errors && f['salary'].errors['required']">
+       Salary  is required.</div>
+  </div>
   </div>
 </div>
               <div class="row mt-3">
                 <div class="col">
                   <input type="number" class="form-control" placeholder="TDS"
                     formControlName="tds">
+                    <div *ngIf="f['tds'].touched && f['tds'].invalid" class="alert alert-danger">
+                      <div *ngIf="f['tds'].errors && f['tds'].errors['required']">TDS  is required.</div>
+                  </div>
                 </div>
                 <div class="col">
                   <input type="number" class="form-control" placeholder="HRA" formControlName="hra">
+                  <div *ngIf="f['hra'].touched && f['hra'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['hra'].errors && f['hra'].errors['required']">HRA  is required.</div>
+                </div>
                 </div>
               </div>
               <div class="row mt-3">
                 <div class="col">
                   <input type="number" class="form-control" placeholder="PF"
                     formControlName="pf">
+                    <div *ngIf="f['pf'].touched && f['pf'].invalid" class="alert alert-danger">
+                      <div *ngIf="f['pf'].errors && f['pf'].errors['required']">PF  is required.</div>
+                  </div>
                 </div>
 
               </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormGroup,FormControl,Validators } from '@angular/forms';
+import { FormBuilder,FormGroup,FormControl,Validators,AbstractControl } from '@angular/forms';
 import { PayrollService } from '../service/payroll.service';
 import { payrollModel } from './payroll.model';
 
@@ -46,6 +46,9 @@ payrollModelObj:payrollModel=new payrollModel();
 
     this.getAllSalary();
 
+}
+get f(): { [key: string]: AbstractControl } {
+  return this.payrollForm.controls;
 }
 postPayroll(){
   // alert("fucntion call");

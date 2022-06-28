@@ -1,5 +1,5 @@
 import { Component, OnInit, } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup,Validator, Validators, } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup,Validator, Validators,AbstractControl } from '@angular/forms';
 
 import { ApiService } from '../service/api.service';
 import { LeaveServiceService } from '../service/leave-service.service';
@@ -47,21 +47,20 @@ ngOnInit(): void {
 
 
   }
-  get f() {
+  get f(): { [key: string]: AbstractControl } {
     return this.leaveForm.controls;
-   }
+  }
 
-    onSubmit() {
-        this.submitted = true;
+  onSubmit(): void {
+    this.submitted = true;
 
-        // stop here if form is invalid
-        if (this.leaveForm.invalid) {
-            return;
-        }
-
-        // display form values on success
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.leaveForm.value, null, 4));
+    if (this.leaveForm.invalid) {
+      return;
     }
+
+    console.log(JSON.stringify(this.leaveForm.value, null, 2));
+  }
+  
   getleaveDetails(){
     this.leaveService.getAttendance().subscribe((res) => {
       // for (let emp of res) {
@@ -76,10 +75,10 @@ ngOnInit(): void {
     //appplied by
     let applied_by = localStorage.getItem('empId') ? localStorage.getItem('empId') : 0;
     let leave: attendance = {
-      leaveReason: (this.LeaveReason.value||{}),
-      leaveType: this.LeaveTypeOptions[parseInt(this.LeaveType.value)],
-      dateFrom: (this.DateFrom.value || {}),
-      dateTo: (this.DateTo.value || {}),
+      leaveReason: (this.leavereason.value||{}),
+      leaveType: this.LeaveTypeOptions[parseInt(this.leavetype.value)],
+      dateFrom: (this.datefrom.value || {}),
+      dateTo: (this.dateto.value || {}),
       comment: (""),
       status: 0,
       approved_by: 0,
@@ -94,16 +93,16 @@ ngOnInit(): void {
 
   }
 
-  public get LeaveReason(): FormControl {
+  public get leavereason(): FormControl {
     return this.leaveForm.get('leaveReason') as FormControl;
   }
-  public get LeaveType(): FormControl {
+  public get leavetype(): FormControl {
     return this.leaveForm.get('leaveType') as FormControl;
   }
-  public get DateFrom(): FormControl {
+  public get datefrom(): FormControl {
     return this.leaveForm.get('dateFrom') as FormControl;
   }
-  public get DateTo(): FormControl {
+  public get dateto(): FormControl {
     return this.leaveForm.get('dateTo') as FormControl;
   }
 

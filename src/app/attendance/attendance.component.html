@@ -115,17 +115,17 @@
     </div>
     <div class="modal-body">
 
-      <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="leaveForm" >
         <div class="row">
           <h6 class="text-dark fs-6">Leave Reason</h6>
         </div>
         <div class="row mt-5">
           <div class="col">
-            <input type="text" class="form-control" placeholder="Leave Reason" formControlName="leaveReason"
-            [ngClass]="{ 'is-invalid': submitted && f.leaveReason.errors }"
-             >
-
-
+            <input type="text" class="form-control" placeholder="Leave Reason" formControlName="leaveReason">
+            <div *ngIf="f['leaveReason'].touched && f['leaveReason'].invalid" class="alert alert-danger">
+              <div *ngIf="f['leaveReason'].errors && f['leaveReason'].errors['required']">Leave Reason is required.</div>
+              <!-- <div *ngIf="f['leavereason'].errors && f['leavereason'].errors['minlength']">Name should be 3 character.</div> -->
+          </div>
           </div>
           <div class="row">
             <h6 class="text-dark fs-6 mt-3">Leave Type</h6>
@@ -138,7 +138,9 @@
                   {{option | titlecase}}
                 </option>
               </select>
-
+              <div *ngIf="f['leaveType'].touched && f['leaveType'].invalid" class="alert alert-danger">
+                <div *ngIf="f['leaveType'].errors && f['leaveType'].errors['required']">Leave Type is required.</div>
+              </div>
             </div>
           </div>
         </div>
@@ -148,6 +150,9 @@
           <div class="col">
             <label for="datepicker" class="form-label">Date From</label>
             <input type="date" class="form-control" id="datepicker" placeholder="Date" formControlName="dateFrom">
+            <div *ngIf="f['dateFrom'].touched && f['dateFrom'].invalid" class="alert alert-danger">
+              <div *ngIf="f['dateFrom'].errors && f['dateFrom'].errors['required']">Date From is required.</div>
+          </div>
           </div>
         </div>
 
@@ -155,6 +160,9 @@
           <div class="col">
             <label for="datepicker" class="form-label">Date To</label>
             <input type="date" class="form-control" id="datepicker2" placeholder="Date" formControlName="dateTo">
+            <div *ngIf="f['dateTo'].touched && f['dateTo'].invalid" class="alert alert-danger">
+              <div *ngIf="f['dateTo'].errors && f['dateTo'].errors['required']">Date To is required.</div>
+            </div>
           </div>
         </div>
 
@@ -164,7 +172,7 @@
 
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addLeave()">Insert</button>
+      <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="addLeave()">Insert</button>
     </div>
   </div>
   </div>

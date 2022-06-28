@@ -9,11 +9,16 @@ import {HttpClient, HttpClientModule} from '@angular/common/http'
 export class LoginService {
 
 
-   baseUrl= 'http://localhost:3000/register';
+  //  baseUrl= 'http://localhost:3000/login';
   constructor(private http:HttpClient) { }
 
-  login(data:any) {
-    return this.http.post(this.baseUrl,data);
+  postData(data:any) {
+    return this.http.post("http://localhost:3000/login",data);
+  }
+  getData(){
+    {
+      return this.http.get('http://localhost:3000/login', )
+    }
   }
 
 }

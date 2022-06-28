@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from '../service/api.service';
 import { LoginService } from '../service/login.service';
 @Component({
   selector: 'app-login',
@@ -46,7 +45,7 @@ export class LoginComponent implements OnInit {
       // alert("Great!!");
     }
 
-    this.http.get<any>("http://localhost:3000/register")
+    this.http.get<any>("http://localhost:3000/login")
     .subscribe(res=>{
       const admin = res.find((a:any)=>{
         let loginUser = a.id
