@@ -19,7 +19,7 @@ export class EmployeeDashboardComponent implements OnInit {
   }
   fun(){
 
-    this.http.get<any>("http://localhost:3000/register")
+    this.http.get<any>("http://localhost:3000/login")
 
     .subscribe({
 

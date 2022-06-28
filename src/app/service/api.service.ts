@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http'
 import { map } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Employee } from '../dashboard/employee.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-
+  selectedT: any;
   baseUrl = 'http://localhost:3000/posts';
 
   constructor(private http:HttpClient) {
@@ -29,4 +30,6 @@ deleteEmployees(id: string){
   return this.http.delete(this.baseUrl + '/' +id)
 }
 
+
 }
+

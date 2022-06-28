@@ -1,13 +1,13 @@
-
+<!-- Dashboard -->
 <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
   <!-- Vertical Navbar -->
-  <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" arr="navbarVertical">
-      <div class="container-fluarr">
-          <!-- Toggler --> <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sarrebarCollapse" aria-controls="sarrebarCollapse" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <!-- Brand -->  <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3">
+  <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="navbarVertical">
+      <div class="container-fluid">
+          <!-- Toggler --> <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <!-- Brand -->  <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3">
             <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-2 logo fs-2 mt-0" href="#"> Employee </a>
           </div>
 
-          <div class="collapse navbar-collapse" arr="sarrebarCollapse">
+          <div class="collapse navbar-collapse" id="sidebarCollapse">
               <!-- Navigation -->
               <ul class="navbar-nav">
                 <li class="nav-item"> <a class="nav-link" href="#" routerLink="/employee-dashboard"> <i class="bi bi-house"></i> Dashboard </a> </li>
@@ -15,8 +15,9 @@
 
                 <li class="nav-item"> <a class="nav-link" href="#" routerLink="/attendance" > <i class="bi bi-stopwatch-fill"></i> Attendance </a> </li>
 
-            </ul> <!-- Divarrer -->
-              <hr class="navbar-divarrer my-5 opacity-20">
+            </ul>
+<!-- Divider -->
+              <hr class="navbar-divider my-5 opacity-20">
 
 
 
@@ -26,7 +27,7 @@
   <div class="h-screen flex-grow-1 overflow-y-lg-auto">
       <!-- Header -->
       <header class="bg-surface-primary border-bottom pt-6">
-          <div class="container-fluarr">
+          <div class="container-fluid">
               <div class="mb-npx">
                   <div class="row align-items-center">
                       <div class="col-sm-6 col-12 mb-4 mb-sm-0">
@@ -44,105 +45,120 @@
           </div>
       </header> <!-- Main -->
       <main class="py-6 bg-surface-secondary">
-          <div class="container-fluarr">
+          <div class="container-fluid">
               <!-- Card stats -->
 
 
-                   <!-- Area to display the Employee -->
-                   <div class="employees">
+              <div class="employees">
 
 
-                      <div class="row mt-4">
-                        <div class="col">
-                          <div class="container-fluarr g-0 p-2">
+                <div class="row mt-4">
+                  <div class="col">
+                    <div class="container-fluarr g-0 p-2">
 
-                            <div class="row g-0">
+                      <div class="row g-0">
 
-                                <div class="col-md-2 d-flex justify-content-center align-items-center ">
-                                  <div class="text-center text-dark fs-6 fst-italic mt-auto" >Profile Image
-                                    <img src="assets/images/{{arr.profile}}" alt="Profile Image" class="profile mb-6">
-                                  </div>
-                                </div>
-
-                                <div class="col ps-2">
-
-                                    <div class="row g-0">
-
-                                        <div class="col-md-10 text-center">
-                                            <span class="name">{{arr.firstname | titlecase}} {{arr.lastname | titlecase}}</span>
-                                        </div>
-
-
-
-                                    </div>
-
-                                    <div class="row g-0 mt-3">
-
-                                        <div class="col-md">
-
-                                            <table class="table table-hover mx-auto">
-                                                <thead class="text-center fs-5 fst-italic text-secondary">
-                                                    <tr>
-                                                        <td colspan="2" class="text-dark fs-6">Personal Details</td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="fw-bold">Birthdate :</td>
-                                                        <td>{{arr.birthday}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="fw-bold">Gender :</td>
-                                                        <td>{{arr.gender == 'm' ? "Male" : "Female"}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="fw-bold">Education :</td>
-                                                        <td>{{arr.education | titlecase}}</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-
-                                        </div>
-
-                                        <div class="col">
-
-                                            <table class="table table-hover mx-auto">
-                                                <thead class="text-center fs-5 fst-italic text-secondary">
-                                                    <tr>
-                                                        <td colspan="2"  class="text-dark fs-6">Job Details</td>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="fw-bold">Company :</td>
-                                                        <td>{{arr.company | titlecase}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="fw-bold">Experience :</td>
-                                                        <td>{{arr.jobExperience}} yrs</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="fw-bold">Salary :</td>
-                                                        <td>{{arr.salary}} LPA</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
+                          <div class="col-md-2 d-flex justify-content-center align-items-center ">
+                            <div class="text-center text-dark fs-6 fst-italic mt-auto" >Profile Image
+                              <img src="assets/images/{{arr.profile}}" alt="Profile Image" class="profile mb-6">
                             </div>
+                          </div>
+
+                          <div class="col ps-2">
+
+                              <div class="row g-0">
+
+                                  <div class="col-md-10 text-center">
+                                      <span class="name">{{arr.firstname | titlecase}} {{arr.lastname | titlecase}}</span>
+                                  </div>
+
+
+
+                              </div>
+
+                              <div class="row g-0 mt-3">
+
+                                  <div class="col-md">
+
+                                      <table class="table table-hover mx-auto">
+                                          <thead class="text-center fs-5 fst-italic text-secondary">
+                                              <tr>
+                                                  <td colspan="2" class="text-dark fs-6">Personal Details</td>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              <tr>
+                                                  <td class="fw-bold">Birthdate :</td>
+                                                  <td>{{arr.birthday}}</td>
+                                              </tr>
+                                              <tr>
+                                                  <td class="fw-bold">Gender :</td>
+                                                  <td>{{arr.gender == 'm' ? "Male" : "Female"}}</td>
+                                              </tr>
+                                              <tr>
+                                                  <td class="fw-bold">Education :</td>
+                                                  <td>{{arr.education | titlecase}}</td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+
+                                  </div>
+
+                                  <div class="col">
+
+                                      <table class="table table-hover mx-auto">
+                                          <thead class="text-center fs-5 fst-italic text-secondary">
+                                              <tr>
+                                                  <td colspan="2"  class="text-dark fs-6">Job Details</td>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              <tr>
+                                                  <td class="fw-bold">Company :</td>
+                                                  <td>{{arr.company | titlecase}}</td>
+                                              </tr>
+                                              <tr>
+                                                  <td class="fw-bold">Experience :</td>
+                                                  <td>{{arr.jobExperience}} yrs</td>
+                                              </tr>
+                                              <tr>
+                                                  <td class="fw-bold">Salary :</td>
+                                                  <td>{{arr.salary}} LPA</td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+
+                                  </div>
+
+                              </div>
 
                           </div>
 
-
-                        </div>
                       </div>
-                   </div>
-          </div>
-      </main>
-  </div>
-</div>
+
+                    </div>
+
+
+                  </div>
+                </div>
+             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           
+
+
+

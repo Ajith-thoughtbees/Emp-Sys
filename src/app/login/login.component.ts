@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../service/login.service';
+import { User } from './user';
 @Component({
   selector: 'app-login',
   providers: [LoginService],
@@ -11,84 +12,54 @@ import { LoginService } from '../service/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private route: Router,
-    private http: HttpClient,
-    private login:LoginService) { }
+  username : string = '';
+  password : string = '';
+  role : string = '';
+  user : User = new User();
+  roles : string[];
+  
 
-    
-    ngOnInit(): void {
+  constructor(private LoginService : LoginService, private route : Router, private formBuilder:FormBuilder ) {
+    this.roles = [
+      'Admin',
+      'Employee'
+    ]
+  }
 
-      this.loginForm = this.formBuilder.group({
-        username: ['',[Validators.required,Validators.minLength(6),Validators.maxLength(20)]],
-        password: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(8)]],
-      });
+  ngOnInit(): void {
+    this.username = '';
+    this.password = '';
+  }
 
+  login() {
+    this.user.username = this.username;
+    this.user.password = this.password;
+    this.user.role = this.role;
 
-    }
+    this.LoginService.login(this.user).subscribe(res => {
 
-  loginForm: any = FormGroup;
-  submitted = false;
+      if(res == null) {
+        alert("Uername or password is wrong");
+        this.ngOnInit();
+      }else {
+        console.log("Login successful");
+        localStorage.setItem("empId",res.id);
 
-  get f() { return this.loginForm.controls; }
+        if(this.role == 'Employee') {
+          this.route.navigate(['employee-dashboard']);
+        }
 
-  signIn() {
-
-    this.submitted = true;
-
-    if (this.loginForm.invalid) {
-      return;
-    }
-
-    if (this.submitted) {
-      // alert("Great!!");
-    }
-
-    this.http.get<any>("http://localhost:3000/login")
-    .subscribe(res=>{
-      const admin = res.find((a:any)=>{
-        let loginUser = a.id
-        localStorage.setItem('empId', JSON.stringify(loginUser))
-        return a.username === this.loginForm.value.username && a.password === this.loginForm.value.password && a.post==="Admin"
-      });
-
-      const user = res.find((a:any)=>{
-        let loginUser = a.id
-        console.log(loginUser);
-        localStorage.setItem('empId', JSON.stringify(loginUser))
-        return a.username === this.loginForm.value.username && a.password === this.loginForm.value.password
-
-      });
-
-
-      if(admin){
-        // alert('Login Succesful');
-        this.loginForm.reset()
-      this.route.navigate(["dashboard"])
-      }else{
-        if(user){
-          this.loginForm.reset()
-      this.route.navigate(["employee-dashboard"])
-        }else{
-           alert("user not found")
+        if( this.role == 'Admin') {
+          this.route.navigate(['dashboard']);
         }
 
       }
-    },err=>{
-      alert("Something went wrong")
+
+    }, err => {
+      alert("Login failed");
+      this.ngOnInit();
     })
 
   }
-
-  gotoDashboard() {
-    this.route.navigate(['/dashboard']);
-  }
-  gotoRegister(){
-    this.route.navigate(['/register']);
-  }
-
-
-
 
 }

@@ -25,21 +25,26 @@
       "id": 2
     },
     {
-      "firstname": "vino",
-      "lastname": "h",
-      "birthday": "2022-06-25",
+      "firstname": "Haris",
+      "lastname": "Kumar",
+      "birthday": "2022-06-01",
       "gender": "m",
       "education": "post graduate",
-      "company": "Tcs",
-      "jobExperience": 10,
-      "salary": 12121212,
+      "company": "ThoughtBees",
+      "jobExperience": 12,
+      "salary": 100000,
       "profile": "523-5230160_clipart-computer-operator-hd-png-download.png",
       "id": 3
     }
   ],
-  "login": [{
-    
-  }],
+  "login": [
+    {
+      "username": "ajithm",
+      "password": "123",
+      "role": "Admin",
+      "id": 1
+    }
+  ],
   "attendance": [
     {
       "leaveReason": "1",
@@ -75,33 +80,5 @@
       "id": 3
     }
   ],
-  "payroll": [
-    {
-      "employeeName": "Vinod",
-      "date": "2022-06-16",
-      "salary": 50000,
-      "tds": 10,
-      "hra": 121,
-      "pf": 1000,
-      "id": 2
-    },
-    {
-      "employeeName": "Ajith",
-      "date": "2022-06-04",
-      "salary": 147741,
-      "tds": 1215,
-      "hra": 12,
-      "pf": 1245,
-      "id": 3
-    },
-    {
-      "employeeName": null,
-      "date": null,
-      "salary": null,
-      "tds": null,
-      "hra": null,
-      "pf": null,
-      "id": 4
-    }
-  ]
+  "payroll": []
 }

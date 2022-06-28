@@ -2,9 +2,11 @@ export class payrollModel{
   id: number=0;
   employeeName: string='';
   date : string='';
-  salary:number=0;
-  tds: number=0;
-  hra: number=0;
-  pf:number=0;
-
+  basic:number=0;
+  incentivePay:number=0;
+  houseRentAllowance:number=0;
+  mealAllowance:number=0;
+  providentFund:number=0;
+  profesionalTax:number=0;
+  loan:number=0;
 }

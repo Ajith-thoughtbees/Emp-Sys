@@ -75,16 +75,16 @@
            Date
              </th>
             <th scope="col">
-          Salary
+         Basic
             </th>
             <th scope="col">
-            TDS
+           Incentive Pay
             </th>
             <th scope="col">
-            HRA
+         House Rent Allowance
             </th>
             <th scope="col">
-            PF
+         Meal Allowance
             </th>
             <th scope="col">
               Total
@@ -99,13 +99,13 @@
             <td class="text-uppercase">{{arr.id}}</td>
             <td class="text-uppercase">{{arr.employeeName}}</td>
             <td>{{arr.date}}</td>
-            <td>{{arr.salary}}</td>
-            <td>{{arr.tds}}</td>
-            <td>{{arr.hra}}</td>
-            <td>{{arr.pf}}</td>
-            <td class="text-muted">{{(arr.salary)-(arr.tds+arr.hra+arr.pf)}}</td>
-            <button class="btn me-2"  (click)="updatePayroll(arr)"  data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="bi bi-pencil-square text-primary"></i></button>
-            <button class="btn me-2"  (click)="deletePayroll(arr)"><i class="bi bi-trash text-danger"></i></button>
+            <td>{{arr.basic}}</td>
+            <td>{{arr.incentivePay}}</td>
+            <td>{{arr.houseRentAllowance}}</td>
+            <td>{{arr.mealAllowance}}</td>
+            <td class="text-muted">{{(arr.basic+arr.incentivePay+arr.houseRentAllowance+arr.mealAllowance)}}</td>
+            <button class="btn me-2"  (click)="updatePayroll(arr)"  data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="bi bi-pencil-square text-primary btn-sm"></i></button>
+            <button class="btn me-2"  (click)="deletePayroll(arr)"><i class="bi bi-trash text-danger btn-sm"></i></button>
           </tr>
 
         </tbody>
@@ -124,20 +124,25 @@
           </div>
           <div class="modal-body">
 
-            <form [formGroup]="payrollForm">
+            <form [formGroup]="payrollForm" >
 
 
 
               <div class="row">
                 <div class="col">
-                  <input type="text" class="form-control" placeholder="Employee Name" formControlName="employeeName">
-                  <div *ngIf="f['employeeName'].touched && f['employeeName'].invalid" class="alert alert-danger">
-                    <div *ngIf="f['employeeName'].errors && f['employeeName'].errors['required']">Employee Name is required.</div>
-                     <div *ngIf="f['employeeName'].errors && f['employeeName'].errors['minlength']">Name should be 3 character.</div> 
+                  <select class="form-select" formControlName="employeeName">
+                    <option *ngFor="let processTemplate of processTemplates">{{processTemplate.name}}</option>
+                      {{processTemplate.name}
+
+                  </select>
+                <!-- <input type="text" class="form-control" placeholder="Employee Name" formControlName="employeeName"> -->
+
+
                 </div>
-              </div>
 
               </div>
+
+
        <div class="row mt-3">
   <div class="col">
     <label for="datepicker" class="form-label">Date</label>
@@ -147,35 +152,35 @@
 </div>
   </div>
   <div class="col" >
-    <label for="salary" class="form-label">Salary</label>
-    <input type="number" class="form-control" placeholder="Salary" formControlName="salary" >
-    <div *ngIf="f['salary'].touched && f['salary'].invalid" class="alert alert-danger">
-      <div *ngIf="f['salary'].errors && f['salary'].errors['required']">
-       Salary  is required.</div>
+    <label for="salary" class="form-label">Basic</label>
+    <input type="number" class="form-control" placeholder="Basic" formControlName="basic" >
+    <div *ngIf="f['basic'].touched && f['basic'].invalid" class="alert alert-danger">
+      <div *ngIf="f['basic'].errors && f['basic'].errors['required']">
+     Basic  is required.</div>
   </div>
   </div>
 </div>
               <div class="row mt-3">
                 <div class="col">
-                  <input type="number" class="form-control" placeholder="TDS"
-                    formControlName="tds">
-                    <div *ngIf="f['tds'].touched && f['tds'].invalid" class="alert alert-danger">
-                      <div *ngIf="f['tds'].errors && f['tds'].errors['required']">TDS  is required.</div>
+                  <input type="number" class="form-control" placeholder="Incentive Pay"
+                    formControlName= "incentivePay">
+                    <div *ngIf="f['incentivePay'].touched && f['incentivePay'].invalid" class="alert alert-danger">
+                      <div *ngIf="f['incentivePay'].errors && f['incentivePay'].errors['required']">Incentive Pay is required.</div>
                   </div>
                 </div>
                 <div class="col">
-                  <input type="number" class="form-control" placeholder="HRA" formControlName="hra">
-                  <div *ngIf="f['hra'].touched && f['hra'].invalid" class="alert alert-danger">
-                    <div *ngIf="f['hra'].errors && f['hra'].errors['required']">HRA  is required.</div>
+                  <input type="number" class="form-control" placeholder="House Rent Allowance" formControlName="houseRentAllowance">
+                  <div *ngIf="f['houseRentAllowance'].touched && f['houseRentAllowance'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['houseRentAllowance'].errors && f['houseRentAllowance'].errors['required']">House Rent Allowance is required.</div>
                 </div>
                 </div>
               </div>
               <div class="row mt-3">
                 <div class="col">
-                  <input type="number" class="form-control" placeholder="PF"
-                    formControlName="pf">
-                    <div *ngIf="f['pf'].touched && f['pf'].invalid" class="alert alert-danger">
-                      <div *ngIf="f['pf'].errors && f['pf'].errors['required']">PF  is required.</div>
+                  <input type="number" class="form-control" placeholder="Meal Allowance"
+                    formControlName="mealAllowance">
+                    <div *ngIf="f['mealAllowance'].touched && f['mealAllowance'].invalid" class="alert alert-danger">
+                      <div *ngIf="f['mealAllowance'].errors && f['mealAllowance'].errors['required']">Meal Allowance is required.</div>
                   </div>
                 </div>
 
@@ -189,7 +194,7 @@
           <div class="modal-footer">
 
             <button type="button"  id="cancel" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <input type="submit" *ngIf="showAdd"  (click)="postPayroll()"  class="btn btn-primary mx-2" value="Save">
+            <input type="submit" *ngIf="showAdd"  (click)="postPayroll()" [disabled]="payrollForm.invalid" class="btn btn-primary mx-2" value="Save">
       <button type="button" *ngIf="showUpdate"  (click)="updatePayrollDetails()"  class="btn btn-primary">Update</button>
           </div>
         </div>
