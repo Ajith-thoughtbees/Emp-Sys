@@ -38,12 +38,7 @@
     }
   ],
   "login": [
-    {
-      "username": "ajithm",
-      "password": "123",
-      "role": "Admin",
-      "id": 1
-    }
+ 
   ],
   "attendance": [
     {
