@@ -1,4 +1,19 @@
-import { HttpClient } from '@angular/common/http';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormGroup,FormControl,Validators,AbstractControl } from '@angular/forms';
 import { ApiService } from '../service/api.service';
@@ -72,18 +87,14 @@ payrollModelObj:payrollModel=new payrollModel();
 //     basicPay = parseInt(this.payrollForm.controls['basicPay'].value) || 0;
 //   }
 
-//   newFunction();
-
-//   function newFunction() {
-//     if (id == 'gst-first' || id == 'basic-pay') {
-//       const firstPremium = basicPay * (incentivePay / 100) + basicPay;
-//       this.payrollForm.controls['incentivePay'].patchValue(firstPremium);
-//     }
-//     if (id == 'gst-next' || id == 'basic-pay') {
-//       const nextPremium = basicPay * (houseRentAllowance / 100) + basicPay;
-//       this.payrollForm.controls['houseRentAllowance'].patchValue(nextPremium);
-//     }
-//   }
+//   // if (id == 'gst-first' || id == 'basic-pay') {
+//   //   const firstPremium = basicPay * (incentivePay / 100) + basicPay ;
+//   //   this.payrollForm.controls['incentivePay'].patchValue(firstPremium);
+//   // }
+//   // if (id == 'gst-next' || id == 'basic-pay') {
+//   //   const nextPremium = basicPay * (houseRentAllowance / 100) + basicPay;
+//   //   this.payrollForm.controls['houseRentAllowance'].patchValue(nextPremium);
+//   // }
 // }
 
 get f(): { [key: string]: AbstractControl } {

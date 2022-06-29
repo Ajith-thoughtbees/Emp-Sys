@@ -1,204 +1,389 @@
 <!-- Dashboard -->
 <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
   <!-- Vertical Navbar -->
-  <nav class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg" id="navbarVertical">
-      <div class="container-fluid">
-          <!-- Toggler --> <button class="navbar-toggler ms-n2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button> <!-- Brand -->  <div class="icon"><img src="../../assets/login_img.svg" class="avatar avatar-sm rounded-circle ms-3">
-            <a class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-2 logo fs-2 mt-0" href="#"> Admin </a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="sidebarCollapse">
-              <!-- Navigation -->
-              <ul class="navbar-nav">
-                <li class="nav-item"> <a class="nav-link" routerLink="/dashboard"> <i class="bi bi-house"></i> Dashboard </a> </li>
-                <li class="nav-item"> <a class="nav-link" href="#" routerLink="/payroll" > <i class="bi bi-bar-chart"></i> Payroll </a> </li>
-
-                <li class="nav-item"> <a class="nav-link" href="#" routerLink="/leave" > <i class="bi bi-stopwatch-fill"></i> Leave </a> </li>
-
-            </ul> <!-- Divider -->
-              <hr class="navbar-divider my-5 opacity-20">
-
-
-
-          </div>
+  <nav
+    class="navbar show navbar-vertical h-lg-screen navbar-expand-lg px-0 py-3 navbar-light bg-white border-bottom border-bottom-lg-0 border-end-lg"
+    id="navbarVertical"
+  >
+    <div class="container-fluid">
+      <!-- Toggler -->
+      <button
+        class="navbar-toggler ms-n2"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#sidebarCollapse"
+        aria-controls="sidebarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Brand -->
+      <div class="icon">
+        <img
+          src="../../assets/login_img.svg"
+          class="avatar avatar-sm rounded-circle ms-3"
+        />
+        <a
+          class="navbar-brand py-lg-2 mb-lg-5 px-lg-6 me-2 logo fs-2 mt-0"
+          href="#"
+        >
+          Admin
+        </a>
       </div>
-  </nav> <!-- Main content -->
+
+      <div class="collapse navbar-collapse" id="sidebarCollapse">
+        <!-- Navigation -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard">
+              <i class="bi bi-house"></i> Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="/payroll">
+              <i class="bi bi-bar-chart"></i> Payroll
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="/leave">
+              <i class="bi bi-stopwatch-fill"></i> Leave
+            </a>
+          </li>
+        </ul>
+        <!-- Divider -->
+        <hr class="navbar-divider my-5 opacity-20" />
+      </div>
+    </div>
+  </nav>
+  <!-- Main content -->
   <div class="h-screen flex-grow-1 overflow-y-lg-auto">
-      <!-- Header -->
-      <header class="bg-surface-primary border-bottom pt-6">
-          <div class="container-fluid">
-              <div class="mb-npx">
-                  <div class="row align-items-center">
-                      <div class="col-sm-6 col-12 mb-4 mb-sm-0">
-                          <!-- Title -->
-                          <h1 class="h2 mb-0 ls-tight text-success">Employee management system</h1>
-                      </div> <!-- Actions -->
-                      <div class="col-sm-6 col-12 text-sm-end">
-                          <div class="mx-n1"> <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1"> <span class=" pe-2"> <i class="bi bi-person-square"></i> </span> <span> Account</span> </a> <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1" routerLink="/login" > <span class=" pe-2"><i class="bi bi-box-arrow-left"></i> </span> <span>Logout</span> </a> </div>
-                      </div>
-                  </div> <!-- Nav -->
-                  <ul class="nav nav-tabs mt-4 overflow-x border-0">
-                      <li class="nav-item "> <a href="#" class="nav-link active">All Payments</a> </li>
-                  </ul>
+    <!-- Header -->
+    <header class="bg-surface-primary border-bottom pt-6">
+      <div class="container-fluid">
+        <div class="mb-npx">
+          <div class="row align-items-center">
+            <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+              <!-- Title -->
+              <h1 class="h2 mb-0 ls-tight text-success">
+                Employee management system
+              </h1>
+            </div>
+            <!-- Actions -->
+            <div class="col-sm-6 col-12 text-sm-end">
+              <div class="mx-n1">
+                <a
+                  href="#"
+                  class="btn d-inline-flex btn-sm btn-neutral border-base mx-1"
+                >
+                  <span class="pe-2">
+                    <i class="bi bi-person-square"></i>
+                  </span>
+                  <span> Account</span>
+                </a>
+                <a
+                  href="#"
+                  class="btn d-inline-flex btn-sm btn-primary mx-1"
+                  routerLink="/login"
+                >
+                  <span class="pe-2"
+                    ><i class="bi bi-box-arrow-left"></i>
+                  </span>
+                  <span>Logout</span>
+                </a>
               </div>
+            </div>
           </div>
-      </header> <!-- Main -->
-      <main class="py-6 bg-surface-secondary">
-          <div class="container-fluid">
-              <!-- Card stats -->
+          <!-- Nav -->
+          <ul class="nav nav-tabs mt-4 overflow-x border-0">
+            <li class="nav-item">
+              <a href="#" class="nav-link active">All Payments</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!-- Main -->
+    <main class="py-6 bg-surface-secondary">
+      <div class="container-fluid">
+        <!-- Card stats -->
 
-              <div class="card shadow border-0 mb-5">
-                  <div class="card-header">
-                    <div class="toolbar">
-                      <div class="add-employee">
-                        <button class="btn btn-outline-success btn-lg"  (click)="addButtonClickFunction()" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Payments</button>
-                      </div>
-                      <div class="search-employee">
-                        <input type="search" class="form-control" placeholder="Search Employees">
-                      </div>
+        <div class="card shadow border-0 mb-5">
+          <div class="card-header">
+            <div class="toolbar">
+              <div class="add-employee">
+                <button
+                  class="btn btn-outline-success btn-lg"
+                  (click)="addButtonClickFunction()"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  Payments
+                </button>
+              </div>
+              <div class="search-employee">
+                <input
+                  type="search"
+                  class="form-control"
+                  placeholder="Search Employees"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- table -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+
+              <th scope="col">Employee Name</th>
+              <th scope="col">Date</th>
+              <th scope="col">Basic</th>
+              <th scope="col">Incentive Pay</th>
+              <th scope="col">House Rent Allowance</th>
+              <th scope="col">Meal Allowance</th>
+              <th scope="col">Total</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let arr of employeeData">
+              <td class="text-uppercase">{{ arr.id }}</td>
+              <td class="text-uppercase">{{ arr.employeeName }}</td>
+              <td>{{ arr.date }}</td>
+              <td>{{ arr.basic }}</td>
+              <td>{{ arr.incentivePay }}</td>
+              <td>{{ arr.houseRentAllowance }}</td>
+              <td>{{ arr.mealAllowance }}</td>
+              <td class="text-muted">
+                {{
+                  arr.basic +
+                    arr.incentivePay +
+                    arr.houseRentAllowance +
+                    arr.mealAllowance
+                }}
+              </td>
+              <button
+                class="btn me-2"
+                (click)="updatePayroll(arr)"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                <i class="bi bi-pencil-square text-primary btn-sm"></i>
+              </button>
+              <button class="btn me-2" (click)="deletePayroll(arr)">
+                <i class="bi bi-trash text-danger btn-sm"></i>
+              </button>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- modal -->
+
+        <div
+          class="modal fade"
+          id="exampleModal"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          tabindex="-1"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5
+                  class="modal-title text-primary fw-bold fs-5"
+                  id="exampleModalLabel"
+                >
+                  New Payments
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="payrollForm">
+                  <div class="row mt-3">
+                    <div class="col">
+                      <select
+                        class="form-select"
+                        formControlName="employeeName"
+                      >
+                        <option value="default" selected>
+                          Select your Employee
+                        </option>
+                        <option
+                          *ngFor="
+                            let processTemplate of processTemplates;
+                            let i = index
+                          "
+                          value="
+                    {{ processTemplate.id }}"
+                        >
+                          {{ processTemplate.firstname }}
+                        </option>
+                        <div
+                          *ngIf="
+                            f['employeeName'].touched &&
+                            f['employeeName'].invalid
+                          "
+                          class="alert alert-danger"
+                        >
+                          <div
+                            *ngIf="
+                              f['employeeName'].errors &&
+                              f['employeeName'].errors['required']
+                            "
+                          >
+                            Employee Name is required.
+                          </div>
+                        </div>
+                      </select>
+                    </div>
                   </div>
-                </div>
-             </div>
 
-      <!-- table -->
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">
-              ID
-              </th>
-
-            <th scope="col">
-            Employee Name
-            </th>
-            <th scope="col">
-           Date
-             </th>
-            <th scope="col">
-         Basic
-            </th>
-            <th scope="col">
-           Incentive Pay
-            </th>
-            <th scope="col">
-         House Rent Allowance
-            </th>
-            <th scope="col">
-         Meal Allowance
-            </th>
-            <th scope="col">
-              Total
-            </th>
-            <th scope="col">
-              Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let arr of employeeData ">
-            <td class="text-uppercase">{{arr.id}}</td>
-            <td class="text-uppercase">{{arr.employeeName}}</td>
-            <td>{{arr.date}}</td>
-            <td>{{arr.basic}}</td>
-            <td>{{arr.incentivePay}}</td>
-            <td>{{arr.houseRentAllowance}}</td>
-            <td>{{arr.mealAllowance}}</td>
-            <td class="text-muted">{{(arr.basic+arr.incentivePay+arr.houseRentAllowance+arr.mealAllowance)}}</td>
-            <button class="btn me-2"  (click)="updatePayroll(arr)"  data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="bi bi-pencil-square text-primary btn-sm"></i></button>
-            <button class="btn me-2"  (click)="deletePayroll(arr)"><i class="bi bi-trash text-danger btn-sm"></i></button>
-          </tr>
-
-        </tbody>
-      </table>
-
-
-      <!-- modal -->
-
-
-      <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
-        <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title text-primary fw-bold fs-5" id="exampleModalLabel">New Payments</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-
-            <form [formGroup]="payrollForm" >
-
-
-
-              <div class="row">
-                <div class="col">
-                  <select class="form-select" formControlName="employeeName">
-                    <option *ngFor="let processTemplate of processTemplates">{{processTemplate.name}}</option>
-                      {{processTemplate.name}
-
-                  </select>
-                <!-- <input type="text" class="form-control" placeholder="Employee Name" formControlName="employeeName"> -->
-
-
-                </div>
-
-              </div>
-
-
-       <div class="row mt-3">
+                  <!-- <div class="row mt-3">
   <div class="col">
     <label for="datepicker" class="form-label">Date</label>
   <input type="date" class="form-control" id="datepicker" placeholder="Date" formControlName="date" >
   <div *ngIf="f['date'].touched && f['date'].invalid" class="alert alert-danger">
     <div *ngIf="f['date'].errors && f['date'].errors['required']">Date From is required.</div>
 </div>
-  </div>
-  <div class="col" >
-    <label for="salary" class="form-label">Basic</label>
-    <input type="number" class="form-control" placeholder="Basic" formControlName="basic" >
-    <div *ngIf="f['basic'].touched && f['basic'].invalid" class="alert alert-danger">
-      <div *ngIf="f['basic'].errors && f['basic'].errors['required']">
-     Basic  is required.</div>
-  </div>
+  </div> -->
+                  <div class="col mt-3">
+                    <label for="salary" class="form-label">Basic</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      placeholder="Basic"
+                      formControlName="basic"
+                    />
+                    <div
+                      *ngIf="f['basic'].touched && f['basic'].invalid"
+                      class="alert alert-danger"
+                    >
+                      <div
+                        *ngIf="
+                          f['basic'].errors && f['basic'].errors['required']
+                        "
+                      >
+                        Basic Pay is required.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row mt-3">
+                    <div class="col">
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Incentive Pay"
+                        formControlName="incentivePay"
+                      />
+                      <div
+                        *ngIf="
+                          f['incentivePay'].touched && f['incentivePay'].invalid
+                        "
+                        class="alert alert-danger"
+                      >
+                        <div
+                          *ngIf="
+                            f['incentivePay'].errors &&
+                            f['incentivePay'].errors['required']
+                          "
+                        >
+                          Incentive Pay is required.
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="House Rent Allowance"
+                        formControlName="houseRentAllowance"
+                      />
+                      <div
+                        *ngIf="
+                          f['houseRentAllowance'].touched &&
+                          f['houseRentAllowance'].invalid
+                        "
+                        class="alert alert-danger"
+                      >
+                        <div
+                          *ngIf="
+                            f['houseRentAllowance'].errors &&
+                            f['houseRentAllowance'].errors['required']
+                          "
+                        >
+                          House Rent Allowance is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col">
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Meal Allowance"
+                        formControlName="mealAllowance"
+                      />
+                      <div
+                        *ngIf="
+                          f['mealAllowance'].touched &&
+                          f['mealAllowance'].invalid
+                        "
+                        class="alert alert-danger"
+                      >
+                        <div
+                          *ngIf="
+                            f['mealAllowance'].errors &&
+                            f['mealAllowance'].errors['required']
+                          "
+                        >
+                          Meal Allowance is required.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  id="cancel"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Cancel
+                </button>
+                <input
+                  type="submit"
+                  *ngIf="showAdd"
+                  (click)="postPayroll()"
+                  [disabled]="payrollForm.invalid"
+                  class="btn btn-primary mx-2"
+                  value="Save"
+                />
+                <button
+                  type="button"
+                  *ngIf="showUpdate"
+                  (click)="updatePayrollDetails()"
+                  class="btn btn-primary"
+                >
+                  Update
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
 </div>
-              <div class="row mt-3">
-                <div class="col">
-                  <input type="number" class="form-control" placeholder="Incentive Pay"
-                    formControlName= "incentivePay">
-                    <div *ngIf="f['incentivePay'].touched && f['incentivePay'].invalid" class="alert alert-danger">
-                      <div *ngIf="f['incentivePay'].errors && f['incentivePay'].errors['required']">Incentive Pay is required.</div>
-                  </div>
-                </div>
-                <div class="col">
-                  <input type="number" class="form-control" placeholder="House Rent Allowance" formControlName="houseRentAllowance">
-                  <div *ngIf="f['houseRentAllowance'].touched && f['houseRentAllowance'].invalid" class="alert alert-danger">
-                    <div *ngIf="f['houseRentAllowance'].errors && f['houseRentAllowance'].errors['required']">House Rent Allowance is required.</div>
-                </div>
-                </div>
-              </div>
-              <div class="row mt-3">
-                <div class="col">
-                  <input type="number" class="form-control" placeholder="Meal Allowance"
-                    formControlName="mealAllowance">
-                    <div *ngIf="f['mealAllowance'].touched && f['mealAllowance'].invalid" class="alert alert-danger">
-                      <div *ngIf="f['mealAllowance'].errors && f['mealAllowance'].errors['required']">Meal Allowance is required.</div>
-                  </div>
-                </div>
-
-              </div>
-
-
-
-            </form>
-
-          </div>
-          <div class="modal-footer">
-
-            <button type="button"  id="cancel" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <input type="submit" *ngIf="showAdd"  (click)="postPayroll()" [disabled]="payrollForm.invalid" class="btn btn-primary mx-2" value="Save">
-      <button type="button" *ngIf="showUpdate"  (click)="updatePayrollDetails()"  class="btn btn-primary">Update</button>
-          </div>
-        </div>
-        </div>
-        </div>
-
-

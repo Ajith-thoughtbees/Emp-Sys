@@ -52,12 +52,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         this.employees.unshift(emp);
       }
       this.employeesToDisplay = this.employees;
-    });    
+    });
   }
   get f(): { [key: string]: AbstractControl } {
     return this.employeeForm.controls;
   }
- 
+
   ngAfterViewInit(): void {
     //this.buttontemp.nativeElement.click();
   }
@@ -170,4 +170,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   public get Salary(): FormControl {
     return this.employeeForm.get('salary') as FormControl;
   }
+
+  
 }
