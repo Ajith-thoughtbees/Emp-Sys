@@ -19,7 +19,7 @@ postEmployees(employee : Employee){
 }
 
 getEmployees(){
-  console.log('in api')
+
   return this.http.get<Employee[]>(this.baseUrl)
 }
 

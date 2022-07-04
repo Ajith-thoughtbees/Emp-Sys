@@ -138,31 +138,30 @@
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">ID</th>
+              <!-- <th scope="col">ID</th> -->
 
               <th scope="col">Employee Name</th>
-              <th scope="col">Date</th>
+              <!-- <th scope="col">Date</th> -->
               <th scope="col">Basic</th>
-              <th scope="col">Incentive Pay</th>
+              <!-- <th scope="col">Incentive Pay</th> -->
               <th scope="col">House Rent Allowance</th>
               <th scope="col">Meal Allowance</th>
               <th scope="col">Total</th>
-              <th scope="col">Actions</th>
+              <th scope="col" class="text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let arr of employeeData">
-              <td class="text-uppercase">{{ arr.id }}</td>
-              <td class="text-uppercase">{{ arr.employeeName }}</td>
-              <td>{{ arr.date }}</td>
+              <!-- <td class="text-uppercase">{{ arr.id }}</td> -->
+              <td class="text-uppercase"> {{arr.empFirstName}}</td>
+              <!-- <td>{{ arr.date }}</td> -->
               <td>{{ arr.basic }}</td>
-              <td>{{ arr.incentivePay }}</td>
+              <!-- <td>{{ arr.incentivePay }}</td> -->
               <td>{{ arr.houseRentAllowance }}</td>
               <td>{{ arr.mealAllowance }}</td>
               <td class="text-muted">
                 {{
                   arr.basic +
-                    arr.incentivePay +
                     arr.houseRentAllowance +
                     arr.mealAllowance
                 }}
@@ -173,10 +172,13 @@
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
               >
-                <i class="bi bi-pencil-square text-primary btn-sm"></i>
+                <i class="bi bi-pencil-square text-primary fs-5"></i>
+              </button>
+              <button class="btn me-2" (click)="show()">
+                <i class="bi bi-plus text-success fs-5"></i>
               </button>
               <button class="btn me-2" (click)="deletePayroll(arr)">
-                <i class="bi bi-trash text-danger btn-sm"></i>
+                <i class="bi bi-trash text-danger fs-5"></i>
               </button>
             </tr>
           </tbody>
@@ -198,7 +200,7 @@
                   class="modal-title text-primary fw-bold fs-5"
                   id="exampleModalLabel"
                 >
-                  New Payments
+                Salary Details
                 </h5>
                 <button
                   type="button"
@@ -262,6 +264,7 @@
                       class="form-control"
                       placeholder="Basic"
                       formControlName="basic"
+                      [(ngModel)] = "basic"
                     />
                     <div
                       *ngIf="f['basic'].touched && f['basic'].invalid"
@@ -277,8 +280,8 @@
                     </div>
                   </div>
 
-                  <div class="row mt-3">
-                    <div class="col">
+                <div class="row mt-3">
+                    <!-- <div class="col">
                       <input
                         type="number"
                         class="form-control"
@@ -300,13 +303,14 @@
                           Incentive Pay is required.
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="col">
                       <input
                         type="number"
                         class="form-control"
                         placeholder="House Rent Allowance"
                         formControlName="houseRentAllowance"
+                        [(ngModel)] = "houseRentAllowance"
                       />
                       <div
                         *ngIf="
@@ -333,6 +337,7 @@
                         class="form-control"
                         placeholder="Meal Allowance"
                         formControlName="mealAllowance"
+                        [(ngModel)] = "mealAllowance"
                       />
                       <div
                         *ngIf="
@@ -355,6 +360,9 @@
                 </form>
               </div>
               <div class="modal-footer">
+
+                <input type="text"  class="form-control"
+                placeholder="Total" formControlName="total" value = "{{basic+houseRentAllowance+mealAllowance}}" readonly>
                 <button
                   type="button"
                   id="cancel"
@@ -367,7 +375,6 @@
                   type="submit"
                   *ngIf="showAdd"
                   (click)="postPayroll()"
-                  [disabled]="payrollForm.invalid"
                   class="btn btn-primary mx-2"
                   value="Save"
                 />

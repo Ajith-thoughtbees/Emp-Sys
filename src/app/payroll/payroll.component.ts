@@ -1,178 +1,178 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormGroup,FormControl,Validators,AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { disableDebugTools } from '@angular/platform-browser';
 import { ApiService } from '../service/api.service';
 import { PayrollService } from '../service/payroll.service';
 import { payrollModel } from './payroll.model';
+
 
 @Component({
   selector: 'app-payroll',
   templateUrl: './payroll.component.html',
   styleUrls: ['./payroll.component.css'],
-  providers:[PayrollService,ApiService]
+  providers: [PayrollService, ApiService]
 })
 export class PayrollComponent implements OnInit {
-payrollModelObj:payrollModel=new payrollModel();
+  payrollModelObj: payrollModel = new payrollModel();
   payrollForm !: FormGroup;
-  employeeData!:any;
-  showAdd!:boolean;
-  showUpdate!:boolean;
-  processTemplates:any = [];
-  showUpdateTitle!:boolean;
-  showAddTitle!:boolean;
+  employeeData!: any;
+  showAdd!: boolean;
+  showUpdate!: boolean;
+  processTemplates: any = [];
+  showUpdateTitle!: boolean;
+  showAddTitle!: boolean;
+  basic!: number;
+  houseRentAllowance!: number;
+  mealAllowance!: number;
+  total!: any;
 
+  constructor(private formBuilder: FormBuilder,
+    private payrollServices: PayrollService,
+    private api: ApiService) {
+  }
+  addButtonClickFunction() {
+    this.payrollForm.reset();
+    this.showUpdate = false;
+    this.showAdd = true;
 
-  constructor( private formBuilder:FormBuilder,
-    private payrollServices:PayrollService,
-    private api:ApiService)
-  {
-     }
-     addButtonClickFunction()
-    {
-      this.payrollForm.reset();
-      this.showUpdate=false;
-      this.showAdd=true;
-
-      this.showUpdateTitle=false;
-      this.showAddTitle=true;
-    }
+    this.showUpdateTitle = false;
+    this.showAddTitle = true;
+  }
 
   ngOnInit(): void {
     this.payrollForm = this.formBuilder.group({
-      employeeName: this.formBuilder.control('',[Validators.required,Validators.minLength(3),Validators.maxLength(8)]),
-      date: this.formBuilder.control('',[Validators.required,Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)]),
-      basic: this.formBuilder.control('',[Validators.required,]),
-      incentivePay: this.formBuilder.control('',[Validators.required]),
-      houseRentAllowance: this.formBuilder.control('',[Validators.required]),
-      mealAllowance : this.formBuilder.control('',[Validators.required]),
-
+      employeeName: this.formBuilder.control('', [Validators.required, Validators.minLength(3), Validators.maxLength(8)]),
+      // date: this.formBuilder.control('',[Validators.required,Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)]),
+      basic: this.formBuilder.control('', [Validators.required,]),
+      // incentivePay: this.formBuilder.control('',[Validators.required]),
+      houseRentAllowance: this.formBuilder.control('', [Validators.required]),
+      mealAllowance: this.formBuilder.control('', [Validators.required]),
+      total: this.formBuilder.control('', [])
 
     });
-
-     this.getEmployees();
+    this.add1()
+    this.getEmployees();
     this.getAllSalary();
 
-}
+  }
 
-// onBasicPayKeyPress(e:any) {
-//   let basicPay;
-//   let incentivePay;
-//   let houseRentAllowance;
-//   const id = e.target.id;
 
-//   if (id == 'basic-pay') {
-//     basicPay = parseInt(e.target.value) || 0;
-//    incentivePay= parseInt(this.payrollForm.controls['incentivePay'].value) || 0;
-//    houseRentAllowance = parseInt(this.payrollForm.controls['houseRentAllowance'].value) || 0;
-//   } else if (id == 'gst-first') {
-//     incentivePay = parseInt(e.target.value) || 0;
-//     basicPay = parseInt(this.payrollForm.controls['basicPay'].value) || 0;
-//   } else if (id == 'gst-next') {
-//     houseRentAllowance = parseInt(e.target.value) || 0;
-//     basicPay = parseInt(this.payrollForm.controls['basicPay'].value) || 0;
-//   }
 
-//   newFunction();
+  get f(): { [key: string]: AbstractControl } {
+    return this.payrollForm.controls;
+  }
+  postPayroll() {
+    // alert("fucntion call");
+    this.payrollModelObj.id = this.payrollForm.value.id;
 
-//   function newFunction() {
-//     if (id == 'gst-first' || id == 'basic-pay') {
-//       const firstPremium = basicPay * (incentivePay / 100) + basicPay;
-//       this.payrollForm.controls['incentivePay'].patchValue(firstPremium);
-//     }
-//     if (id == 'gst-next' || id == 'basic-pay') {
-//       const nextPremium = basicPay * (houseRentAllowance / 100) + basicPay;
-//       this.payrollForm.controls['houseRentAllowance'].patchValue(nextPremium);
-//     }
-//   }
-// }
-
-get f(): { [key: string]: AbstractControl } {
-  return this.payrollForm.controls;
-}
-postPayroll(){
-  // alert("fucntion call");
-  this.payrollModelObj.id=this.payrollForm.value.id ;
-
-    this.payrollModelObj.employeeName=this.payrollForm.value.employeeName;
-    this.payrollModelObj.date=this.payrollForm.value.date;
-    this.payrollModelObj.basic=this.payrollForm.value.basic;
-    this.payrollModelObj.incentivePay=this.payrollForm.value.incentivePay;
-    this.payrollModelObj.houseRentAllowance=this.payrollForm.value.houseRentAllowance;
+    this.payrollModelObj.employeeName = this.payrollForm.value.employeeName;
+    // this.payrollModelObj.date=this.payrollForm.value.date;
+    this.payrollModelObj.basic = this.payrollForm.value.basic;
+    // this.payrollModelObj.incentivePay=this.payrollForm.value.incentivePay;
+    this.payrollModelObj.houseRentAllowance = this.payrollForm.value.houseRentAllowance;
     this.payrollModelObj.mealAllowance = this.payrollForm.value.mealAllowance;
 
-    this.api.getEmployees()
-  .subscribe(data => {
-    this.processTemplates = data;
-    console.log("in",this.processTemplates , data)
-  });
 
-    let cancel=document.getElementById("cancel");
-    this.payrollServices.postData(this.payrollModelObj).subscribe(a=> {
+
+
+    this.api.getEmployees()
+      .subscribe(data => {
+        this.processTemplates = data;
+        // console.log("in",this.processTemplates , data)
+
+        //  for (let emp of data) {
+        //   const index = this.processTemplates.findIndex((emp: { id: number; }) => emp.id)
+
+        //   console.log(emp.firstname)
+        //   }
+
+
+      });
+
+    let cancel = document.getElementById("cancel");
+    this.payrollServices.postData(this.payrollModelObj).subscribe(a => {
 
       console.log(a);
       alert("Record inserted successfully");
-      cancel?.click();this.payrollForm.reset();
+      cancel?.click(); this.payrollForm.reset();
       this.getAllSalary();
 
     })
-   }
+  }
 
-   getAllSalary(){
-    this.payrollServices.getData().subscribe(a=>{
-      this.employeeData=a;
+  getAllSalary() {
+    this.payrollServices.getData().subscribe(a => {
+      this.employeeData = a;
+      this.employeeData.map((data: any, i: any) => {
+        const index = this.processTemplates.findIndex((empdata: { id: any; }) => empdata.id == data.employeeName);
+        console.log(this.processTemplates[index])
+        if (index !== -1) {
+          console.log(this.processTemplates[index]);
+          this.employeeData[i]["empFirstName"] = this.processTemplates[index].firstname
+
+        }
+        else {
+          this.employeeData[i]["empFirstName"] == ''
+        }
+
+        console.log(index, i)
+      })
+      console.log(this.employeeData)
+
     })
 
 
   }
-  getEmployees(){
+  getEmployees() {
 
     this.api.getEmployees().subscribe(
-      (res: any[]) =>{
+      (res: any[]) => {
         console.log(res);
-        this.processTemplates =res;
+        this.processTemplates = res;
       }
 
 
     );
 
-   }
+  }
 
 
-  deletePayroll(arr:any){
+  deletePayroll(arr: any) {
 
-    this.payrollServices.deleteData(arr.id).subscribe(a=>{
+    this.payrollServices.deleteData(arr.id).subscribe(a => {
       alert("Record Deleted Succesfully");
       this.getAllSalary();
     })
 
   }
-  updatePayroll(arr:any){
-    this.showUpdate=true;
-    this.showAdd=false;
+  updatePayroll(arr: any) {
+    this.showUpdate = true;
+    this.showAdd = false;
 
-    this.showUpdateTitle=true;
-    this.showAddTitle=false;
-    this.payrollModelObj.id=arr.id;
+    this.showUpdateTitle = true;
+    this.showAddTitle = false;
+    this.payrollModelObj.id = arr.id;
     this.payrollForm.controls['employeeName'].setValue(arr.employeeName);
-    this.payrollForm.controls['date'].setValue(arr.date);
+    // this.payrollForm.controls['date'].setValue(arr.date);
     this.payrollForm.controls['basic'].setValue(arr.basic);
-    this.payrollForm.controls['incentivePay'].setValue(arr.incentivePay);
+    // this.payrollForm.controls['incentivePay'].setValue(arr.incentivePay);
     this.payrollForm.controls['houseRentAllowance'].setValue(arr.houseRentAllowance);
     this.payrollForm.controls['mealAllowance'].setValue(arr.mealAllowance);
   }
-  updatePayrollDetails(){
+  updatePayrollDetails() {
 
-    this.payrollModelObj.employeeName=this.payrollForm.value.employeeName;
-    this.payrollModelObj.date=this.payrollForm.value.date;
-    this.payrollModelObj.basic=this.payrollForm.value.basic;
-    this.payrollModelObj.incentivePay=this.payrollForm.value.incentivePay;
-    this.payrollModelObj.houseRentAllowance=this.payrollForm.value.houseRentAllowance;
-    this.payrollModelObj.mealAllowance=this.payrollForm.value.mealAllowance;
+    this.payrollModelObj.employeeName = this.payrollForm.value.employeeName;
+    // this.payrollModelObj.date=this.payrollForm.value.date;
+    this.payrollModelObj.basic = this.payrollForm.value.basic;
+    // this.payrollModelObj.incentivePay=this.payrollForm.value.incentivePay;
+    this.payrollModelObj.houseRentAllowance = this.payrollForm.value.houseRentAllowance;
+    this.payrollModelObj.mealAllowance = this.payrollForm.value.mealAllowance;
 
-    this.payrollServices.updateData(this.payrollModelObj,this.payrollModelObj.id).subscribe(a=>{
+    this.payrollServices.updateData(this.payrollModelObj, this.payrollModelObj.id).subscribe(a => {
       // alert("Record updated Succesfully");
 
-    let cancel=document.getElementById("cancel");
+      let cancel = document.getElementById("cancel");
 
       cancel?.click();
       this.payrollForm.reset();
@@ -180,6 +180,13 @@ postPayroll(){
     })
   }
 
+  add1() {
+    this.total = this.basic + this.houseRentAllowance + this.mealAllowance;
+    // console.log("hi")
+  }
+show(){
+  
+}
 
 }
 

@@ -12,9 +12,11 @@ import { EmployeeComponent } from './employee/employee.component';
 import { PayrollComponent } from './payroll/payroll.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 
+import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import { LeaveComponent } from './leave/leave.component';
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 import { EmpPayrollComponent } from './emp-payroll/emp-payroll.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 @NgModule({
@@ -26,10 +28,10 @@ import { EmpPayrollComponent } from './emp-payroll/emp-payroll.component';
     EmployeeComponent,
     PayrollComponent,
     AttendanceComponent,
-
     LeaveComponent,
     EmployeeDashboardComponent,
     EmpPayrollComponent,
+    PaymentComponent,
 
   ],
   imports: [
@@ -37,9 +39,8 @@ import { EmpPayrollComponent } from './emp-payroll/emp-payroll.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
-
-
+    HttpClientModule,
+    DynamicDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

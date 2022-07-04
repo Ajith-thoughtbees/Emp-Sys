@@ -1,3 +1,4 @@
+import { JsonpClientBackend } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit, ViewChild, } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import { ApiService } from '../service/api.service';
@@ -52,7 +53,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         this.employees.unshift(emp);
       }
       this.employeesToDisplay = this.employees;
+      localStorage.setItem('employee',JSON.stringify(this.employees));
     });
+
   }
   get f(): { [key: string]: AbstractControl } {
     return this.employeeForm.controls;
@@ -77,6 +80,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.api.postEmployees(employee).subscribe((res) => {
       this.employees.unshift(res);
       this.clearForm();
+
     });
 
   }
@@ -171,5 +175,5 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     return this.employeeForm.get('salary') as FormControl;
   }
 
-  
+
 }

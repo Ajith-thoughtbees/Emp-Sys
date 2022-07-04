@@ -13,18 +13,6 @@
       "id": 1
     },
     {
-      "firstname": "Vinodh",
-      "lastname": "Kumar",
-      "birthday": "2022-06-25",
-      "gender": "m",
-      "education": "post graduate",
-      "company": "Tcs",
-      "jobExperience": 12,
-      "salary": 12121212,
-      "profile": "523-5230160_clipart-computer-operator-hd-png-download.png",
-      "id": 2
-    },
-    {
       "firstname": "Haris",
       "lastname": "Kumar",
       "birthday": "2022-06-01",
@@ -35,6 +23,18 @@
       "salary": 100000,
       "profile": "523-5230160_clipart-computer-operator-hd-png-download.png",
       "id": 3
+    },
+    {
+      "firstname": "Vinodh",
+      "lastname": "Kumar",
+      "birthday": "2022-07-02",
+      "gender": "m",
+      "education": "10th pass",
+      "company": "Bala Infotech",
+      "jobExperience": 12,
+      "salary": 1500000,
+      "profile": "523-5230160_clipart-computer-operator-hd-png-download.png",
+      "id": 4
     }
   ],
   "login": [
@@ -43,6 +43,12 @@
       "password": "123",
       "role": "Admin",
       "id": 1
+    },
+    {
+      "username": "ajith",
+      "password": "123",
+      "role": "Admin",
+      "id": 2
     }
   ],
   "attendance": [
@@ -80,5 +86,30 @@
       "id": 3
     }
   ],
-  "payroll": []
+  "payroll": [
+    {
+      "employeeName": "\n                    1",
+      "date": "",
+      "basic": 10000,
+      "incentivePay": 0,
+      "houseRentAllowance": 10000,
+      "mealAllowance": 1000,
+      "providentFund": 0,
+      "profesionalTax": 0,
+      "loan": 0,
+      "id": 1
+    },
+    {
+      "employeeName": "\n                    1",
+      "date": "",
+      "basic": 100,
+      "incentivePay": 0,
+      "houseRentAllowance": 1212,
+      "mealAllowance": 100,
+      "providentFund": 0,
+      "profesionalTax": 0,
+      "loan": 0,
+      "id": 2
+    }
+  ]
 }
