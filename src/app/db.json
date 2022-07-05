@@ -49,6 +49,18 @@
       "password": "123",
       "role": "Admin",
       "id": 2
+    },
+    {
+      "username": "ajith",
+      "password": "123",
+      "role": "Admin",
+      "id": 3
+    },
+    {
+      "username": "ajith",
+      "password": "123",
+      "role": "Admin",
+      "id": 4
     }
   ],
   "attendance": [

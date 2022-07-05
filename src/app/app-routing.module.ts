@@ -6,6 +6,7 @@ import { EmpPayrollComponent } from './emp-payroll/emp-payroll.component';
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 import { LeaveComponent } from './leave/leave.component';
 import { LoginComponent } from './login/login.component';
+import { PaymentComponent } from './payment/payment.component';
 import { PayrollComponent } from './payroll/payroll.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -19,7 +20,7 @@ const routes: Routes = [
   {path:'leave',component:LeaveComponent},
   { path: 'payroll', component:PayrollComponent},
   { path:'attendance', component:AttendanceComponent},
-
+  {path:'payment',component:PaymentComponent}
 ];
 
 @NgModule({

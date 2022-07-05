@@ -1,19 +1,22 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { disableDebugTools } from '@angular/platform-browser';
 import { ApiService } from '../service/api.service';
 import { PayrollService } from '../service/payroll.service';
 import { payrollModel } from './payroll.model';
-
+import {DialogService} from 'primeng/dynamicdialog';
+import {DynamicDialogRef} from 'primeng/dynamicdialog';
+import {MessageService} from 'primeng/api';
+import { PaymentComponent } from '../payment/payment.component';
 
 @Component({
   selector: 'app-payroll',
   templateUrl: './payroll.component.html',
   styleUrls: ['./payroll.component.css'],
-  providers: [PayrollService, ApiService]
+  providers: [PayrollService, ApiService,DialogService, MessageService]
 })
-export class PayrollComponent implements OnInit {
+export class PayrollComponent implements OnInit,OnDestroy {
   payrollModelObj: payrollModel = new payrollModel();
   payrollForm !: FormGroup;
   employeeData!: any;
@@ -26,16 +29,19 @@ export class PayrollComponent implements OnInit {
   houseRentAllowance!: number;
   mealAllowance!: number;
   total!: any;
+  ref!: DynamicDialogRef;
 
   constructor(private formBuilder: FormBuilder,
     private payrollServices: PayrollService,
-    private api: ApiService) {
+    private api: ApiService,
+    public dialogService: DialogService,
+    public messageService:MessageService) {
   }
+
   addButtonClickFunction() {
     this.payrollForm.reset();
     this.showUpdate = false;
     this.showAdd = true;
-
     this.showUpdateTitle = false;
     this.showAddTitle = true;
   }
@@ -184,8 +190,29 @@ export class PayrollComponent implements OnInit {
     this.total = this.basic + this.houseRentAllowance + this.mealAllowance;
     // console.log("hi")
   }
-show(){
-  
+
+edit(){
+this.ref= this.dialogService.open(PaymentComponent,{
+
+  header:"Edit a payment details",
+  width: "80%",
+  contentStyle:{"max-height":"500px","overflow":"auto"},
+  baseZIndex:10000
+
+});
+
+this.ref.onClose.subscribe((payroll:payrollModel)=>{
+  if(payroll){
+    this.messageService.add({severity:"info", summary:'Payroll Selected', detail:payroll.employeeName})
+  }
+});
+
+
+}
+ngOnDestroy(): void {
+  if(this.ref){
+    this.ref.close();
+  }
 }
 
 }
