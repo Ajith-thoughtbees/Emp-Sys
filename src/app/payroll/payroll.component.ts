@@ -193,10 +193,11 @@ export class PayrollComponent implements OnInit,OnDestroy {
 
 edit(){
 this.ref= this.dialogService.open(PaymentComponent,{
-
-  header:"Edit a payment details",
-  width: "80%",
-  contentStyle:{"max-height":"500px","overflow":"auto"},
+  
+  header:"PaySlip Of An Employee",
+  width: "40%",
+  height : '100%',
+  contentStyle:{"max-height":"1000px","overflow":"auto"},
   baseZIndex:10000
 
 });

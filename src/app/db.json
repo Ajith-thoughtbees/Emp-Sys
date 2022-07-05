@@ -45,22 +45,10 @@
       "id": 1
     },
     {
-      "username": "ajith",
+      "username": "hari",
       "password": "123",
-      "role": "Admin",
+      "role": "Employee",
       "id": 2
-    },
-    {
-      "username": "ajith",
-      "password": "123",
-      "role": "Admin",
-      "id": 3
-    },
-    {
-      "username": "ajith",
-      "password": "123",
-      "role": "Admin",
-      "id": 4
     }
   ],
   "attendance": [
@@ -110,18 +98,6 @@
       "profesionalTax": 0,
       "loan": 0,
       "id": 1
-    },
-    {
-      "employeeName": "\n                    1",
-      "date": "",
-      "basic": 100,
-      "incentivePay": 0,
-      "houseRentAllowance": 1212,
-      "mealAllowance": 100,
-      "providentFund": 0,
-      "profesionalTax": 0,
-      "loan": 0,
-      "id": 2
     }
   ]
 }

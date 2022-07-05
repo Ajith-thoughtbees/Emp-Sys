@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -55,7 +55,7 @@ login() {
     }else {
       console.log("Login successful");
       localStorage.setItem("empId",res.id);
-    
+
       if(this.role == 'Employee') {
         this.route.navigate(['employee-dashboard']);
         (this.f['username'].value, this.f['password'].value == "empID")
@@ -65,7 +65,7 @@ login() {
         this.route.navigate(['dashboard']);
         (this.f['username'].value, this.f['password'].value == "Admin")
       }
-    
+
     }
 
   }, err => {
@@ -81,7 +81,7 @@ login() {
 //   if (this.RegistrationForm..value.password1 === this.RegistrationForm.value.password2) {
 //     this.MyService.Register(this.RegistrationForm.value)
 //       .subscribe(
-//         (data) => {}, 
+//         (data) => {},
 //         error => this.errorMessage = error
 //       )
 //   } else {

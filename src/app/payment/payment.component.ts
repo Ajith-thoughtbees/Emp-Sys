@@ -3,7 +3,7 @@ import {DynamicDialogRef} from 'primeng/dynamicdialog';
 import {DynamicDialogConfig} from 'primeng/dynamicdialog';
 import { PayrollService } from '../service/payroll.service';
 import { payrollModel } from '../payroll/payroll.model';
-
+import {CalendarModule} from 'primeng/calendar';
 
 @Component({
   selector: 'app-payment',
@@ -15,6 +15,7 @@ export class PaymentComponent implements OnInit {
 
   payrolls! : payrollModel[];
 
+  value!: Date;
   constructor(private payrollService:PayrollService,
     public ref:DynamicDialogRef,
     public config:DynamicDialogConfig) { }

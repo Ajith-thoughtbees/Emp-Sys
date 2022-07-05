@@ -19,7 +19,7 @@ import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashbo
 import { EmpPayrollComponent } from './emp-payroll/emp-payroll.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ButtonModule } from 'primeng/button';
-
+import {CalendarModule} from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,8 @@ import { ButtonModule } from 'primeng/button';
     ToastModule,
     TableModule,
     BrowserAnimationsModule,
-    ButtonModule
+    ButtonModule,
+    CalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
