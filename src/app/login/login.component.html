@@ -21,7 +21,16 @@
                       <div *ngIf="f['password'].errors && f['password'].errors['required']">Password is required.</div>
                   </div>
                   </div>
-              
+                  <div class="form-floating mt-3">
+                    <select class="form-select" id="floatingSelect" aria-label="Role" formControlName="role" [(ngModel)]="roles">
+                      <option *ngFor="let r of roles" [value]="r">{{r}}</option>
+                    </select>
+                    <label for="floatingSelect">Role</label>
+                    <div *ngIf="f['role'].touched && f['role'].invalid" class="alert alert-danger">
+                      <div *ngIf="f['role'].errors && f['role'].errors['required']">Role is required.</div>
+                  </div>
+                  </div>
+
                   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <button class="btn btn-outline-success me-md-2 mt-3" type="button"  [disabled]="loginForm.invalid" (click)="login()" >Login</button>
                   </div>

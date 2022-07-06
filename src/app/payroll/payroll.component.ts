@@ -78,7 +78,7 @@ export class PayrollComponent implements OnInit,OnDestroy {
     // this.payrollModelObj.incentivePay=this.payrollForm.value.incentivePay;
     this.payrollModelObj.houseRentAllowance = this.payrollForm.value.houseRentAllowance;
     this.payrollModelObj.mealAllowance = this.payrollForm.value.mealAllowance;
-
+     this.payrollModelObj.total=this.payrollForm.value.total;
 
 
 
@@ -191,11 +191,17 @@ export class PayrollComponent implements OnInit,OnDestroy {
     // console.log("hi")
   }
 
-edit(){
+edit(arr:any){
 this.ref= this.dialogService.open(PaymentComponent,{
-  
+  data: {
+    id:arr.id,
+    employeeName: arr.employeeName,
+    basic:arr.basic,
+  houseRentAllowance:arr.houseRentAllowance,
+  mealAllowance: arr.mealAllowance
+},
   header:"PaySlip Of An Employee",
-  width: "40%",
+  width: "80%",
   height : '100%',
   contentStyle:{"max-height":"1000px","overflow":"auto"},
   baseZIndex:10000

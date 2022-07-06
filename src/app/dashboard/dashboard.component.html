@@ -178,29 +178,7 @@
           </div>
         </div>
       </form>
-      <div class="form-floating mt-3">
-        <select class="form-select" id="floatingSelect" aria-label="Role" formControlName="role" [(ngModel)]="roles">
-          <option *ngFor="let r of roles" [value]="r">{{r}}</option>
-        </select>
-        <label for="floatingSelect">Role</label>
-        <div *ngIf="f['role'].touched && f['role'].invalid" class="alert alert-danger">
-          <div *ngIf="f['role'].errors && f['role'].errors['required']">Role is required.</div>
-      </div>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="floatingInput" formControlName="username" [(ngModel)]="username">
-        <label for="floatingInput">Username</label>
-        <div *ngIf="f['username'].touched && f['username'].invalid" class="alert alert-danger">
-          <div *ngIf="f['username'].errors && f['username'].errors['required']">Username is required.</div>
-      </div>
-    </div>
-    <div class="form-floating mt-3">
-      <input type="password" class="form-control" id="floatingPassword" formControlName="password" [(ngModel)]="password">
-      <label for="floatingPassword">Password</label>
-      <div *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
-        <div *ngIf="f['password'].errors && f['password'].errors['required']">Password is required.</div>
-    </div>
-    </div>
+    
     <div class="modal-footer">
       <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addEmployee()">Insert</button>
     </div>

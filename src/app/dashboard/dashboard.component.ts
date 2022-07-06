@@ -14,9 +14,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   @ViewChild('fileInput') fileInput: any;
   @ViewChild('addEmployeeButton') addEmployeeButton: any;
 
-  username : string = '';
-  password: string ='';
-  roles : string[];
+
   employeeForm: FormGroup;
   submitted = false;
   employees: Employee[];
@@ -37,10 +35,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.employeeForm = fb.group({});
     this.employees = [];
     this.employeesToDisplay = this.employees;
-    this.roles = [
-      'Admin',
-      'Employee'
-    ]
+
   }
 
   ngOnInit(): void {
@@ -53,9 +48,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       company: this.fb.control('',[Validators.required]),
       jobExperience: this.fb.control('',[Validators.required]),
       salary: this.fb.control('',[Validators.required]),
-      roles:this.fb.control('',[Validators.required]),
-      username:this.fb.control('',[Validators.required]),
-      password:this.fb.control('',[Validators.required])
+      // roles:this.fb.control('',[Validators.required]),
+      // username:this.fb.control('',[Validators.required]),
+      // password:this.fb.control('',[Validators.required])
     });
     this.api.getEmployees().subscribe((res) => {
       for (let emp of res) {
@@ -85,7 +80,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       jobExperience: this.JobExperience.value,
       salary: this.Salary.value,
       profile: this.fileInput.nativeElement.files[0]?.name,
-      
+
     };
     this.api.postEmployees(employee).subscribe((res) => {
       this.employees.unshift(res);

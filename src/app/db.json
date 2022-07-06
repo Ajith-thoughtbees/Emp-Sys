@@ -49,6 +49,36 @@
       "password": "123",
       "role": "Employee",
       "id": 2
+    },
+    {
+      "username": "ajith",
+      "password": "123",
+      "role": "Admin",
+      "id": 3
+    },
+    {
+      "username": "ajith",
+      "password": "123",
+      "role": "Admin",
+      "id": 4
+    },
+    {
+      "username": "ajith",
+      "password": "123",
+      "role": "Admin",
+      "id": 5
+    },
+    {
+      "username": "ajith",
+      "password": "123",
+      "role": "Admin",
+      "id": 6
+    },
+    {
+      "username": "ajith",
+      "password": "123",
+      "role": "Admin",
+      "id": 7
     }
   ],
   "attendance": [
@@ -98,6 +128,31 @@
       "profesionalTax": 0,
       "loan": 0,
       "id": 1
+    },
+    {
+      "employeeName": "\n                    3",
+      "date": "",
+      "basic": 1200,
+      "incentivePay": 0,
+      "houseRentAllowance": 2444,
+      "mealAllowance": 11010,
+      "providentFund": 0,
+      "profesionalTax": 0,
+      "loan": 0,
+      "id": 2
+    },
+    {
+      "employeeName": "\n                    3",
+      "date": "",
+      "basic": 1000,
+      "incentivePay": 0,
+      "houseRentAllowance": 1010,
+      "mealAllowance": 1000,
+      "providentFund": 0,
+      "profesionalTax": 0,
+      "loan": 0,
+      "total": null,
+      "id": 3
     }
   ]
 }

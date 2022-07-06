@@ -20,6 +20,7 @@ import { EmpPayrollComponent } from './emp-payroll/emp-payroll.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ButtonModule } from 'primeng/button';
 import {CalendarModule} from 'primeng/calendar';
+import {InputNumberModule} from 'primeng/inputnumber';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {CalendarModule} from 'primeng/calendar';
     TableModule,
     BrowserAnimationsModule,
     ButtonModule,
-    CalendarModule
+    CalendarModule,
+    InputNumberModule
   ],
   providers: [],
   bootstrap: [AppComponent]
