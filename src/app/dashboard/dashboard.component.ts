@@ -26,7 +26,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     'post graduate',
     'PhD',
   ];
-
+ roleOptions =[
+  'Admin',
+  'Employee'
+ ]
 
   constructor(
     private fb: FormBuilder,
@@ -41,16 +44,16 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.employeeForm = this.fb.group({
       firstname: this.fb.control('',[Validators.required,Validators.minLength(3),Validators.maxLength(8)]),
-      lastname: this.fb.control('',[Validators.required,Validators.minLength(1),Validators.maxLength(2)]),
+      lastname: this.fb.control('',[Validators.required,Validators.minLength(1),Validators.maxLength(3)]),
       birthday: this.fb.control('',[Validators.required,Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)]),
       gender: this.fb.control('',[Validators.required,]),
       education: this.fb.control('default',[Validators.required]),
       company: this.fb.control('',[Validators.required]),
       jobExperience: this.fb.control('',[Validators.required]),
       salary: this.fb.control('',[Validators.required]),
-      // roles:this.fb.control('',[Validators.required]),
-      // username:this.fb.control('',[Validators.required]),
-      // password:this.fb.control('',[Validators.required])
+      role:this.fb.control('',[Validators.required]),
+      username:this.fb.control('',[Validators.required,Validators.minLength(3),Validators.maxLength(8)]),
+      password:this.fb.control('',[Validators.required,Validators.minLength(3),Validators.maxLength(8)])
     });
     this.api.getEmployees().subscribe((res) => {
       for (let emp of res) {
@@ -80,7 +83,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       jobExperience: this.JobExperience.value,
       salary: this.Salary.value,
       profile: this.fileInput.nativeElement.files[0]?.name,
-
+      role: this.roleOptions[parseInt(this.Role.value)],
+      username: this.Username.value,
+      password: this.Password.value
     };
     this.api.postEmployees(employee).subscribe((res) => {
       this.employees.unshift(res);
@@ -127,6 +132,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.employeeForm.controls['jobExperience'].setValue(event.jobExperience);
     this.employeeForm.controls['salary'].setValue(event.salary);
     this.fileInput.nativeElement.value = '';
+
   }
 
   searchEmployees(event: any) {
@@ -179,6 +185,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   public get Salary(): FormControl {
     return this.employeeForm.get('salary') as FormControl;
   }
-
+  public get Role():FormControl {
+    return this.employeeForm.get('role') as FormControl;
+  }
+ public get Username():FormControl {
+  return this.employeeForm.get('username') as FormControl;
+ }
+ public get Password():FormControl{
+  return this.employeeForm.get('password') as FormControl;
+ }
 
 }

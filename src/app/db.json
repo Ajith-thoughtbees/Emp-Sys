@@ -1,84 +1,32 @@
 {
   "posts": [
     {
+      "firstname": "Admin",
+      "lastname": "123",
+      "birthday": "2021-01-07",
+      "gender": "m",
+      "education": "post graduate",
+      "company": "Thoughtbees",
+      "jobExperience": 2,
+      "salary": 200000,
+      "profile": "tiger.jpg",
+      "username": "Admin",
+      "password": "123",
+      "id": 1
+    },
+    {
       "firstname": "Ajith",
       "lastname": "M",
-      "birthday": "2022-06-04",
+      "birthday": "2022-07-01",
       "gender": "m",
       "education": "post graduate",
-      "company": "Tcs",
-      "jobExperience": 12,
-      "salary": 185500,
-      "profile": "tiger.jpg",
-      "id": 1
-    },
-    {
-      "firstname": "Haris",
-      "lastname": "Kumar",
-      "birthday": "2022-06-01",
-      "gender": "m",
-      "education": "post graduate",
-      "company": "ThoughtBees",
-      "jobExperience": 12,
+      "company": "Thougthbees",
+      "jobExperience": 1,
       "salary": 100000,
       "profile": "523-5230160_clipart-computer-operator-hd-png-download.png",
-      "id": 3
-    },
-    {
-      "firstname": "Vinodh",
-      "lastname": "Kumar",
-      "birthday": "2022-07-02",
-      "gender": "m",
-      "education": "10th pass",
-      "company": "Bala Infotech",
-      "jobExperience": 12,
-      "salary": 1500000,
-      "profile": "523-5230160_clipart-computer-operator-hd-png-download.png",
-      "id": 4
-    }
-  ],
-  "login": [
-    {
-      "username": "ajith",
-      "password": "123",
-      "role": "Admin",
-      "id": 1
-    },
-    {
-      "username": "hari",
-      "password": "123",
-      "role": "Employee",
+      "username": "Ajith",
+      "password": "12345",
       "id": 2
-    },
-    {
-      "username": "ajith",
-      "password": "123",
-      "role": "Admin",
-      "id": 3
-    },
-    {
-      "username": "ajith",
-      "password": "123",
-      "role": "Admin",
-      "id": 4
-    },
-    {
-      "username": "ajith",
-      "password": "123",
-      "role": "Admin",
-      "id": 5
-    },
-    {
-      "username": "ajith",
-      "password": "123",
-      "role": "Admin",
-      "id": 6
-    },
-    {
-      "username": "ajith",
-      "password": "123",
-      "role": "Admin",
-      "id": 7
     }
   ],
   "attendance": [

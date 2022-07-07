@@ -6,27 +6,65 @@
                 <div class="card-header">
                 <div class="row">
                   <div class="col">
-                    <label for="monthpicker" style="display: block; margin-bottom: 10px;" class="text-dark fs-5">Month Picker</label>
-                    <p-calendar [(ngModel)]="date9" view="month" dateFormat="mm/yy" [readonlyInput]="true" inputId="monthpicker"></p-calendar>
+                    <div class="col">
+                      <label for="datepicker" class="form-label">Month Picker</label>
+                      <input type="date" class="form-control" id="datepicker" formControlName="monthpicker">
+                    </div>
                   </div>
                   <div class="col mt-0">
                     <label for="salary" class="form-label">Actual Day</label>
                     <input
-                      type="number" class="form-control" placeholder="Actual Day" formControlName="actualDay" (change)="noOfWorkingDays" [(ngModel)]="noOfWorkingDays" readonly/>
+                      type="number" class="form-control" placeholder="Actual Day" formControlName="actualDay" [(ngModel)]="noOfWorkingDays" readonly/>
 
                   </div>
                   <div class="col mt-0">
                     <label for="salary" class="form-label">Leave Day</label>
                     <input type="number" class="form-control" placeholder=" Leave Day" formControlName="leaveDay" (change)="leave()" [(ngModel)]="leaveDays" />
                   </div>
+                  <div class="col mt-0">
+                    <label for="salary" class="form-label">Actual Working Day</label>
+                    <input
+                      type="number" class="form-control" placeholder="Actual Working Day" formControlName="noOfActualWorking"  [(ngModel)]="noOfActualWorking" readonly/>
+
+                  </div>
                 </div>
                 </div>
               </div>
+              <div class="row">
+           <div class="col">
 
+              <ul class="list-group">
+                <li class="list-group-item active">#</li>
+                <li class="list-group-item">Basic</li>
+                <li class="list-group-item">House Rent Allowance</li>
+                <li class="list-group-item">Meal Allowance</li>
+                </ul>
+            </div>
+            <div class="col">
+
+              <ul class="list-group">
+                <li class="list-group-item active">Actual</li>
+                <li class="list-group-item">{{Pay.basic}}</li>
+                <li class="list-group-item">{{Pay.houseRentAllowance}}</li>
+                <li class="list-group-item">{{Pay.mealAllowance}}</li>
+                <li class="list-group-item p-3 mt-2 bg-info text-white">Net Salary</li>
+              </ul>
+            </div>
+            <div class="col">
+
+              <ul class="list-group">
+                <li class="list-group-item active">Earnings</li>
+                <li class="list-group-item">{{Pay.eariningBasic}}</li>
+                <li class="list-group-item">{{Pay.eariningHA}}</li>
+                <li class="list-group-item">{{Pay.eariningMA}}</li>
+                <li class="list-group-item p-3 mt-2 bg-danger text-white">{{Pay.eariningNS}}</li>
+              </ul>
+            </div>
+</div>
   </form>
 
 <!-- Div-table -->
-<div class="table" id="results">
+<!-- <div class="table" id="results">
   <div class='theader'>
     <div class='table_header'>Allowance</div>
     <div class='table_header'>Actual</div>
@@ -74,8 +112,33 @@
       <div class='table_cell'>1.974</div>
     </div>
   </div>
-
-</div>
+  <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Actual</th>
+                    <th scope="col">Earnings</th>
+                  </tr>
+                </thead>
+                <tbody  >
+                  <tr>
+                    <th scope="row">Basic</th>
+                    <td></td>
+                    <td>Otto</td>
+                 </tr>
+                  <tr >
+                    <th scope="row">House Rent Allowance</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Meal Allowance</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                  </tr>
+                </tbody>
+              </table>
+</div> -->
 
 
 

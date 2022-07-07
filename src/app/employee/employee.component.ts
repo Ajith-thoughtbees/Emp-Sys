@@ -22,7 +22,10 @@ export class EmployeeComponent implements OnInit {
       jobExperience: 0,
       salary: 0,
       profile: '',
-    };
+      role:'',
+      username:'',
+      password:''
+        };
    }
 
   ngOnInit(): void {

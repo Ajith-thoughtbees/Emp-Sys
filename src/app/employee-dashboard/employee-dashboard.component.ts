@@ -12,34 +12,40 @@ export class EmployeeDashboardComponent implements OnInit {
 
   ID: any;
   arr:any=[];
-  constructor(private api:ApiService,private http:HttpClient) { }
+  user: any;
+  constructor(private api:ApiService) { }
 
   ngOnInit(): void {
     this.fun()
   }
   fun(){
 
-    this.http.get<any>("http://localhost:3000/login")
+    this.api.getEmployees()
 
     .subscribe({
 
       next:(res)=>{
 
-        const user =localStorage.getItem('empId');
+        this.user =localStorage.getItem('EmpId');
 
-        console.log(user);
+        console.log(this.user);
 
-        this.arr = res.find((a:any)=>{
+        this.user = res.find((a:any)=>{
+
+          if(a.id == this.user){
+
+
 
           console.log(a);
+           this.arr=a
+          return a
 
-          return a.id == user
 
 
-        });
 
- console.log(this.arr);
+        }});
 
+        console.log(this.arr);
 
 
 

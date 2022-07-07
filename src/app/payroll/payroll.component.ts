@@ -80,8 +80,6 @@ export class PayrollComponent implements OnInit,OnDestroy {
     this.payrollModelObj.mealAllowance = this.payrollForm.value.mealAllowance;
      this.payrollModelObj.total=this.payrollForm.value.total;
 
-
-
     this.api.getEmployees()
       .subscribe(data => {
         this.processTemplates = data;
@@ -195,7 +193,7 @@ edit(arr:any){
 this.ref= this.dialogService.open(PaymentComponent,{
   data: {
     id:arr.id,
-    employeeName: arr.employeeName,
+    // employeeName: arr.employeeName,
     basic:arr.basic,
   houseRentAllowance:arr.houseRentAllowance,
   mealAllowance: arr.mealAllowance
