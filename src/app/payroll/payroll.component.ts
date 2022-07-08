@@ -192,9 +192,9 @@ export class PayrollComponent implements OnInit,OnDestroy {
 edit(arr:any){
 this.ref= this.dialogService.open(PaymentComponent,{
   data: {
-    id:arr.id,
-    // employeeName: arr.employeeName,
-    basic:arr.basic,
+     // employeeName: arr.employeeName,
+  id:arr.id,
+  basic:arr.basic,
   houseRentAllowance:arr.houseRentAllowance,
   mealAllowance: arr.mealAllowance
 },

@@ -44,14 +44,14 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.employeeForm = this.fb.group({
       firstname: this.fb.control('',[Validators.required,Validators.minLength(3),Validators.maxLength(8)]),
-      lastname: this.fb.control('',[Validators.required,Validators.minLength(1),Validators.maxLength(3)]),
+      lastname: this.fb.control('',[Validators.required,Validators.minLength(1),Validators.maxLength(8)]),
       birthday: this.fb.control('',[Validators.required,Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)]),
       gender: this.fb.control('',[Validators.required,]),
       education: this.fb.control('default',[Validators.required]),
       company: this.fb.control('',[Validators.required]),
       jobExperience: this.fb.control('',[Validators.required]),
       salary: this.fb.control('',[Validators.required]),
-      role:this.fb.control('',[Validators.required]),
+      // role:this.fb.control('',[Validators.required]),
       username:this.fb.control('',[Validators.required,Validators.minLength(3),Validators.maxLength(8)]),
       password:this.fb.control('',[Validators.required,Validators.minLength(3),Validators.maxLength(8)])
     });
@@ -83,7 +83,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       jobExperience: this.JobExperience.value,
       salary: this.Salary.value,
       profile: this.fileInput.nativeElement.files[0]?.name,
-      role: this.roleOptions[parseInt(this.Role.value)],
+      // role: this.roleOptions[parseInt(this.Role.value)],
       username: this.Username.value,
       password: this.Password.value
     };
@@ -109,7 +109,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.employees.forEach((val,index) => {
       if (val.id === event) {
         this.api.editEmployees(event,index).subscribe((res)=>{
-
+         this.employees =res
+         console.log(this.employees)
         });
       }
     });
@@ -150,6 +151,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   clearForm() {
+
     this.FirstName.setValue('');
     this.LastName.setValue('');
     this.BirthDay.setValue('');
@@ -159,6 +161,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.JobExperience.setValue('');
     this.Salary.setValue('');
     this.fileInput.nativeElement.value = '';
+
   }
 
   public get FirstName(): FormControl {
@@ -185,9 +188,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   public get Salary(): FormControl {
     return this.employeeForm.get('salary') as FormControl;
   }
-  public get Role():FormControl {
-    return this.employeeForm.get('role') as FormControl;
-  }
+  // public get Role():FormControl {
+  //   return this.employeeForm.get('role') as FormControl;
+  // }
  public get Username():FormControl {
   return this.employeeForm.get('username') as FormControl;
  }

@@ -95,9 +95,10 @@
         <td>{{arr.leaveReason}}</td>
         <td>{{arr.dateFrom}}</td>
          <td>{{arr.dateTo}}</td>
-         <div>
-          <button class="btn" (click)="acceptedLeave(arr)" ><i class="bi bi-pencil-square text-primary"></i></button>
-          <button class="btn" ><i class="bi bi-file-minus-fill text-danger"></i></button>
+         <div >
+          <button class="btn" (click)="acceptedLeave(arr)" ><i class="bi bi-check text-primary"></i></button>
+          <button class="btn" (click)="deniedLeave()" >  <i class="bi bi-dash-circle"></i></button>
+          <button class="btn"(click)="cancelledLeave()"><i class="bi bi-x text-danger"></i></button>
         </div>
       </tr>
     </tbody>
@@ -114,7 +115,7 @@
       <form  [formGroup]="leaveForm"></form>
       <div class="modal-body">
         <div class="form-floating">
-          <textarea class="form-control w-50 p-3" placeholder="Comment" id="floatingTextarea" formControlName="comment"></textarea>
+          <textarea class="form-control w-50 p-3" placeholder="Comment" id="floatingTextarea" ></textarea>
 
         </div>
       </div>
@@ -130,11 +131,11 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-primary fw-bold fs-5" id="exampleModalLabel">Declined Form</h5>
+        <h5 class="modal-title text-primary fw-bold fs-5"  id="exampleModalLabel">Declined Form</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <textarea class="form-control w-50 p-3" placeholder="Comment" id="floatingTextarea"></textarea>
+        <textarea class="form-control w-50 p-3" placeholder="Comment" id="floatingTextarea" ></textarea>
       </div>
       <div class="modal-footer">
 

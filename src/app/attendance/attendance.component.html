@@ -80,9 +80,9 @@
         <th scope="col">
         Status
         </th>
-        <th scope="col">
+        <!-- <th scope="col">
           View
-          </th>
+          </th> -->
       </tr>
     </thead>
     <tbody>
@@ -94,11 +94,13 @@
 
         <td>{{absent.dateFrom}}</td>
          <td>{{absent.dateTo}}</td>
-        <td >
-         <span class="badge rounded-pill text-bg-success"*ngIf="Accepted" >Accepted</span>
-         <span class="badge rounded-pill text-bg-danger" *ngIf="Declined">Declined</span>
+        <td [ngSwitch]="State">
+         <span class="badge rounded-pill text-bg-success" *ngSwitchCase="State.Success">Accepted</span>
+         <span class="badge rounded-pill text-bg-warning" *ngSwitchCase="State.warning" >Denied</span>
+         <span class="badge rounded-pill text-bg-danger" *ngSwitchCase="State.danger">Cancel</span>
+         <span *ngSwitchDefault class="btn btn-danger" disabled>Unknown</span>
         </td>
-        <td>   <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1">View</button></td>
+        <!-- <td>   <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1">View</button></td> -->
       </tr>
 
 

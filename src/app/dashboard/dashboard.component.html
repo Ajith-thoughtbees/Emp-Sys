@@ -214,7 +214,7 @@
               <div *ngIf="f['password'].errors && f['password'].errors['required']">Password is required.</div>
           </div>
           </div>
-          <div class="row mt-2">
+          <!-- <div class="row mt-2">
             <div class="col">
               <select class="form-select" formControlName="role">
                 <option value="default" selected>Select your Role</option>
@@ -226,13 +226,13 @@
               </div>
               </select>
             </div>
-          </div>
+          </div> -->
         </div>
 
       </form>
 
     <div class="modal-footer">
-      <button type="button" class="btn btn-primary"   data-bs-dismiss="modal" (click)="addEmployee()">Insert</button>
+      <button type="button" class="btn btn-primary"  [disabled]="employeeForm.invalid"  data-bs-dismiss="modal" (click)="addEmployee()">Insert</button>
     </div>
   </div>
   </div>

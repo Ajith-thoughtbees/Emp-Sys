@@ -22,6 +22,7 @@ export class AttendanceComponent implements OnInit {
     'Loss with pay',
   ];
   submitted = false;
+ State!:any
 
   constructor(private formBuilder:FormBuilder,private leaveService:LeaveServiceService) {
      this.leaveForm = formBuilder.group({});
@@ -39,7 +40,7 @@ ngOnInit(): void {
       leaveReason: this.formBuilder.control('',[Validators.required,]),
       dateFrom: this.formBuilder.control('',[Validators.required,Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)]),
       dateTo: this.formBuilder.control('',[Validators.required,Validators.pattern(/^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/)]),
-      // comment: this.formBuilder.control('')
+     comment: this.formBuilder.control('')
 
     })
 
@@ -60,7 +61,7 @@ ngOnInit(): void {
 
     console.log(JSON.stringify(this.leaveForm.value, null, 2));
   }
-  
+
   getleaveDetails(){
     this.leaveService.getAttendance().subscribe((res) => {
       // for (let emp of res) {
@@ -79,7 +80,8 @@ ngOnInit(): void {
       leaveType: this.LeaveTypeOptions[parseInt(this.leavetype.value)],
       dateFrom: (this.datefrom.value || {}),
       dateTo: (this.dateto.value || {}),
-      comment: (""),
+      comment1: (""),
+      comment2:(''),
       status: 0,
       approved_by: 0,
       applied_by: applied_by
@@ -88,6 +90,7 @@ ngOnInit(): void {
     this.leaveService.postAttendance(leave).subscribe((res) => {
       this.absent.unshift(res);
       //alert message
+
       this.getleaveDetails();
     });
 

@@ -9,7 +9,7 @@ export class Employee{
   jobExperience: number=0;
   salary: number=0;
   profile: string='';
-  role:string='';
+  // role:string='';
   username:string='';
   password:string='';
 }

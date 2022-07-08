@@ -22,7 +22,7 @@ export class EmployeeComponent implements OnInit {
       jobExperience: 0,
       salary: 0,
       profile: '',
-      role:'',
+      // role:'',
       username:'',
       password:''
         };
@@ -37,5 +37,6 @@ export class EmployeeComponent implements OnInit {
 
   editEmployeeClicked(){
     this.onEditEmployee.emit(this.employee.id);
+  
   }
 }

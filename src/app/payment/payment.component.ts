@@ -18,9 +18,9 @@ export class PaymentComponent implements OnInit {
   payrolls! : payrollModel[];
   noOfWorkingDays: any= 22 ;
   leaveDays: number=0;
-  date9!: Date;
+  date!:any;
   updateForm!:FormGroup;
-  Pay:any;
+  pay:any;
   noOfActualWorking!:number;
 
   constructor(private payrollService:PayrollService,
@@ -33,15 +33,15 @@ export class PaymentComponent implements OnInit {
     this.updateForm = this.formBuilder.group({
     actualDay: ['', Validators.required],
       leaveDay: ['', Validators.required],
-      noOfActualWorking:['', Validators.required]
-
+      noOfActualWorking:['', Validators.required],
+      date:['',Validators.required]
   });
     //  this.payrollService.getData().pipe(payrolls => this.payrolls= payrolls)
     this.payrollService.getData().subscribe((res) => {
       this.payrolls = res
 
      })
-     console.log(this.Pay)
+
   }
 
   selectPayroll(payroll:payrollModel){
@@ -50,15 +50,16 @@ export class PaymentComponent implements OnInit {
   leave(){
       this.noOfActualWorking = this.noOfWorkingDays - this.leaveDays
     console.log(this.noOfActualWorking);
-    this.Pay=this.config.data
-     this.Pay.eariningBasic = (this.Pay.basic/this.noOfWorkingDays)*this.noOfActualWorking;
-     this.Pay.eariningBasic = parseFloat(this.Pay.eariningBasic).toFixed(2);
-     this.Pay.eariningMA = (this.Pay.mealAllowance/this.noOfWorkingDays)*this.noOfActualWorking;
-     this.Pay.eariningMA = parseFloat(this.Pay.eariningMA).toFixed(2);
-     this.Pay.eariningHA = (this.Pay.houseRentAllowance/this.noOfWorkingDays)*this.noOfActualWorking;
-     this.Pay.eariningHA = parseFloat(this.Pay.eariningHA).toFixed(2);
-    this.Pay.eariningNS = (+this.Pay.eariningBasic+this.Pay.eariningHA+this.Pay.eariningMA)
-    this.Pay.eariningNS = parseInt(this.Pay.eariningNS).toFixed(2);
+    this.pay=this.config.data
+     this.pay.eariningBasic = (this.pay.basic/this.noOfWorkingDays)*this.noOfActualWorking;
+     this.pay.eariningBasic = parseFloat(this.pay.eariningBasic).toFixed(2);
+     this.pay.eariningMA = (this.pay.mealAllowance/this.noOfWorkingDays)*this.noOfActualWorking;
+     this.pay.eariningMA = parseFloat(this.pay.eariningMA).toFixed(2);
+     this.pay.eariningHA = (this.pay.houseRentAllowance/this.noOfWorkingDays)*this.noOfActualWorking;
+     this.pay.eariningHA = parseFloat(this.pay.eariningHA).toFixed(2);
+    this.pay.eariningNS = (+this.pay.eariningBasic+this.pay.eariningHA+this.pay.eariningMA)
+    this.pay.eariningNS = parseInt(this.pay.eariningNS).toFixed(2);
+    console.log(this.pay.eariningNS)
   }
 
 

@@ -12,7 +12,8 @@
       "profile": "tiger.jpg",
       "username": "Admin",
       "password": "123",
-      "id": 1
+      "id": 1,
+      "role": "Admin"
     },
     {
       "firstname": "Ajith",
@@ -27,80 +28,47 @@
       "username": "Ajith",
       "password": "12345",
       "id": 2
+    },
+    {
+      "firstname": "Vinod",
+      "lastname": "Kumar",
+      "birthday": "2020-01-02",
+      "gender": "m",
+      "education": "graduate",
+      "company": "ThoughtBees",
+      "jobExperience": 1,
+      "salary": 200000,
+      "profile": "523-5230160_clipart-computer-operator-hd-png-download.png",
+      "username": "Vinod",
+      "password": "123",
+      "id": 3
     }
   ],
   "attendance": [
-    {
-      "leaveReason": "1",
-      "leaveType": "sick",
-      "dateFrom": "2022-06-28",
-      "dateTo": "2022-06-28",
-      "comment": "",
-      "status": 1,
-      "approved_by": 0,
-      "applied_by": "3",
-      "id": 1
-    },
-    {
-      "leaveReason": "1",
-      "leaveType": "kid birthday",
-      "dateFrom": "2022-06-30",
-      "dateTo": "2022-06-30",
-      "comment": "",
-      "status": 1,
-      "approved_by": 0,
-      "applied_by": "3",
-      "id": 2
-    },
     {
       "leaveReason": "Cold",
       "leaveType": "Loss with pay",
       "dateFrom": "2022-06-28",
       "dateTo": "2022-06-28",
       "comment": "",
-      "status": 0,
+      "status": 1,
       "approved_by": 0,
       "applied_by": "2",
-      "id": 3
+      "id": 1
     }
   ],
   "payroll": [
     {
-      "employeeName": "\n                    1",
+      "employeeName": "\n                    2",
       "date": "",
-      "basic": 10000,
-      "incentivePay": 0,
-      "houseRentAllowance": 10000,
-      "mealAllowance": 1000,
-      "providentFund": 0,
-      "profesionalTax": 0,
-      "loan": 0,
-      "id": 1
-    },
-    {
-      "employeeName": "\n                    3",
-      "date": "",
-      "basic": 1200,
-      "incentivePay": 0,
-      "houseRentAllowance": 2444,
-      "mealAllowance": 11010,
-      "providentFund": 0,
-      "profesionalTax": 0,
-      "loan": 0,
-      "id": 2
-    },
-    {
-      "employeeName": "\n                    3",
-      "date": "",
-      "basic": 1000,
-      "incentivePay": 0,
-      "houseRentAllowance": 1010,
-      "mealAllowance": 1000,
+      "basic": 15000,
+      "houseRentAllowance": 1200,
+      "mealAllowance": 800,
       "providentFund": 0,
       "profesionalTax": 0,
       "loan": 0,
       "total": null,
-      "id": 3
+      "id": 1
     }
   ]
 }

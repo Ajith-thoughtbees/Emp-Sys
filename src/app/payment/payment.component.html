@@ -7,19 +7,19 @@
                 <div class="row">
                   <div class="col">
                     <div class="col">
-                      <label for="datepicker" class="form-label">Month Picker</label>
-                      <input type="date" class="form-control" id="datepicker" formControlName="monthpicker">
+                      <label for="datepicker" class="form-label">Date</label>
+                      <input type="date" class="form-control" id="datepicker" formControlName="date">
                     </div>
                   </div>
                   <div class="col mt-0">
-                    <label for="salary" class="form-label">Actual Day</label>
+                    <!-- <label for="salary" class="form-label">Actual Day</label> -->
                     <input
-                      type="number" class="form-control" placeholder="Actual Day" formControlName="actualDay" [(ngModel)]="noOfWorkingDays" readonly/>
+                      type="number" class="form-control" placeholder="Actual Day" formControlName="actualDay" [(ngModel)]="noOfWorkingDays" readonly hidden/>
 
                   </div>
                   <div class="col mt-0">
                     <label for="salary" class="form-label">Leave Day</label>
-                    <input type="number" class="form-control" placeholder=" Leave Day" formControlName="leaveDay" (change)="leave()" [(ngModel)]="leaveDays" />
+                    <input type="number" class="form-control" placeholder=" Leave Day" formControlName="leaveDay" (click)="leave()" [(ngModel)]="leaveDays" />
                   </div>
                   <div class="col mt-0">
                     <label for="salary" class="form-label">Actual Working Day</label>
@@ -44,9 +44,9 @@
 
               <ul class="list-group">
                 <li class="list-group-item active">Actual</li>
-                <li class="list-group-item">{{Pay.basic}}</li>
-                <li class="list-group-item">{{Pay.houseRentAllowance}}</li>
-                <li class="list-group-item">{{Pay.mealAllowance}}</li>
+                <li class="list-group-item">{{pay.basic}}</li>
+                <li class="list-group-item">{{pay.houseRentAllowance}}</li>
+                <li class="list-group-item">{{pay.mealAllowance}}</li>
                 <li class="list-group-item p-3 mt-2 bg-info text-white">Net Salary</li>
               </ul>
             </div>
@@ -54,10 +54,10 @@
 
               <ul class="list-group">
                 <li class="list-group-item active">Earnings</li>
-                <li class="list-group-item">{{Pay.eariningBasic}}</li>
-                <li class="list-group-item">{{Pay.eariningHA}}</li>
-                <li class="list-group-item">{{Pay.eariningMA}}</li>
-                <li class="list-group-item p-3 mt-2 bg-danger text-white">{{Pay.eariningNS}}</li>
+                <li class="list-group-item">{{pay.eariningBasic}}</li>
+                <li class="list-group-item">{{pay.eariningHA}}</li>
+                <li class="list-group-item">{{pay.eariningMA}}</li>
+                <li class="list-group-item p-3 mt-2 bg-danger text-white">{{pay.eariningNS}}</li>
               </ul>
             </div>
 </div>

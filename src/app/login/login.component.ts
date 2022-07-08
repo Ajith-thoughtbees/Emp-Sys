@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   username : string = '';
   password : string = '';
-  role : string = '';
+  role:string="";
 
   loginForm!: FormGroup;
   submitted = false;
@@ -48,31 +48,18 @@ login() {
       next:(res)=>{
 
         const adm = res.find((a:any)=>{
-
-          return a.username =="Admin" && a.password===this.loginForm.value.password
-
+          return a.username === this.loginForm.value.username && a.password === this.loginForm.value.password && a.role === "Admin"
         });
 
         const emp = res.find((a:any)=>{
-
-          this.eId=a.id
-
-          return a.username===this.loginForm.value.username && a.password===this.loginForm.value.password
-
-
-
+         this.eId=a.id
+          return a.username === this.loginForm.value.username && a.password===this.loginForm.value.password
         });
 
-
         if(adm){
-
-          alert(" Welcome admin..." )
-
+         alert(" Welcome admin" )
         this.loginForm.reset();
-
         this.route.navigate(['/dashboard'])
-
-
 
       }
 
@@ -80,7 +67,7 @@ login() {
 
       if(emp){
 
-        alert(" login is successed")
+        alert(" Login is Employee")
 
          console.log(this.eId);
 
@@ -91,12 +78,11 @@ login() {
            this.route.navigate(['/employee-dashboard'])
 
       }
+         else{
+          alert("Login Failed")
+        }
 
-
-
-      }
-
-
+    }
     }})
   }
 }
