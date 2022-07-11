@@ -23,6 +23,11 @@ export class PaymentComponent implements OnInit {
   pay:any;
   noOfActualWorking!:number;
 
+  eariningBasic!:any;
+  eariningMA!:any;
+  eariningHA!:any;
+  eariningNS!:any;
+
   constructor(private payrollService:PayrollService,
     public ref:DynamicDialogRef,
     public config:DynamicDialogConfig,
@@ -51,15 +56,22 @@ export class PaymentComponent implements OnInit {
       this.noOfActualWorking = this.noOfWorkingDays - this.leaveDays
     console.log(this.noOfActualWorking);
     this.pay=this.config.data
-     this.pay.eariningBasic = (this.pay.basic/this.noOfWorkingDays)*this.noOfActualWorking;
-     this.pay.eariningBasic = parseFloat(this.pay.eariningBasic).toFixed(2);
-     this.pay.eariningMA = (this.pay.mealAllowance/this.noOfWorkingDays)*this.noOfActualWorking;
-     this.pay.eariningMA = parseFloat(this.pay.eariningMA).toFixed(2);
-     this.pay.eariningHA = (this.pay.houseRentAllowance/this.noOfWorkingDays)*this.noOfActualWorking;
-     this.pay.eariningHA = parseFloat(this.pay.eariningHA).toFixed(2);
-    this.pay.eariningNS = (+this.pay.eariningBasic+this.pay.eariningHA+this.pay.eariningMA)
-    this.pay.eariningNS = parseInt(this.pay.eariningNS).toFixed(2);
-    console.log(this.pay.eariningNS)
+     this.eariningBasic = ((this.pay.basic/this.noOfWorkingDays)*this.noOfActualWorking).toFixed(2);
+
+
+     this.eariningMA = ((this.pay.mealAllowance/this.noOfWorkingDays)*this.noOfActualWorking).toFixed(2);
+
+     this.eariningHA = ((this.pay.houseRentAllowance/this.noOfWorkingDays)*this.noOfActualWorking).toFixed(2);
+
+    this.eariningNS = (parseFloat(this.eariningBasic) + parseFloat(this.eariningMA) + parseFloat(this.eariningHA)).toFixed(2)
+
+    // console.log(this.pay.eariningNS)
+
+    // console.log();
+
+
+
+
   }
 
 
