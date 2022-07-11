@@ -1,9 +1,10 @@
 import { Component, OnInit, } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup,Validator, Validators,AbstractControl } from '@angular/forms';
-
 import { ApiService } from '../service/api.service';
 import { LeaveServiceService } from '../service/leave-service.service';
 import { attendance } from './attendance.model';
+import { Moment } from 'moment';
+import * as moment from 'moment';
 
 @Component({
   providers:[LeaveServiceService],
@@ -18,11 +19,17 @@ export class AttendanceComponent implements OnInit {
   absent: attendance[];
   absenteesToDisplay: attendance[];
   LeaveTypeOptions = [
-    'Loss of pay',
-    'Loss with pay',
+    'Casual leave',
+    'Sick leave',
+    'Maternity leave',
+    'Loss of pay'
   ];
   submitted = false;
- State!:any
+  State!:any
+  minDate!: Moment;
+  maxDate!: Moment;
+  status:any;
+  arr: any = [];
 
   constructor(private formBuilder:FormBuilder,private leaveService:LeaveServiceService) {
      this.leaveForm = formBuilder.group({});
@@ -44,7 +51,9 @@ ngOnInit(): void {
 
     })
 
-
+    const currentYear = moment().year();
+    this.minDate = moment([currentYear - 1, 0, 1]);
+    this.maxDate = moment([currentYear + 1, 11, 31]);
 
 
   }
@@ -80,11 +89,8 @@ ngOnInit(): void {
       leaveType: this.LeaveTypeOptions[parseInt(this.leavetype.value)],
       dateFrom: (this.datefrom.value || {}),
       dateTo: (this.dateto.value || {}),
-      comment1: (""),
-      comment2:(''),
       status: 0,
-      approved_by: 0,
-      applied_by: applied_by
+
 
     }
     this.leaveService.postAttendance(leave).subscribe((res) => {
@@ -95,6 +101,7 @@ ngOnInit(): void {
     });
 
   }
+  
 
   public get leavereason(): FormControl {
     return this.leaveForm.get('leaveReason') as FormControl;

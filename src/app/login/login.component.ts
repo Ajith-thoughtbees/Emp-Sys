@@ -57,7 +57,7 @@ login() {
         });
 
         if(adm){
-         alert(" Welcome admin" )
+        //  alert(" Welcome admin" )
         this.loginForm.reset();
         this.route.navigate(['/dashboard'])
 
@@ -67,7 +67,7 @@ login() {
 
       if(emp){
 
-        alert(" Login is Employee")
+        // alert(" Login is Employee")
 
          console.log(this.eId);
 

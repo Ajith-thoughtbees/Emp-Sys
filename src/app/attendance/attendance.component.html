@@ -50,10 +50,11 @@
               <div class="card shadow border-0 mb-5">
                   <div class="card-header">
                     <div class="toolbar">
-                       <button class="btn btn-outline-success btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-circle me-3"></i>Request For Leave</button>
                       <div class="search-employee">
                         <input type="search" class="form-control" placeholder="Search Employees">
                       </div>
+                       <button class="btn btn-outline-success btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-circle me-3"></i>Request For Leave</button>
+
                   </div>
                 </div>
              </div>
@@ -63,7 +64,7 @@
       <tr>
 
         <th scope="col" class="hidden">
-          ID
+        S.No
         </th>
         <th scope="col">
        Leave Reason
@@ -91,14 +92,14 @@
         <td >{{absent.id }}</td>
         <td>{{absent.leaveReason}}</td>
         <td>{{absent.leaveType}}</td>
-
         <td>{{absent.dateFrom}}</td>
          <td>{{absent.dateTo}}</td>
-        <td [ngSwitch]="State">
-         <span class="badge rounded-pill text-bg-success" *ngSwitchCase="State.Success">Accepted</span>
-         <span class="badge rounded-pill text-bg-warning" *ngSwitchCase="State.warning" >Denied</span>
-         <span class="badge rounded-pill text-bg-danger" *ngSwitchCase="State.danger">Cancel</span>
-         <span *ngSwitchDefault class="btn btn-danger" disabled>Unknown</span>
+        <td >
+          <span class="badge rounded-pill text-bg-primary even-larger-badge" *ngIf="absent.status == 0">Pending</span>
+         <span class="badge rounded-pill text-bg-success even-larger-badge" *ngIf="absent.status == 1">Accepted</span>
+         <span class="badge rounded-pill text-bg-warning even-larger-badge"  *ngIf="absent.status == 2">Denied</span>
+         <span class="badge rounded-pill text-bg-danger even-larger-badge"  *ngIf="absent.status == 3">Cancel</span>
+
         </td>
         <!-- <td>   <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1">View</button></td> -->
       </tr>
@@ -174,7 +175,7 @@
 
     </div>
     <div class="modal-footer">
-      <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="addLeave()">Insert</button>
+      <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"   [disabled]="leaveForm.invalid" (click)="addLeave()">Insert</button>
     </div>
   </div>
   </div>

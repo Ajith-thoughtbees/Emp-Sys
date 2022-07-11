@@ -51,10 +51,11 @@
               <div class="card shadow border-0 mb-5">
                   <div class="card-header">
                     <div class="toolbar">
-                       <button class="btn btn-outline-success btn-lg" type="button"> Leave Declaration</button>
                       <div class="search-employee">
                         <input type="search" class="form-control" placeholder="Search Employees">
                       </div>
+                       <button class="btn btn-outline-success btn-lg" type="button"> Leave Declaration</button>
+
                   </div>
                 </div>
              </div>
@@ -78,10 +79,10 @@
         <th scope="col">
         To Date
         </th>
-        <!-- <th scope="col">
-          Status
-        </th> -->
         <th scope="col">
+          Status
+        </th>
+        <th scope="col" class="text-center">
           Option
         </th>
 
@@ -95,10 +96,11 @@
         <td>{{arr.leaveReason}}</td>
         <td>{{arr.dateFrom}}</td>
          <td>{{arr.dateTo}}</td>
+         <td>{{arr.status}}</td>
          <div >
           <button class="btn" (click)="acceptedLeave(arr)" ><i class="bi bi-check text-primary"></i></button>
-          <button class="btn" (click)="deniedLeave()" >  <i class="bi bi-dash-circle"></i></button>
-          <button class="btn"(click)="cancelledLeave()"><i class="bi bi-x text-danger"></i></button>
+          <button class="btn" (click)="deniedLeave(arr)" >  <i class="bi bi-dash-circle"></i></button>
+          <button class="btn"(click)="cancelledLeave(arr)"><i class="bi bi-x text-danger"></i></button>
         </div>
       </tr>
     </tbody>

@@ -11,7 +11,7 @@
       "salary": 200000,
       "profile": "tiger.jpg",
       "username": "Admin",
-      "password": "123",
+      "password": "12345",
       "id": 1,
       "role": "Admin"
     },
@@ -26,7 +26,7 @@
       "salary": 100000,
       "profile": "523-5230160_clipart-computer-operator-hd-png-download.png",
       "username": "Ajith",
-      "password": "12345",
+      "password": "123",
       "id": 2
     },
     {
@@ -46,24 +46,45 @@
   ],
   "attendance": [
     {
-      "leaveReason": "Cold",
-      "leaveType": "Loss with pay",
-      "dateFrom": "2022-06-28",
-      "dateTo": "2022-06-28",
-      "comment": "",
+      "leaveReason": "Fever",
+      "leaveType": "Sick leave",
+      "dateFrom": "2022-07-12",
+      "dateTo": "2022-07-13",
       "status": 1,
-      "approved_by": 0,
-      "applied_by": "2",
       "id": 1
+    },
+    {
+      "leaveReason": "Fever",
+      "leaveType": "Casual leave",
+      "dateFrom": "2022-07-12",
+      "dateTo": "2022-07-13",
+      "status": 0,
+      "id": 2
+    },
+    {
+      "leaveReason": "Sick",
+      "leaveType": "Sick leave",
+      "dateFrom": "2022-07-12",
+      "dateTo": "2022-07-13",
+      "status": 3,
+      "id": 3
+    },
+    {
+      "leaveReason": "Kid Birthday",
+      "leaveType": "Maternity leave",
+      "dateFrom": "2022-07-28",
+      "dateTo": "2022-07-29",
+      "status": 2,
+      "id": 4
     }
   ],
   "payroll": [
     {
       "employeeName": "\n                    2",
       "date": "",
-      "basic": 15000,
-      "houseRentAllowance": 1200,
-      "mealAllowance": 800,
+      "basic": 12000,
+      "houseRentAllowance": 1300,
+      "mealAllowance": 1700,
       "providentFund": 0,
       "profesionalTax": 0,
       "loan": 0,

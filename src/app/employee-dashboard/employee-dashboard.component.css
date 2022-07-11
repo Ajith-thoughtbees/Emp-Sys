@@ -1,6 +1,9 @@
 @import url(https://therichpost.com/responsivestyle/index.css);
 @import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
-.logo{font-size: 3rem;}
+.logo
+{font-size: 3rem;
+
+}
 
 
 .icon
@@ -18,10 +21,10 @@
   border: 1px solid black;
 }
 
-img {
+/* img {
   width: 100%;
   border-radius: 1rem;
-}
+} */
 
 table {
   width: 90%;

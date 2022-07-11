@@ -10,45 +10,38 @@ import { ApiService } from '../service/api.service';
 })
 export class EmployeeDashboardComponent implements OnInit {
 
+  
   ID: any;
-  arr:any=[];
+  arr: any = [];
   user: any;
-  constructor(private api:ApiService) { }
+  constructor(private api: ApiService) { }
 
   ngOnInit(): void {
     this.fun()
+
   }
-  fun(){
+  fun() {
 
     this.api.getEmployees()
 
-    .subscribe({
+      .subscribe({
 
-      next:(res)=>{
+        next: (res) => {
 
-        this.user =localStorage.getItem('EmpId');
+          this.user = localStorage.getItem('EmpId');
 
-        console.log(this.user);
+          console.log(this.user);
 
-        this.user = res.find((a:any)=>{
+          this.user = res.find((a: any) => {
 
-          if(a.id == this.user){
-
-
-
-          console.log(a);
-           this.arr=a
-          return a
-
-
-
-
-        }});
-
-        console.log(this.arr);
-
-
-
-      }})
+            if (a.id == this.user) {
+              console.log(a);
+              this.arr = a
+              return a
+            }
+          });
+          console.log(this.arr);
+        }
+      })
   }
 }

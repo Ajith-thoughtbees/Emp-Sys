@@ -4,9 +4,6 @@ export class attendance {
   leaveReason!: string
   dateFrom!: string
   dateTo!: string
-  comment1!: string
-  comment2!: string
-  status!: number
-  approved_by!: number
-  applied_by!: any
+  status: number=0
+
 }

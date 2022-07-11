@@ -30,7 +30,7 @@ export class LeaveComponent implements OnInit {
 
     this.leaveService.getAttendance().subscribe((res) => {
      this.absent = res
-
+    
     });
 
   }
@@ -44,31 +44,39 @@ export class LeaveComponent implements OnInit {
       this.days =res[check]
       console.log(this.days);
   })}
-  acceptedLeave(arr:any) {
-    arr.status = 1;
-    
 
+  acceptedLeave(arr:any) {
+
+ arr.status = 1;
  this.leaveService.updateAttendance(arr,arr.id).subscribe((res)=>{
  console.log(res);
+
  })
   }
-  deniedLeave(){
+  deniedLeave(arr:any){
+alert('Leave denied')
+arr.status = 2;
+this.leaveService.updateAttendance(arr,arr.id).subscribe((res)=>{
+  console.log(res);
+
+  })
 
   }
-  cancelledLeave(){
+  cancelledLeave(arr:any){
+alert('Leave cancelled')
+arr.status = 3;
+this.leaveService.updateAttendance(arr,arr.id).subscribe((res)=>{
+  console.log(res);
 
+  })
   }
-  // deleteLeave(id:any){
-  //   this.leaveService.deleteAttendance(this.empId).subscribe((res)=>{
-
-  //     console.log(res);
-  //    })
-  // }
 
 
 
 leave(id:any){
  this.empId =id
+ console.log(this.empId);
+
 }
 
 
