@@ -30,6 +30,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   'Admin',
   'Employee'
  ]
+ showAdd!:boolean;
+showUpdate!:boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -106,6 +108,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   }
 
   editEmployee(event: any) {
+
     this.employees.forEach((val,index) => {
       if (val.id === event) {
         this.api.editEmployees(event,index).subscribe((res)=>{
@@ -118,7 +121,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   };
 
   setForm(event:any ) {
-
+                               
     this.employeeForm.controls['firstname'].setValue(event.firstname);
     this.employeeForm.controls['lastname'].setValue(event.lastname);
     this.employeeForm.controls['birthday'].setValue(event.birthday);
@@ -133,6 +136,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.employeeForm.controls['jobExperience'].setValue(event.jobExperience);
     this.employeeForm.controls['salary'].setValue(event.salary);
     this.fileInput.nativeElement.value = '';
+
 
   }
 

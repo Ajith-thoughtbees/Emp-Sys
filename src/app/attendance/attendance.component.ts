@@ -101,13 +101,15 @@ ngOnInit(): void {
     });
 
   }
-  
+
 
   public get leavereason(): FormControl {
     return this.leaveForm.get('leaveReason') as FormControl;
   }
   public get leavetype(): FormControl {
     return this.leaveForm.get('leaveType') as FormControl;
+
+
   }
   public get datefrom(): FormControl {
     return this.leaveForm.get('dateFrom') as FormControl;

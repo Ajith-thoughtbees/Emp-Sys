@@ -23,6 +23,7 @@ export class LeaveServiceService {
   updateAttendance(data:any,id:number){
     return this.http.put<any>('http://localhost:3000/attendance/'+id,data)
   }
+  
   deleteAttendance(id: string){
     return this.http.delete('http://localhost:3000/attendance/' +id)
   }

@@ -48,8 +48,8 @@ import {InputNumberModule} from 'primeng/inputnumber';
     BrowserAnimationsModule,
     ButtonModule,
     CalendarModule,
-    InputNumberModule
-  ],
+    InputNumberModule,
+   ],
   providers: [],
   bootstrap: [AppComponent]
 })

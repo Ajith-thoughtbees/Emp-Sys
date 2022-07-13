@@ -9,26 +9,26 @@ import { Employee } from '../dashboard/employee.model';
 })
 export class ApiService {
   selectedT: any;
-  baseUrl = 'http://localhost:3000/posts';
+  // baseUrl = 'http://localhost:3000/posts';
 
   constructor(private http:HttpClient) {
 
    }
 postEmployees(employee : Employee){
-  return this.http.post<Employee>(this.baseUrl, employee)
+  return this.http.post<Employee>('http://localhost:3000/posts', employee)
 }
 
 getEmployees(){
 
-  return this.http.get<Employee[]>(this.baseUrl)
+  return this.http.get<Employee[]>('http://localhost:3000/posts')
 }
 
 editEmployees(data:any,id:number){
-  return this.http.put<any>(this.baseUrl +id,data)
+  return this.http.put<any>('http://localhost:3000/posts' +id,data)
 }
 
 deleteEmployees(id: string){
-  return this.http.delete(this.baseUrl + '/' +id)
+  return this.http.delete('http://localhost:3000/posts' + '/' +id)
 }
 
 

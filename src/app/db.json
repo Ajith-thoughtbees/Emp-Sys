@@ -58,7 +58,7 @@
       "leaveType": "Casual leave",
       "dateFrom": "2022-07-12",
       "dateTo": "2022-07-13",
-      "status": 1,
+      "status": 2,
       "id": 2
     },
     {
@@ -76,10 +76,19 @@
       "dateTo": "2022-07-29",
       "status": 2,
       "id": 4
+    },
+    {
+      "leaveReason": "Fever",
+      "leaveType": "Maternity leave",
+      "dateFrom": "2022-07-14",
+      "dateTo": "2022-07-15",
+      "status": 3,
+      "id": 5
     }
   ],
   "payroll": [
     {
+      "id": 1,
       "employeeName": "\n                    2",
       "date": "",
       "basic": 12000,
@@ -88,8 +97,24 @@
       "providentFund": 0,
       "profesionalTax": 0,
       "loan": 0,
+      "total": 0,
+      "status": 0
+    },
+    {
+      "employeeName": "\n                    3",
+      "date": "",
+      "basic": 12000,
+      "houseRentAllowance": 1500,
+      "mealAllowance": 1500,
+      "providentFund": 0,
+      "profesionalTax": 0,
+      "loan": 0,
       "total": null,
-      "id": 1
+      "status": 0,
+      "monthpicker": "",
+      "yearpicker": 0,
+      "noOfActualWorking": 0,
+      "id": 2
     }
   ]
 }

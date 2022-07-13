@@ -9,4 +9,9 @@ export class payrollModel{
   profesionalTax:number=0;
   loan:number=0;
   total:number=0;
+  status:number=0;
+  monthpicker : string ='';
+  yearpicker : number =0;
+  noOfActualWorking: number =0;
+  leaveDay:any;
 }

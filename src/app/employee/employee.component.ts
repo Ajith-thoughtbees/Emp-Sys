@@ -27,6 +27,7 @@ export class EmployeeComponent implements OnInit {
       password:''
         };
    }
+   showUpdate!:boolean
 
   ngOnInit(): void {
     console.log(this.employee)
@@ -37,6 +38,6 @@ export class EmployeeComponent implements OnInit {
 
   editEmployeeClicked(){
     this.onEditEmployee.emit(this.employee.id);
-  
+
   }
 }

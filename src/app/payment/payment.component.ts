@@ -17,16 +17,17 @@ export class PaymentComponent implements OnInit {
 
   payrolls! : payrollModel[];
   noOfWorkingDays: any= 22 ;
-  leaveDays: number=0;
-  date!:any;
-  updateForm!:FormGroup;
+  leaveDays: any;
+  payslipForm!:FormGroup;
   pay:any;
   noOfActualWorking!:number;
-
   eariningBasic!:any;
   eariningMA!:any;
   eariningHA!:any;
   eariningNS!:any;
+  date!:Date;
+
+
 
   constructor(private payrollService:PayrollService,
     public ref:DynamicDialogRef,
@@ -35,12 +36,12 @@ export class PaymentComponent implements OnInit {
 
   ngOnInit() {
 
-    this.updateForm = this.formBuilder.group({
-    actualDay: ['', Validators.required],
-      leaveDay: ['', Validators.required],
-      noOfActualWorking:['', Validators.required],
-      date:['',Validators.required]
-  });
+ this.payslipForm = this.formBuilder.group({
+  monthpicker:['',Validators.required],
+  yearpicker:['',Validators.required,Validators.pattern('^[^A-Za-z]+$'),Validators.minLength(4)],
+  leaveDay:['',Validators.required],
+  noOfActualWorking:['',Validators.required]
+ })
     //  this.payrollService.getData().pipe(payrolls => this.payrolls= payrolls)
     this.payrollService.getData().subscribe((res) => {
       this.payrolls = res
@@ -48,16 +49,16 @@ export class PaymentComponent implements OnInit {
      })
 
   }
+  get f() { return this.payslipForm.controls; }
 
   selectPayroll(payroll:payrollModel){
        this.ref.close(payroll)
   }
   leave(){
       this.noOfActualWorking = this.noOfWorkingDays - this.leaveDays
-    console.log(this.noOfActualWorking);
+    // console.log(this.noOfActualWorking);
     this.pay=this.config.data
      this.eariningBasic = ((this.pay.basic/this.noOfWorkingDays)*this.noOfActualWorking).toFixed(2);
-
 
      this.eariningMA = ((this.pay.mealAllowance/this.noOfWorkingDays)*this.noOfActualWorking).toFixed(2);
 
@@ -69,7 +70,9 @@ export class PaymentComponent implements OnInit {
 
     // console.log();
 
-
+this.payrollService.postData(this.payslipForm.value).subscribe(res=>{
+  console.log(res)
+})
 
 
   }
