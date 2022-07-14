@@ -39,9 +39,9 @@
                   <div class="col mt-0">
                     <label for="salary" class="form-label">Actual Working Day</label>
                     <input
-                      type="number" class="form-control" placeholder="Actual Working Day" formControlName="noOfActualWorking"  [(ngModel)]="noOfActualWorking" readonly/>
-                      <div *ngIf="f['noOfActualWorking'].touched && f['noOfActualWorking'].invalid" class="alert alert-danger">
-                        <div *ngIf="f['noOfActualWorking'].errors && f['noOfActualWorking'].errors['required']">Actual working day is required.</div>
+                      type="number" class="form-control" placeholder="Actual Working Day" formControlName="actualWorkingDay"  [(ngModel)]="noOfActualWorking" readonly/>
+                      <div *ngIf="f['actualWorkingDay'].touched && f['actualWorkingDay'].invalid" class="alert alert-danger">
+                        <div *ngIf="f['actualWorkingDay'].errors && f['actualWorkingDay'].errors['required']">Actual working day is required.</div>
                     </div>
                   </div>
                 </div>

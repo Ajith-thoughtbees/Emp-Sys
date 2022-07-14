@@ -11,6 +11,7 @@ export class payrollModel{
   status:number=1;
   monthpicker : string ='';
   yearpicker : string='';
-  noOfActualWorking: number =0;
+  actualWorkingDay: any;
   leaveDay:any;
+  netSalary:any;
 }

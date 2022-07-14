@@ -4,7 +4,7 @@ import {DynamicDialogConfig} from 'primeng/dynamicdialog';
 import { PayrollService } from '../service/payroll.service';
 import { payrollModel } from '../payroll/payroll.model';
 import {CalendarModule} from 'primeng/calendar';
-import { FormBuilder, FormGroup,Validators } from '@angular/forms';
+import { FormBuilder, FormGroup,Validators,FormControl } from '@angular/forms';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class PaymentComponent implements OnInit {
 
   payrolls! : payrollModel[];
   noOfWorkingDays: any= 22 ;
-  leaveDays: any;
+  leaveDays: any=0;
   payslipForm!:FormGroup;
   pay:any;
   noOfActualWorking!:number;
@@ -41,8 +41,8 @@ export class PaymentComponent implements OnInit {
  this.payslipForm = this.formBuilder.group({
   monthpicker:['',Validators.required],
   yearpicker:['',Validators.required,Validators.pattern('^[^A-Za-z]+$'),Validators.minLength(1)],
-  leaveDay:['',Validators.required],
-  noOfActualWorking:['',Validators.required]
+  leaveDay:[this.leaveDays,Validators.required],
+  actualWorkingDay:['',Validators.required]
  })
     //  this.payrollService.getData().pipe(payrolls => this.payrolls= payrolls)
     this.payrollService.getData().subscribe((res) => {
@@ -69,15 +69,43 @@ export class PaymentComponent implements OnInit {
 
     this.eariningNS = (parseFloat(this.eariningBasic) + parseFloat(this.eariningMA) + parseFloat(this.eariningHA)).toFixed(2)
 
+
     // console.log(this.pay.eariningNS)
 
     // console.log();
 
-// this.payrollService.postData(this.payslipForm.value).subscribe(res=>{
-//   console.log(res)
-// })
+    let payslip: payrollModel = {
+      monthpicker: this.payslipForm.value.monthpicker,
+      yearpicker:this.payslipForm.value.yearpicker,
+      leaveDay: this.payslipForm.value.leaveDay,
+      actualWorkingDay: this.payslipForm.value.actualWorkingDay,
+      id: 0,
+      employeeName: '',
+      date: '',
+      basic: 0,
+      houseRentAllowance: 0,
+      mealAllowance: 0,
+      status: 0,
+      netSalary: this.eariningNS
+    }
+this.payrollService.postData(payslip).subscribe(res=>{
+  console.log(res)
+})
 
 
+  }
+
+  public get monthpicker(): FormControl {
+    return this.payslipForm.get('monthpicker') as FormControl;
+  }
+  public get yearpicker(): FormControl {
+    return this.payslipForm.get('') as FormControl;
+  }
+  public get leaveDay(): FormControl{
+    return this.payslipForm.get('leaveDay') as FormControl;
+  }
+  public get actualWorkingDay():  FormControl{
+    return this.payslipForm.get('noOfActualWorking') as FormControl
   }
 
 }
