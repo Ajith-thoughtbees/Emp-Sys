@@ -44,7 +44,7 @@
           </div>
       </header> <!-- Main -->
       <main class="py-6 bg-surface-secondary">
-          <div class="container-fluid">
+          <div class="container-fluid" id="htmlData">
               <!-- Card stats -->
 
 
@@ -56,15 +56,18 @@
                           ID
                           </th> -->
 
-                        <th scope="col">
+                        <!-- <th scope="col">
                         Employee Name
+                        </th> -->
+                        <th scope="col">
+                       Month
+                         </th>
+                        <th scope="col">
+                        Year
                         </th>
                         <th scope="col">
-                       Date
-                         </th>
-                        <!-- <th scope="col">
-                      Salary
-                        </th> -->
+                        Leave Days
+                        </th>
                         <th scope="col">
                         Basic
                         </th>
@@ -75,25 +78,25 @@
                         Meal Allowance
                         </th>
                         <th scope="col">
-                          Total
+                        Net Salary
                         </th>
-                        <!-- <th scope="col">
-                          Actions
-                        </th> -->
+                         <th scope="col">
+                         View
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor="let arr of allowance ;">
                         <!-- <td>{{arr.id}}</td> -->
-                        <td class="text-uppercase">{{arr.employeeName}}</td>
-                        <td>{{arr.date}}</td>
-                        <td>{{arr.salary}}</td>
-                        <td>{{arr.tds}}</td>
+                        <!-- <td class="text-uppercase">{{arr.employeeName}}</td> -->
+                        <td>{{arr.basic}}</td>
+                        <td>{{arr.houseRentAllowance}}</td>
+                        <td>{{arr.mealAllowance}}</td>
                         <td>{{arr.hra}}</td>
-                        <!-- <td>{{arr.pf}}</td> -->
+                        <td>{{arr.pf}}</td>
                         <!-- <td>{{(arr.salary)-(arr.tds+arr.hra+arr.pf)}}</td> -->
-                        <!-- <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button>
-                        <button class="btn"><i class="bi bi-trash text-danger"></i></button> -->
+                      <!-- <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button> -->
+                        <button class="btn" (click)="openPDF()"><i class="bi bi-file-arrow-down-fill text-danger "></i></button>
                       </tr>
 
                     </tbody>

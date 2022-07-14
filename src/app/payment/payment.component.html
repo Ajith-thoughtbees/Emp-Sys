@@ -16,7 +16,9 @@
                   </div>
                    <div class="col">
                     <label for="yearpicker" class="form-label">Year Picker</label>
-                    <input type="number" class="form-control" placeholder="Year" formControlName="yearpicker"  />
+                    <select id="yearpicker" class="form-select" value={{default}} formControlName="yearpicker">
+                      <option *ngFor="let c of year" [ngValue]="c">{{ c }}</option>
+                  </select>
                     <div *ngIf="f['yearpicker'].touched && f['yearpicker'].invalid" class="alert alert-danger">
                       <div *ngIf="f['yearpicker'].errors && f['yearpicker'].errors['required']">Year is required.</div>
                   </div>
@@ -29,9 +31,9 @@
                   </div> -->
                   <div class="col mt-0">
                     <label for="salary" class="form-label">Leave Day</label>
-                    <input type="number" class="form-control" placeholder=" Leave Day" formControlName="leaveDay" (change)="leave()" [(ngModel)]="leaveDays" />
+                    <input type="number" class="form-control" placeholder=" Leave Day" formControlName="leaveDay" (click)="leave()" [(ngModel)]="leaveDays" />
                     <div *ngIf="f['leaveDay'].touched && f['leaveDay'].invalid" class="alert alert-danger">
-                      <div *ngIf="f['leaveDay'].errors && f['leaveDay'].errors['required']">Password is required.</div>
+                      <div *ngIf="f['leaveDay'].errors && f['leaveDay'].errors['required']">Leave Day is required.</div>
                   </div>
                   </div>
                   <div class="col mt-0">
@@ -78,10 +80,6 @@
             </div>
 </div>
   </form>
-
-
-
-
 
   <!-- <p-table [value]="payrolls"  [responsive]="true"> -->
  <!-- <ng-template pTemplate="header">

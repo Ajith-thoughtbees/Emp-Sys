@@ -26,6 +26,8 @@ export class PaymentComponent implements OnInit {
   eariningHA!:any;
   eariningNS!:any;
   date!:Date;
+  year: string[] = ['2021', '2022', '2023'];
+  default: string = '2022';
 
 
 
@@ -38,7 +40,7 @@ export class PaymentComponent implements OnInit {
 
  this.payslipForm = this.formBuilder.group({
   monthpicker:['',Validators.required],
-  yearpicker:['',Validators.required,Validators.pattern('^[^A-Za-z]+$'),Validators.minLength(4)],
+  yearpicker:['',Validators.required,Validators.pattern('^[^A-Za-z]+$'),Validators.minLength(1)],
   leaveDay:['',Validators.required],
   noOfActualWorking:['',Validators.required]
  })
@@ -47,7 +49,8 @@ export class PaymentComponent implements OnInit {
       this.payrolls = res
 
      })
-
+     this.pay=this.config.data
+     console.log(this.pay)
   }
   get f() { return this.payslipForm.controls; }
 
@@ -57,7 +60,7 @@ export class PaymentComponent implements OnInit {
   leave(){
       this.noOfActualWorking = this.noOfWorkingDays - this.leaveDays
     // console.log(this.noOfActualWorking);
-    this.pay=this.config.data
+
      this.eariningBasic = ((this.pay.basic/this.noOfWorkingDays)*this.noOfActualWorking).toFixed(2);
 
      this.eariningMA = ((this.pay.mealAllowance/this.noOfWorkingDays)*this.noOfActualWorking).toFixed(2);
@@ -70,12 +73,12 @@ export class PaymentComponent implements OnInit {
 
     // console.log();
 
-this.payrollService.postData(this.payslipForm.value).subscribe(res=>{
-  console.log(res)
-})
+// this.payrollService.postData(this.payslipForm.value).subscribe(res=>{
+//   console.log(res)
+// })
 
 
   }
 
-
 }
+

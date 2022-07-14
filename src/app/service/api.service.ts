@@ -15,20 +15,20 @@ export class ApiService {
 
    }
 postEmployees(employee : Employee){
-  return this.http.post<Employee>('http://localhost:3000/posts', employee)
+  return this.http.post<Employee>('http://192.168.200.33:3000/posts', employee)
 }
 
 getEmployees(){
 
-  return this.http.get<Employee[]>('http://localhost:3000/posts')
+  return this.http.get<Employee[]>('http://192.168.200.33:3000/posts')
 }
 
 editEmployees(data:any,id:number){
-  return this.http.put<any>('http://localhost:3000/posts' +id,data)
+  return this.http.put<any>('http://192.168.200.33:3000/posts/' +id,data)
 }
 
 deleteEmployees(id: string){
-  return this.http.delete('http://localhost:3000/posts' + '/' +id)
+  return this.http.delete('http://192.168.200.33:3000/posts' + '/' +id)
 }
 
 

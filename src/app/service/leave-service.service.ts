@@ -13,18 +13,18 @@ export class LeaveServiceService {
   constructor(private http:HttpClient) { }
 
   postAttendance(absent : attendance){
-    return this.http.post<attendance>('http://localhost:3000/attendance', absent)
+    return this.http.post<attendance>('http://192.168.200.33:3000/attendance', absent)
   }
 
   getAttendance(){
-    return this.http.get<attendance[]>('http://localhost:3000/attendance', )
+    return this.http.get<attendance[]>('http://192.168.200.33:3000/attendance', )
   }
 
   updateAttendance(data:any,id:number){
-    return this.http.put<any>('http://localhost:3000/attendance/'+id,data)
+    return this.http.put<any>('http://192.168.200.33:3000/attendance/'+id,data)
   }
-  
+
   deleteAttendance(id: string){
-    return this.http.delete('http://localhost:3000/attendance/' +id)
+    return this.http.delete('http://192.168.200.33:3000/attendance/' +id)
   }
 }

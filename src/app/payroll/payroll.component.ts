@@ -9,6 +9,7 @@ import {DialogService} from 'primeng/dynamicdialog';
 import {DynamicDialogRef} from 'primeng/dynamicdialog';
 import {MessageService} from 'primeng/api';
 import { PaymentComponent } from '../payment/payment.component';
+import { trim } from 'jquery';
 
 @Component({
   selector: 'app-payroll',
@@ -19,7 +20,7 @@ import { PaymentComponent } from '../payment/payment.component';
 export class PayrollComponent implements OnInit,OnDestroy {
   payrollModelObj: payrollModel = new payrollModel();
   payrollForm !: FormGroup;
-  employeeData!: any;
+  employeeData: any=[];
   showAdd!: boolean;
   showUpdate!: boolean;
   processTemplates: any = [];
@@ -30,6 +31,7 @@ export class PayrollComponent implements OnInit,OnDestroy {
   mealAllowance!: number;
   total!: any;
   ref!: DynamicDialogRef;
+  status!:any
 
   constructor(private formBuilder: FormBuilder,
     private payrollServices: PayrollService,
@@ -54,7 +56,7 @@ export class PayrollComponent implements OnInit,OnDestroy {
       // incentivePay: this.formBuilder.control('',[Validators.required]),
       houseRentAllowance: this.formBuilder.control('', [Validators.required]),
       mealAllowance: this.formBuilder.control('', [Validators.required]),
-      total: this.formBuilder.control('', [])
+
 
     });
     this.add1()
@@ -78,21 +80,7 @@ export class PayrollComponent implements OnInit,OnDestroy {
     // this.payrollModelObj.incentivePay=this.payrollForm.value.incentivePay;
     this.payrollModelObj.houseRentAllowance = this.payrollForm.value.houseRentAllowance;
     this.payrollModelObj.mealAllowance = this.payrollForm.value.mealAllowance;
-     this.payrollModelObj.total=this.payrollForm.value.total;
 
-    this.api.getEmployees()
-      .subscribe(data => {
-        this.processTemplates = data;
-        // console.log("in",this.processTemplates , data)
-
-        //  for (let emp of data) {
-        //   const index = this.processTemplates.findIndex((emp: { id: number; }) => emp.id)
-
-        //   console.log(emp.firstname)
-        //   }
-
-
-      });
 
     let cancel = document.getElementById("cancel");
     this.payrollServices.postData(this.payrollModelObj).subscribe(a => {
@@ -102,7 +90,11 @@ export class PayrollComponent implements OnInit,OnDestroy {
       cancel?.click(); this.payrollForm.reset();
       this.getAllSalary();
 
+
+
     })
+
+
   }
 
   getAllSalary() {
@@ -111,6 +103,7 @@ export class PayrollComponent implements OnInit,OnDestroy {
       this.employeeData.map((data: any, i: any) => {
         const index = this.processTemplates.findIndex((empdata: { id: any; }) => empdata.id == data.employeeName);
         console.log(this.processTemplates[index])
+
         if (index !== -1) {
           console.log(this.processTemplates[index]);
           this.employeeData[i]["empFirstName"] = this.processTemplates[index].firstname
@@ -163,6 +156,7 @@ export class PayrollComponent implements OnInit,OnDestroy {
     // this.payrollForm.controls['incentivePay'].setValue(arr.incentivePay);
     this.payrollForm.controls['houseRentAllowance'].setValue(arr.houseRentAllowance);
     this.payrollForm.controls['mealAllowance'].setValue(arr.mealAllowance);
+    this.payrollForm.controls['total'].setValue(arr.total);
   }
   updatePayrollDetails() {
 
@@ -181,6 +175,8 @@ export class PayrollComponent implements OnInit,OnDestroy {
       cancel?.click();
       this.payrollForm.reset();
       this.getAllSalary();
+
+
     })
   }
 
@@ -196,7 +192,7 @@ this.ref= this.dialogService.open(PaymentComponent,{
   id:arr.id,
   basic:arr.basic,
   houseRentAllowance:arr.houseRentAllowance,
-  mealAllowance: arr.mealAllowance
+  mealAllowance: arr.mealAllowance,
 },
   header:"PaySlip Of An Employee",
   width: "80%",
