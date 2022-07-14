@@ -71,7 +71,7 @@
       "mealAllowance": 1200,
       "status": 1,
       "monthpicker": "",
-      "yearpicker": 0,
+      "yearpicker": 0,"total": 0,
       "noOfActualWorking": 0,
       "id": 1
     },
@@ -83,7 +83,7 @@
       "mealAllowance": 1300,
       "status": 1,
       "monthpicker": "",
-      "yearpicker": 0,
+      "yearpicker": 0,"total": 0,
       "noOfActualWorking": 0,
       "id": 2
     },
@@ -96,7 +96,7 @@
       "basic": 0,
       "houseRentAllowance": 0,
       "mealAllowance": 0,
-      "status": 0,
+      "status": 0,"total": 0,
       "netSalary": "14500.00"
     },
     {
@@ -109,7 +109,7 @@
       "basic": 0,
       "houseRentAllowance": 0,
       "mealAllowance": 0,
-      "status": 0,
+      "status": 0,"total": 0,
       "netSalary": "14500.00"
     },
     {
@@ -122,7 +122,7 @@
       "basic": 0,
       "houseRentAllowance": 0,
       "mealAllowance": 0,
-      "status": 0,
+      "status": 0,"total": 0,
       "netSalary": "15159.09"
     },
     {
@@ -135,7 +135,7 @@
       "basic": 0,
       "houseRentAllowance": 0,
       "mealAllowance": 0,
-      "status": 0,
+      "status": 0,"total": 0,
       "netSalary": "14500.00"
     },
     {
@@ -148,7 +148,7 @@
       "basic": 0,
       "houseRentAllowance": 0,
       "mealAllowance": 0,
-      "status": 0,
+      "status": 0,"total": 0,
       "netSalary": "13840.91"
     },
     {
@@ -161,7 +161,7 @@
       "basic": 0,
       "houseRentAllowance": 0,
       "mealAllowance": 0,
-      "status": 0,
+      "status": 0,"total": 0,
       "netSalary": "13181.82"
     },
     {
@@ -174,8 +174,55 @@
       "basic": 0,
       "houseRentAllowance": 0,
       "mealAllowance": 0,
-      "status": 0,
+      "status": 0,"total": 0,
       "netSalary": "12522.73"
+    },
+    {
+      "employeeName": "\n                    2",
+      "date": "",
+      "basic": 12000,
+      "houseRentAllowance": 2000,
+      "mealAllowance": 120,
+      "status": 1,
+      "monthpicker": "",
+      "yearpicker": "","total": 0,
+      "id": 10
+    },
+    {
+      "employeeName": "\n                    2",
+      "date": "",
+      "basic": 15000,
+      "houseRentAllowance": 1200,
+      "mealAllowance": 3000,
+      "status": 1,
+      "monthpicker": "",
+      "yearpicker": "","total": 0,
+      "id": 11
+    },
+    {
+      "employeeName": "\n                    2",
+      "date": "",
+      "basic": 15000,
+      "houseRentAllowance": 3000,
+      "mealAllowance": 5000,
+      "status": 1,
+      "monthpicker": "",
+      "yearpicker": "",
+      "total": 0,
+      "id": 12
+    },
+    {
+      "yearpicker": "",
+      "leaveDay": 0,
+      "id": 13,
+      "employeeName": "",
+      "date": "",
+      "basic": 0,
+      "houseRentAllowance": 0,
+      "mealAllowance": 0,
+      "status": 0,
+      "total": 0,
+      "netSalary": "14500.00"
     }
   ]
 }

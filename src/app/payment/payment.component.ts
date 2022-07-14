@@ -28,6 +28,7 @@ export class PaymentComponent implements OnInit {
   date!:Date;
   year: string[] = ['2021', '2022', '2023'];
   default: string = '2022';
+  hike: any;
 
 
 
@@ -69,7 +70,11 @@ export class PaymentComponent implements OnInit {
 
     this.eariningNS = (parseFloat(this.eariningBasic) + parseFloat(this.eariningMA) + parseFloat(this.eariningHA)).toFixed(2)
 
-
+    let index = this.pay.basic+this.pay.houseRentAllowance+this.pay.mealAllowance
+    if(index < this.hike){
+      this.hike = index
+    }
+    this.payrolls. = this.hike
     // console.log(this.pay.eariningNS)
 
     // console.log();
@@ -86,6 +91,7 @@ export class PaymentComponent implements OnInit {
       houseRentAllowance: 0,
       mealAllowance: 0,
       status: 0,
+      total: 0,
       netSalary: this.eariningNS
     }
 this.payrollService.postData(payslip).subscribe(res=>{

@@ -14,4 +14,5 @@ export class payrollModel{
   actualWorkingDay: any;
   leaveDay:any;
   netSalary:any;
+  total:any;
 }

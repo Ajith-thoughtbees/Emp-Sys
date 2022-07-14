@@ -31,7 +31,8 @@ export class PayrollComponent implements OnInit,OnDestroy {
   mealAllowance!: number;
   total!: any;
   ref!: DynamicDialogRef;
-  status!:any
+  hike!:any
+
 
   constructor(private formBuilder: FormBuilder,
     private payrollServices: PayrollService,
@@ -80,6 +81,7 @@ export class PayrollComponent implements OnInit,OnDestroy {
     // this.payrollModelObj.incentivePay=this.payrollForm.value.incentivePay;
     this.payrollModelObj.houseRentAllowance = this.payrollForm.value.houseRentAllowance;
     this.payrollModelObj.mealAllowance = this.payrollForm.value.mealAllowance;
+
 
 
     let cancel = document.getElementById("cancel");
