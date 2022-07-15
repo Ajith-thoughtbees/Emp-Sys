@@ -21,6 +21,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { ButtonModule } from 'primeng/button';
 import {CalendarModule} from 'primeng/calendar';
 import {InputNumberModule} from 'primeng/inputnumber';
+import { PopupPdfComponent } from './popup-pdf/popup-pdf.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {InputNumberModule} from 'primeng/inputnumber';
     EmployeeDashboardComponent,
     EmpPayrollComponent,
     PaymentComponent,
+    PopupPdfComponent,
   ],
   imports: [
     BrowserModule,

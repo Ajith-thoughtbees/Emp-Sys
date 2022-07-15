@@ -3,22 +3,26 @@ import { FormBuilder,FormControl,FormGroup,Validators } from '@angular/forms';
 import { PayrollService } from '../service/payroll.service';
 import { payrollModel } from '../payroll/payroll.model';
 import { ApiService } from '../service/api.service';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+
+import {DialogService} from 'primeng/dynamicdialog';
+import {DynamicDialogRef} from 'primeng/dynamicdialog';
+import {MessageService} from 'primeng/api';
+import { PaymentComponent } from '../payment/payment.component';
+import { PopupPdfComponent } from '../popup-pdf/popup-pdf.component';
 
 @Component({
   selector: 'app-emp-payroll',
   templateUrl: './emp-payroll.component.html',
   styleUrls: ['./emp-payroll.component.css'],
-  providers:[PayrollService]
+  providers:[PayrollService,DialogService, MessageService]
 })
 export class EmpPayrollComponent implements OnInit {
   payrollForm: FormGroup;
   allowance :any =[];
   empId: any=[]
   ID: any;
-
-  constructor(private payrollServices:PayrollService, private formBuilder: FormBuilder) {
+  ref!: DynamicDialogRef;
+  constructor(private payrollServices:PayrollService, private formBuilder: FormBuilder,public dialogService: DialogService, public messageService: MessageService) {
   this.allowance =[]
   this.payrollForm = formBuilder.group({});
    }
@@ -72,24 +76,36 @@ this.fun()
 
       });
 console.log(this.ID);
+}})
 
 
-
-
-    }})
 }
-public openPDF(): void {
-  let DATA: any = document.getElementById('htmlData');
-  html2canvas(DATA).then((canvas) => {
-    let fileWidth = 208;
-    let fileHeight = (canvas.height * fileWidth) / canvas.width;
-    const FILEURI = canvas.toDataURL('image/png');
-    let PDF = new jsPDF('p', 'mm', 'a4');
-    let position = 0;
-    PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-    PDF.save('Payslip.pdf');
+show(arr:any){
+  this.ref= this.dialogService.open(PaymentComponent,{
+    data: {
+       // employeeName: arr.employeeName,
+    id:arr.id,
+    basic:arr.basic,
+    houseRentAllowance:arr.houseRentAllowance,
+    mealAllowance: arr.mealAllowance,
+  },
+    header:"PaySlip Of An Employee",
+    width: "80%",
+    height : '100%',
+    contentStyle:{"max-height":"1000px","overflow":"auto"},
+    baseZIndex:10000
+
   });
-}
+
+  this.ref.onClose.subscribe((payroll:payrollModel)=>{
+    if(payroll){
+      this.messageService.add({severity:"info", summary:'Payroll Selected', detail:payroll.employeeName})
+    }
+  });
+
+
+  }
+
 
 
 }

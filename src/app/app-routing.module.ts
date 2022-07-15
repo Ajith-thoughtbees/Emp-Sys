@@ -8,6 +8,7 @@ import { LeaveComponent } from './leave/leave.component';
 import { LoginComponent } from './login/login.component';
 import { PaymentComponent } from './payment/payment.component';
 import { PayrollComponent } from './payroll/payroll.component';
+import { PopupPdfComponent } from './popup-pdf/popup-pdf.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path:'leave',component:LeaveComponent},
   { path: 'payroll', component:PayrollComponent},
   { path:'attendance', component:AttendanceComponent},
-  {path:'payment',component:PaymentComponent}
+  {path:'payment',component:PaymentComponent},
+  {path:'popup-pdf',component:PopupPdfComponent}
 ];
 
 @NgModule({

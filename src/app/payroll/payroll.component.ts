@@ -19,7 +19,7 @@ import { trim } from 'jquery';
 })
 export class PayrollComponent implements OnInit,OnDestroy {
   payrollModelObj: payrollModel = new payrollModel();
-  payrollForm !: FormGroup;
+  payrollForm!: FormGroup;
   employeeData: any=[];
   showAdd!: boolean;
   showUpdate!: boolean;
@@ -32,6 +32,7 @@ export class PayrollComponent implements OnInit,OnDestroy {
   total!: any;
   ref!: DynamicDialogRef;
   hike!:any
+  v: any;
 
 
   constructor(private formBuilder: FormBuilder,
@@ -85,16 +86,41 @@ export class PayrollComponent implements OnInit,OnDestroy {
 
 
     let cancel = document.getElementById("cancel");
-    this.payrollServices.postData(this.payrollModelObj).subscribe(a => {
-
+    const adm = this.employeeData.findIndex((a:any)=>{
       console.log(a);
-      alert("Record inserted successfully");
-      cancel?.click(); this.payrollForm.reset();
-      this.getAllSalary();
+      this.hike=a.employeeName == this.payrollForm.value.employeeName
+      return a.employeeName == this.payrollForm.value.employeeName
+
+    });
+    if(this.hike){
+      let cid = this.employeeData[adm].id
+      console.log(cid)
+      this.employeeData[adm].status = 0
+      console.log(this.employeeData);
+ this.payrollServices.updateData(cid,this.employeeData)
+
+    console.log(adm);
 
 
 
-    })
+
+    }else{
+
+
+      this.payrollServices.postData(this.payrollModelObj).subscribe(a => {
+
+        console.log(a);
+        alert("Record inserted successfully");
+        cancel?.click(); this.payrollForm.reset();
+        this.getAllSalary();
+
+
+
+      })
+  console.log(this.payrollForm);
+
+
+    }
 
 
   }
@@ -104,6 +130,8 @@ export class PayrollComponent implements OnInit,OnDestroy {
       this.employeeData = a;
       this.employeeData.map((data: any, i: any) => {
         const index = this.processTemplates.findIndex((empdata: { id: any; }) => empdata.id == data.employeeName);
+        console.log(data.employeeName);
+
         console.log(this.processTemplates[index])
 
         if (index !== -1) {
@@ -168,18 +196,22 @@ export class PayrollComponent implements OnInit,OnDestroy {
     // this.payrollModelObj.incentivePay=this.payrollForm.value.incentivePay;
     this.payrollModelObj.houseRentAllowance = this.payrollForm.value.houseRentAllowance;
     this.payrollModelObj.mealAllowance = this.payrollForm.value.mealAllowance;
-
-    this.payrollServices.updateData(this.payrollModelObj, this.payrollModelObj.id).subscribe(a => {
-      // alert("Record updated Succesfully");
-
-      let cancel = document.getElementById("cancel");
-
-      cancel?.click();
-      this.payrollForm.reset();
-      this.getAllSalary();
+    console.log(this.payrollForm.value.employeeName)
+    // this.payrollServices.getData().subscribe(res => {
 
 
-    })
+    // })
+    // this.payrollServices.updateData(this.payrollModelObj, this.payrollModelObj.id).subscribe(a => {
+    //   // alert("Record updated Succesfully");
+
+    //   let cancel = document.getElementById("cancel");
+
+    //   cancel?.click();
+    //   this.payrollForm.reset();
+    //   this.getAllSalary();
+
+
+    // })
   }
 
   add1() {
@@ -219,4 +251,3 @@ ngOnDestroy(): void {
 }
 
 }
-

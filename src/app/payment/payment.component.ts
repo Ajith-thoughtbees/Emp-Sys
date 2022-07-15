@@ -41,7 +41,7 @@ export class PaymentComponent implements OnInit {
 
  this.payslipForm = this.formBuilder.group({
   monthpicker:['',Validators.required],
-  yearpicker:['',Validators.required,Validators.pattern('^[^A-Za-z]+$'),Validators.minLength(1)],
+  yearpicker:['default',Validators.required],
   leaveDay:[this.leaveDays,Validators.required],
   actualWorkingDay:['',Validators.required]
  })
@@ -70,30 +70,27 @@ export class PaymentComponent implements OnInit {
 
     this.eariningNS = (parseFloat(this.eariningBasic) + parseFloat(this.eariningMA) + parseFloat(this.eariningHA)).toFixed(2)
 
-    let index = this.pay.basic+this.pay.houseRentAllowance+this.pay.mealAllowance
-    if(index < this.hike){
-      this.hike = index
-    }
-    this.payrolls. = this.hike
+
     // console.log(this.pay.eariningNS)
 
     // console.log();
 
     let payslip: payrollModel = {
       monthpicker: this.payslipForm.value.monthpicker,
-      yearpicker:this.payslipForm.value.yearpicker,
+      yearpicker: this.year[parseInt(this.yearpicker.value)],
       leaveDay: this.payslipForm.value.leaveDay,
       actualWorkingDay: this.payslipForm.value.actualWorkingDay,
       id: 0,
       employeeName: '',
       date: '',
-      basic: 0,
-      houseRentAllowance: 0,
-      mealAllowance: 0,
+      basic: this.eariningBasic,
+      houseRentAllowance: this.eariningHA,
+      mealAllowance: this.eariningMA,
       status: 0,
       total: 0,
       netSalary: this.eariningNS
     }
+
 this.payrollService.postData(payslip).subscribe(res=>{
   console.log(res)
 })
@@ -105,7 +102,7 @@ this.payrollService.postData(payslip).subscribe(res=>{
     return this.payslipForm.get('monthpicker') as FormControl;
   }
   public get yearpicker(): FormControl {
-    return this.payslipForm.get('') as FormControl;
+    return this.payslipForm.get('yearpicker') as FormControl;
   }
   public get leaveDay(): FormControl{
     return this.payslipForm.get('leaveDay') as FormControl;
