@@ -1,18 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { PayrollService } from '../service/payroll.service';
+import { payrollModel } from '../payroll/payroll.model';
+import {DynamicDialogRef} from 'primeng/dynamicdialog';
+import {DynamicDialogConfig} from 'primeng/dynamicdialog';
+
 
 @Component({
   selector: 'app-popup-pdf',
   templateUrl: './popup-pdf.component.html',
-  styleUrls: ['./popup-pdf.component.css']
+  styleUrls: ['./popup-pdf.component.css'],
+  providers:[PayrollService]
 })
 export class PopupPdfComponent implements OnInit {
+  ID: any;
+  arr: any = [];
+  user: any;
+  pay: any
+  payrollModelObj : payrollModel = new payrollModel();
 
-  constructor() { }
+  constructor(private payrollService : PayrollService, public ref:DynamicDialogRef,
+    public config:DynamicDialogConfig) { }
 
   ngOnInit(): void {
+
+    this.payrollService.getData().subscribe((res) => {
+      this.payrollModelObj = res
+
+     })
+     this.pay=this.config.data
+     console.log(this.pay.id)
+
+
   }
+
   public openPDF(): void {
     let DATA: any = document.getElementById('htmlData');
     html2canvas(DATA).then((canvas) => {
@@ -25,4 +47,5 @@ export class PopupPdfComponent implements OnInit {
       PDF.save('Payslip.pdf');
     });
   }
+
 }

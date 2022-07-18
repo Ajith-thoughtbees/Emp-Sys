@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { FormBuilder,FormControl,FormGroup,Validators } from '@angular/forms';
 import { PayrollService } from '../service/payroll.service';
 import { payrollModel } from '../payroll/payroll.model';
 import { ApiService } from '../service/api.service';
-
 import {DialogService} from 'primeng/dynamicdialog';
 import {DynamicDialogRef} from 'primeng/dynamicdialog';
 import {MessageService} from 'primeng/api';
@@ -81,16 +80,10 @@ console.log(this.ID);
 
 }
 show(arr:any){
-  this.ref= this.dialogService.open(PaymentComponent,{
-    data: {
-       // employeeName: arr.employeeName,
-    id:arr.id,
-    basic:arr.basic,
-    houseRentAllowance:arr.houseRentAllowance,
-    mealAllowance: arr.mealAllowance,
-  },
+  this.ref= this.dialogService.open(PopupPdfComponent,{
+    data: arr,
     header:"PaySlip Of An Employee",
-    width: "80%",
+    width: "70%",
     height : '100%',
     contentStyle:{"max-height":"1000px","overflow":"auto"},
     baseZIndex:10000
@@ -106,7 +99,11 @@ show(arr:any){
 
   }
 
-
+  ngOnDestroy(): void {
+    if(this.ref){
+      this.ref.close();
+    }
+  }
 
 }
 

@@ -24,7 +24,8 @@ export class PayrollService {
 }
 
 updateData(data:any,id:number){
-  return this.http.put<any>("http://192.168.200.33:3000/payroll/"+id,data).pipe(map((res:any)=>{
+  return this.http.put<any>("http://192.168.200.33:3000/payroll/"+id,data)
+  .pipe(map((res:any)=>{
    return res;
 }))
 }

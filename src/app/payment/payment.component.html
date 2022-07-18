@@ -1,5 +1,6 @@
 
-
+<div class="container">
+  <div class="row">
            <form action="" class="mt-5 p-5"  [formGroup]="payslipForm">
               <h5 class="text-primary fs-5 mb-4">Per month no of working days : 22</h5>
                <div class="card shadow border-0 mb-5">
@@ -15,14 +16,29 @@
                     </div>
                   </div>
                    <div class="col">
-                    <label for="yearpicker" class="form-label">Year Picker</label>
-                    <select id="yearpicker" class="form-select" value={{default}} formControlName="yearpicker">
-                      <option *ngFor="let c of year" [ngValue]="c">{{ c }}</option>
+                    <label for="yearpicker" class="form-label">Year</label>
+                    <select class="form-select"  formControlName="yearpicker" >
+                     <option value="default" selected>Pick your year</option>
+                      <option *ngFor="let option of yearpickerOptions; let i = index;" value="{{i}}">{{option | titlecase}}</option>
                   </select>
                     <div *ngIf="f['yearpicker'].touched && f['yearpicker'].invalid" class="alert alert-danger">
                       <div *ngIf="f['yearpicker'].errors && f['yearpicker'].errors['required']">Year is required.</div>
                   </div>
                   </div>
+
+                  <!-- <div class="row mt-3">
+                    <div class="col">
+                      <select class="form-select" formControlName="education">
+                        <option value="default" selected>Select your Education</option>
+                        <option *ngFor="let option of educationOptions; let i = index;" value="{{i}}">
+                          {{option | titlecase}}
+                        </option>
+                        <div *ngIf="f['education'].touched && f['education'].invalid" class="alert alert-danger">
+                          <div *ngIf="f['education'].errors && f['education'].errors['required']">Education is required.</div>
+                      </div>
+                      </select>
+                    </div>
+                  </div> -->
                   <!-- <div class="col mt-0">
                     <label for="salary" class="form-label">Actual Day</label>
                     <input
@@ -31,15 +47,14 @@
                   </div> -->
                   <div class="col mt-0">
                     <label for="salary" class="form-label">Leave Day</label>
-                    <input type="number" class="form-control" placeholder=" Leave Day" formControlName="leaveDay" (click)="leave()" [(ngModel)]="leaveDays" />
+                    <input type="number" class="form-control" placeholder="Leave Day" formControlName="leaveDay" (click)="leave()"  [(ngModel)]="leaveDays"/>
                     <div *ngIf="f['leaveDay'].touched && f['leaveDay'].invalid" class="alert alert-danger">
                       <div *ngIf="f['leaveDay'].errors && f['leaveDay'].errors['required']">Leave Day is required.</div>
                   </div>
                   </div>
                   <div class="col mt-0">
                     <label for="salary" class="form-label">Actual Working Day</label>
-                    <input
-                      type="number" class="form-control" placeholder="Actual Working Day" formControlName="actualWorkingDay"  [(ngModel)]="noOfActualWorking" readonly/>
+                    <input type="number" class="form-control" placeholder="Actual Working Day" formControlName="actualWorkingDay"  [(ngModel)]="noOfActualWorking" readonly/>
                       <div *ngIf="f['actualWorkingDay'].touched && f['actualWorkingDay'].invalid" class="alert alert-danger">
                         <div *ngIf="f['actualWorkingDay'].errors && f['actualWorkingDay'].errors['required']">Actual working day is required.</div>
                     </div>
@@ -62,10 +77,10 @@
 
               <ul class="list-group">
                 <li class="list-group-item active">Actual</li>
-                <li class="list-group-item">{{pay.basic}}</li>
-                <li class="list-group-item">{{pay.houseRentAllowance}}</li>
-                <li class="list-group-item">{{pay.mealAllowance}}</li>
-               <li class="list-group-item  bg-primary text-white">{{pay.basic+pay.houseRentAllowance+pay.mealAllowance}}</li>
+                <li class="list-group-item"  ng-model="basic">{{pay.basic}}</li>
+                <li class="list-group-item" ng-model="houseRentAllowance" >{{pay.houseRentAllowance}}</li>
+                <li class="list-group-item" ng-model="mealAllowance" >{{pay.mealAllowance}}</li>
+               <li class="list-group-item  bg-primary text-white">{{basic -- houseRentAllowance -- mealAllowance}}</li>
               </ul>
             </div>
             <div class="col">
@@ -79,8 +94,11 @@
               </ul>
             </div>
 </div>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
+  <button class="btn btn-success btn-block" (click)="postSalary()"  [disabled]="payslipForm.invalid">PaySlip</button>
+</div>
   </form>
-
+</div></div>
   <!-- <p-table [value]="payrolls"  [responsive]="true"> -->
  <!-- <ng-template pTemplate="header">
   <tr>

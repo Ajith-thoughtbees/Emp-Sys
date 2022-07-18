@@ -14,8 +14,8 @@ import { FormBuilder, FormGroup,Validators,FormControl } from '@angular/forms';
   providers:[PayrollService]
 })
 export class PaymentComponent implements OnInit {
-
-  payrolls! : payrollModel[];
+  // employeeModelObj:EmployeeModel=new EmployeeModel();
+  payrollModelObj : payrollModel = new payrollModel();
   noOfWorkingDays: any= 22 ;
   leaveDays: any=0;
   payslipForm!:FormGroup;
@@ -26,11 +26,13 @@ export class PaymentComponent implements OnInit {
   eariningHA!:any;
   eariningNS!:any;
   date!:Date;
-  year: string[] = ['2021', '2022', '2023'];
+  yearpickerOptions: string[] = ['2021', '2022', '2023'];
   default: string = '2022';
   hike: any;
-
-
+basic:any;
+houseRentAllowance:any;
+mealAllowance:any;
+totalValue:any
 
   constructor(private payrollService:PayrollService,
     public ref:DynamicDialogRef,
@@ -43,15 +45,17 @@ export class PaymentComponent implements OnInit {
   monthpicker:['',Validators.required],
   yearpicker:['default',Validators.required],
   leaveDay:[this.leaveDays,Validators.required],
-  actualWorkingDay:['',Validators.required]
+  actualWorkingDay:['',Validators.required],
  })
-    //  this.payrollService.getData().pipe(payrolls => this.payrolls= payrolls)
+
     this.payrollService.getData().subscribe((res) => {
-      this.payrolls = res
+      this.payrollModelObj = res
 
      })
      this.pay=this.config.data
-     console.log(this.pay)
+     console.log(this.pay.id)
+
+
   }
   get f() { return this.payslipForm.controls; }
 
@@ -74,29 +78,31 @@ export class PaymentComponent implements OnInit {
     // console.log(this.pay.eariningNS)
 
     // console.log();
+  }
 
+  postSalary(){
     let payslip: payrollModel = {
-      monthpicker: this.payslipForm.value.monthpicker,
-      yearpicker: this.year[parseInt(this.yearpicker.value)],
-      leaveDay: this.payslipForm.value.leaveDay,
+      monthpicker: this.monthpicker.value,
+      yearpicker:this.yearpickerOptions[parseInt(this.yearpicker.value)],
+      leaveDay: this.leaveDay.value,
       actualWorkingDay: this.payslipForm.value.actualWorkingDay,
       id: 0,
-      employeeName: '',
+      employeeName: this.pay.employeeName,
       date: '',
-      basic: this.eariningBasic,
-      houseRentAllowance: this.eariningHA,
-      mealAllowance: this.eariningMA,
+      basic: parseFloat(this.eariningBasic).toFixed(0),
+      houseRentAllowance: parseFloat(this.eariningHA).toFixed(0),
+      mealAllowance: parseFloat(this.eariningMA).toFixed(0),
       status: 0,
       total: 0,
-      netSalary: this.eariningNS
+      netSalary: parseFloat(this.eariningNS).toFixed(0)
     }
 
-this.payrollService.postData(payslip).subscribe(res=>{
+this.payrollService.updateData(payslip,this.pay.id).subscribe(res=>{
   console.log(res)
 })
 
-
   }
+
 
   public get monthpicker(): FormControl {
     return this.payslipForm.get('monthpicker') as FormControl;
@@ -112,4 +118,6 @@ this.payrollService.postData(payslip).subscribe(res=>{
   }
 
 }
+
+
 

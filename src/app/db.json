@@ -72,15 +72,34 @@
   ],
   "payroll": [
     {
+      "monthpicker": "2022-02-28T18:30:00.000Z",
+      "yearpicker": "2022",
+      "leaveDay": 5,
+      "actualWorkingDay": 17,
+      "id": 1,
       "employeeName": "2",
       "date": "",
-      "basic": 1000,
-      "houseRentAllowance": 20000,
-      "mealAllowance": 10101,
-      "status": 1,
-      "monthpicker": "",
-      "yearpicker": "",
-      "id": 1
+      "basic": "8449",
+      "houseRentAllowance": "2113",
+      "mealAllowance": "10561",
+      "status": 0,
+      "total": 0,
+      "netSalary": "21123"
+    },
+    {
+      "monthpicker": "2022-02-28T18:30:00.000Z",
+      "yearpicker": "2022",
+      "leaveDay": 2,
+      "actualWorkingDay": 20,
+      "id": 2,
+      "employeeName": "3",
+      "date": "",
+      "basic": "1091",
+      "houseRentAllowance": "2727",
+      "mealAllowance": "40909",
+      "status": 0,
+      "total": 0,
+      "netSalary": "44727"
     }
   ]
 }

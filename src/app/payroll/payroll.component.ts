@@ -26,9 +26,9 @@ export class PayrollComponent implements OnInit,OnDestroy {
   processTemplates: any = [];
   showUpdateTitle!: boolean;
   showAddTitle!: boolean;
-  basic!: number;
-  houseRentAllowance!: number;
-  mealAllowance!: number;
+  basic: any;
+  houseRentAllowance: any;
+  mealAllowance: any;
   total!: any;
   ref!: DynamicDialogRef;
   hike!:any
@@ -97,7 +97,9 @@ export class PayrollComponent implements OnInit,OnDestroy {
       console.log(cid)
       this.employeeData[adm].status = 0
       console.log(this.employeeData);
- this.payrollServices.updateData(cid,this.employeeData)
+      // this.payrollServices.updateData(cid,this.employeeData).subscribe(a=>{
+      //   console.log(a)
+      // })
 
     console.log(adm);
 
@@ -186,7 +188,7 @@ export class PayrollComponent implements OnInit,OnDestroy {
     // this.payrollForm.controls['incentivePay'].setValue(arr.incentivePay);
     this.payrollForm.controls['houseRentAllowance'].setValue(arr.houseRentAllowance);
     this.payrollForm.controls['mealAllowance'].setValue(arr.mealAllowance);
-    this.payrollForm.controls['total'].setValue(arr.total);
+    // this.payrollForm.controls['total'].setValue(arr.total);
   }
   updatePayrollDetails() {
 
@@ -221,13 +223,7 @@ export class PayrollComponent implements OnInit,OnDestroy {
 
 edit(arr:any){
 this.ref= this.dialogService.open(PaymentComponent,{
-  data: {
-     // employeeName: arr.employeeName,
-  id:arr.id,
-  basic:arr.basic,
-  houseRentAllowance:arr.houseRentAllowance,
-  mealAllowance: arr.mealAllowance,
-},
+  data: arr,
   header:"PaySlip Of An Employee",
   width: "80%",
   height : '100%',

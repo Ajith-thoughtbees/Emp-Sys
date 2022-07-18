@@ -44,7 +44,7 @@
           </div>
       </header> <!-- Main -->
       <main class="py-6 bg-surface-secondary">
-          <div class="container-fluid" id="htmlData">
+          <div class="container-fluid">
               <!-- Card stats -->
 
 
@@ -87,13 +87,14 @@
                     </thead>
                     <tbody>
                       <tr *ngFor="let arr of allowance ;">
-                        <!-- <td>{{arr.id}}</td> -->
-                        <!-- <td class="text-uppercase">{{arr.employeeName}}</td> -->
+                        <td>{{arr.monthpicker | date }}</td>
+                        <td class="text-uppercase">{{arr.yearpicker}}</td>
+                        <td>{{arr.leaveDay}}</td>
                         <td>{{arr.basic}}</td>
                         <td>{{arr.houseRentAllowance}}</td>
                         <td>{{arr.mealAllowance}}</td>
-                        <td>{{arr.hra}}</td>
-                        <td>{{arr.pf}}</td>
+                        <td>{{arr.netSalary}}</td>
+                        <!-- <td>{{arr.pf}}</td> -->
                         <!-- <td>{{(arr.salary)-(arr.tds+arr.hra+arr.pf)}}</td> -->
                       <!-- <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button> -->
                         <button class="btn" (click)="show(arr)"><i class="bi bi-file-arrow-down-fill text-danger "></i></button>
