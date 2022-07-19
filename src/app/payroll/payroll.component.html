@@ -171,13 +171,13 @@
                 class="btn me-2"
                 (click)="updatePayroll(arr)"
                 data-bs-toggle="modal"
-                data-bs-target="#exampleModal">
+                data-bs-target="#exampleModal"  data-toggle="tooltip" data-placement="top" title="Update">
                 <i class="bi bi-pencil-square text-primary fs-5"></i>
               </button>
-              <button class="btn me-2" (click)="edit(arr)">
+              <button class="btn me-2" (click)="edit(arr)" data-toggle="tooltip" data-placement="top" title="Payslip">
                 <i class="bi bi-plus text-success fs-3"></i>
               </button>
-              <button class="btn me-2" (click)="deletePayroll(arr)">
+              <button class="btn me-2" (click)="deletePayroll(arr)" data-toggle="tooltip" data-placement="top" title="Delete">
                 <i class="bi bi-trash text-danger fs-5"></i>
               </button>
             </tr>
