@@ -19,6 +19,13 @@ export class PopupPdfComponent implements OnInit {
   user: any;
   pay: any
   payrollModelObj : payrollModel = new payrollModel();
+  Working:any;
+  noOfWorkingDays: any= 22;
+  leaveDays: any;
+  eariningBasic: any;
+  eariningMA: any;
+  eariningHA: any;
+  eariningNS: any;
 
   constructor(private payrollService : PayrollService, public ref:DynamicDialogRef,
     public config:DynamicDialogConfig) { }
@@ -27,13 +34,21 @@ export class PopupPdfComponent implements OnInit {
 
     this.payrollService.getData().subscribe((res) => {
       this.payrollModelObj = res
+      console.log(res)
 
      })
      this.pay=this.config.data
-     console.log(this.pay.id)
-
+     console.log(this.pay)
+     this.Working = this.noOfWorkingDays - this.pay.leaveDay
+     console.log(typeof(this.noOfWorkingDays));
+     console.log(typeof(this.pay.leaveDay));
+     console.log(this.Working);
+     this.eariningBasic=((this.pay.basic/this.noOfWorkingDays)*this.Working).toFixed(2);
+this.eariningHA = ((this.pay.houseRentAllowance/this.noOfWorkingDays)*this.Working).toFixed(2);
+this.eariningMA = ((this.pay.mealAllowance/this.noOfWorkingDays)*this.Working).toFixed(2);
 
   }
+
 
   public openPDF(): void {
     let DATA: any = document.getElementById('htmlData');

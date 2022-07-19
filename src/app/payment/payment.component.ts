@@ -16,7 +16,7 @@ import { FormBuilder, FormGroup,Validators,FormControl } from '@angular/forms';
 export class PaymentComponent implements OnInit {
   // employeeModelObj:EmployeeModel=new EmployeeModel();
   payrollModelObj : payrollModel = new payrollModel();
-  noOfWorkingDays: any= 22 ;
+  noOfWorkingDays: any= 22;
   leaveDays: any=0;
   payslipForm!:FormGroup;
   pay:any;
@@ -29,10 +29,11 @@ export class PaymentComponent implements OnInit {
   yearpickerOptions: string[] = ['2021', '2022', '2023'];
   default: string = '2022';
   hike: any;
-basic:any;
-houseRentAllowance:any;
-mealAllowance:any;
-totalValue:any
+  basic:any;
+  houseRentAllowance:any;
+  mealAllowance:any;
+  totalValue:any
+  total: any;
 
   constructor(private payrollService:PayrollService,
     public ref:DynamicDialogRef,
@@ -53,7 +54,7 @@ totalValue:any
 
      })
      this.pay=this.config.data
-     console.log(this.pay.id)
+     console.log(this.pay)
 
 
   }
@@ -88,12 +89,11 @@ totalValue:any
       actualWorkingDay: this.payslipForm.value.actualWorkingDay,
       id: 0,
       employeeName: this.pay.employeeName,
-      date: '',
       basic: parseFloat(this.eariningBasic).toFixed(0),
       houseRentAllowance: parseFloat(this.eariningHA).toFixed(0),
       mealAllowance: parseFloat(this.eariningMA).toFixed(0),
       status: 0,
-      total: 0,
+      total: this.pay.total,
       netSalary: parseFloat(this.eariningNS).toFixed(0)
     }
 

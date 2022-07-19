@@ -2,7 +2,6 @@ export class payrollModel{
 
   id: number=0;
   employeeName: string='';
-  date : string='';
   basic:any;
   houseRentAllowance:any;
   mealAllowance:any;

@@ -147,7 +147,7 @@
               <th scope="col">House Rent Allowance</th>
               <th scope="col">Meal Allowance</th>
               <th scope="col">Total</th>
-              <th scope="col">Status</th>
+              <!-- <th scope="col">Status</th> -->
               <th scope="col" class="text-center">Actions</th>
             </tr>
           </thead>
@@ -162,11 +162,11 @@
               <td>{{ arr.mealAllowance }}</td>
               <td class="text-muted">
                 {{
-                  arr.netSalary
+                  arr.total
                 }}
 
               </td>
-              <td>{{ arr.status }}</td>
+              <!-- <td>{{ arr.status }}</td> -->
               <button
                 class="btn me-2"
                 (click)="updatePayroll(arr)"

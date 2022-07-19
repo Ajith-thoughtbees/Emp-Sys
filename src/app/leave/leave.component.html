@@ -96,11 +96,14 @@
         <td>{{arr.leaveReason}}</td>
         <td>{{arr.dateFrom}}</td>
          <td>{{arr.dateTo}}</td>
-         <td>{{arr.status}}</td>
+         <td> <span class="badge rounded-pill text-bg-primary even-larger-badge fs-6" *ngIf="arr.status == 0">Pending</span>
+          <span class="badge rounded-pill text-bg-success even-larger-badge fs-6" *ngIf="arr.status == 1">Accepted</span>
+          <span class="badge rounded-pill text-bg-warning even-larger-badge fs-6"  *ngIf="arr.status == 2">Denied</span>
+          <span class="badge rounded-pill text-bg-danger even-larger-badge fs-6"  *ngIf="arr.status == 3">Cancel</span></td>
          <div >
-          <button class="btn" (click)="acceptedLeave(arr)" ><i class="bi bi-check text-primary"></i></button>
-          <button class="btn" (click)="deniedLeave(arr)" >  <i class="bi bi-dash-circle"></i></button>
-          <button class="btn"(click)="cancelledLeave(arr)"><i class="bi bi-x text-danger"></i></button>
+          <button class="btn" (click)="acceptedLeave(arr)" data-toggle="tooltip" data-placement="top" title="Accepted" ><i class="bi bi-check text-primary"></i></button>
+          <button class="btn" (click)="deniedLeave(arr)" data-toggle="tooltip" data-placement="top" title="Denied">  <i class="bi bi-dash-circle"></i></button>
+          <button class="btn"(click)="cancelledLeave(arr)" data-toggle="tooltip" data-placement="top" title="Cancelled"><i class="bi bi-x text-danger"></i></button>
         </div>
       </tr>
     </tbody>

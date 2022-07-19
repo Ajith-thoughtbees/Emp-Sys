@@ -33,7 +33,7 @@ export class PayrollComponent implements OnInit,OnDestroy {
   ref!: DynamicDialogRef;
   hike!:any
   v: any;
-
+ totalValue:any
 
   constructor(private formBuilder: FormBuilder,
     private payrollServices: PayrollService,
@@ -69,20 +69,20 @@ export class PayrollComponent implements OnInit,OnDestroy {
 
 
 
+
   get f(): { [key: string]: AbstractControl } {
     return this.payrollForm.controls;
   }
   postPayroll() {
     // alert("fucntion call");
     this.payrollModelObj.id = this.payrollForm.value.id;
-
     this.payrollModelObj.employeeName = this.payrollForm.value.employeeName;
     // this.payrollModelObj.date=this.payrollForm.value.date;
     this.payrollModelObj.basic = this.payrollForm.value.basic;
     // this.payrollModelObj.incentivePay=this.payrollForm.value.incentivePay;
     this.payrollModelObj.houseRentAllowance = this.payrollForm.value.houseRentAllowance;
     this.payrollModelObj.mealAllowance = this.payrollForm.value.mealAllowance;
-
+    this.payrollModelObj.total = (this.basic+this.houseRentAllowance+this.mealAllowance);
 
 
     let cancel = document.getElementById("cancel");
@@ -90,8 +90,8 @@ export class PayrollComponent implements OnInit,OnDestroy {
       console.log(a);
       this.hike=a.employeeName == this.payrollForm.value.employeeName
       return a.employeeName == this.payrollForm.value.employeeName
-
     });
+
     if(this.hike){
       let cid = this.employeeData[adm].id
       console.log(cid)
@@ -100,33 +100,18 @@ export class PayrollComponent implements OnInit,OnDestroy {
       // this.payrollServices.updateData(cid,this.employeeData).subscribe(a=>{
       //   console.log(a)
       // })
-
     console.log(adm);
-
-
-
-
     }else{
-
-
       this.payrollServices.postData(this.payrollModelObj).subscribe(a => {
 
         console.log(a);
         alert("Record inserted successfully");
         cancel?.click(); this.payrollForm.reset();
-        this.getAllSalary();
-
-
-
+       this.getAllSalary();
       })
   console.log(this.payrollForm);
-
-
-    }
-
-
+   }
   }
-
   getAllSalary() {
     this.payrollServices.getData().subscribe(a => {
       this.employeeData = a;
@@ -150,8 +135,6 @@ export class PayrollComponent implements OnInit,OnDestroy {
       console.log(this.employeeData)
 
     })
-
-
   }
   getEmployees() {
 
@@ -160,15 +143,9 @@ export class PayrollComponent implements OnInit,OnDestroy {
         console.log(res);
         this.processTemplates = res;
       }
-
-
     );
-
   }
-
-
   deletePayroll(arr: any) {
-
     this.payrollServices.deleteData(arr.id).subscribe(a => {
       alert("Record Deleted Succesfully");
       this.getAllSalary();
@@ -198,22 +175,23 @@ export class PayrollComponent implements OnInit,OnDestroy {
     // this.payrollModelObj.incentivePay=this.payrollForm.value.incentivePay;
     this.payrollModelObj.houseRentAllowance = this.payrollForm.value.houseRentAllowance;
     this.payrollModelObj.mealAllowance = this.payrollForm.value.mealAllowance;
+    this.payrollModelObj.total = this.payrollForm.value.total;
     console.log(this.payrollForm.value.employeeName)
     // this.payrollServices.getData().subscribe(res => {
 
 
     // })
-    // this.payrollServices.updateData(this.payrollModelObj, this.payrollModelObj.id).subscribe(a => {
-    //   // alert("Record updated Succesfully");
+    this.payrollServices.updateData(this.payrollModelObj, this.payrollModelObj.id).subscribe(a => {
+      // alert("Record updated Succesfully");
 
-    //   let cancel = document.getElementById("cancel");
+      let cancel = document.getElementById("cancel");
 
-    //   cancel?.click();
-    //   this.payrollForm.reset();
-    //   this.getAllSalary();
+      cancel?.click();
+      this.payrollForm.reset();
+      this.getAllSalary();
 
 
-    // })
+    })
   }
 
   add1() {

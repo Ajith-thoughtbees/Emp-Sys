@@ -34,16 +34,16 @@
   <li class="list-group-item">{{pay.basic}}</li>
   <li class="list-group-item">{{pay.houseRentAllowance}}</li>
   <li class="list-group-item">{{pay.mealAllowance}}</li>
- <li class="list-group-item  bg-primary text-white">{{pay.basic+pay.houseRentAllowance+pay.mealAllowance}}</li>
+ <li class="list-group-item  bg-primary text-white">{{pay.total}}</li>
 </ul>
 </div>
 <div class="col">
 
 <ul class="list-group mt-5">
   <li class="list-group-item active">Earnings</li>
-  <li class="list-group-item">{{pay.eariningBasic}}</li>
-  <li class="list-group-item">{{pay.eariningHA}}</li>
-  <li class="list-group-item">{{pay.eariningMA}}</li>
+  <li class="list-group-item">{{eariningBasic}}</li>
+  <li class="list-group-item">{{eariningHA}}</li>
+  <li class="list-group-item">{{eariningMA}}</li>
   <li class="list-group-item  bg-danger text-white">{{pay.netSalary}}</li>
 </ul>
 </div>

@@ -78,7 +78,7 @@
                         Meal Allowance
                         </th>
                         <th scope="col">
-                        Net Salary
+                       Total
                         </th>
                          <th scope="col">
                          View
@@ -93,11 +93,11 @@
                         <td>{{arr.basic}}</td>
                         <td>{{arr.houseRentAllowance}}</td>
                         <td>{{arr.mealAllowance}}</td>
-                        <td>{{arr.netSalary}}</td>
+                        <td>{{arr.total}}</td>
                         <!-- <td>{{arr.pf}}</td> -->
                         <!-- <td>{{(arr.salary)-(arr.tds+arr.hra+arr.pf)}}</td> -->
                       <!-- <button class="btn"><i class="bi bi-pencil-square text-primary"></i></button> -->
-                        <button class="btn" (click)="show(arr)"><i class="bi bi-file-arrow-down-fill text-danger "></i></button>
+                        <button class="btn" data-toggle="tooltip" data-placement="top" title="PDF Download"(click)="show(arr)"><i class="bi bi-file-arrow-down-fill text-danger "></i></button>
                       </tr>
 
                     </tbody>

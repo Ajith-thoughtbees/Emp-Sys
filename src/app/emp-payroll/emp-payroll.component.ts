@@ -38,6 +38,7 @@ export class EmpPayrollComponent implements OnInit {
     // });
     this.payrollServices.getData().subscribe((res) => {
       this.allowance = res
+      console.log(this.allowance)
     });
 
 

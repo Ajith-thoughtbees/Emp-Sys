@@ -42,6 +42,20 @@
       "username": "Vinod",
       "password": "123",
       "id": 3
+    },
+    {
+      "firstname": "Hari",
+      "lastname": "Prasad",
+      "birthday": "2022-07-15",
+      "gender": "m",
+      "education": "diploma",
+      "company": "Tcs",
+      "jobExperience": 14,
+      "salary": 12000,
+      "profile": "523-5230160_clipart-computer-operator-hd-png-download.png",
+      "username": "Hari",
+      "password": "12345",
+      "id": 4
     }
   ],
   "attendance": [
@@ -68,23 +82,30 @@
       "dateTo": "2022-07-22",
       "status": 0,
       "id": 3
+    },
+    {
+      "leaveReason": "Sick",
+      "leaveType": "Sick leave",
+      "dateFrom": "2022-07-20",
+      "dateTo": "2022-07-20",
+      "status": 3,
+      "id": 4
     }
   ],
   "payroll": [
     {
       "monthpicker": "2022-02-28T18:30:00.000Z",
       "yearpicker": "2022",
-      "leaveDay": 5,
-      "actualWorkingDay": 17,
+      "leaveDay": 1,
+      "actualWorkingDay": 21,
       "id": 1,
       "employeeName": "2",
-      "date": "",
-      "basic": "8449",
-      "houseRentAllowance": "2113",
-      "mealAllowance": "10561",
+      "basic": "4773",
+      "houseRentAllowance": "2864",
+      "mealAllowance": "7636",
       "status": 0,
-      "total": 0,
-      "netSalary": "21123"
+      "total": 16000,
+      "netSalary": "15273"
     },
     {
       "monthpicker": "2022-02-28T18:30:00.000Z",
@@ -93,13 +114,12 @@
       "actualWorkingDay": 20,
       "id": 2,
       "employeeName": "3",
-      "date": "",
       "basic": "1091",
-      "houseRentAllowance": "2727",
-      "mealAllowance": "40909",
+      "houseRentAllowance": "273",
+      "mealAllowance": "4545",
       "status": 0,
-      "total": 0,
-      "netSalary": "44727"
+      "total": 6500,
+      "netSalary": "5909"
     }
   ]
 }
